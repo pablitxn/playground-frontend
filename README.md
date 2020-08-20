@@ -1,42 +1,48 @@
-# Ant Design Pro Layout example
+# Playground
 
-This example shows how to use Next.js along with [Ant Design Pro Layout](https://github.com/ant-design/ant-design-pro-layout) of React. This is intended to show the integration of this UI toolkit with the Framework.
+## Qué es? 🚀
 
-## Deploy your own
+Playground es una aplicación de Next.js donde voy a disponibilizar ejercicios e ideas.
+También es un espacio de experimentación y de estudio, con todo el set-up necesario.
 
-Deploy the example using [Vercel](https://vercel.com):
+En sintesis: Playground es una galeria y un laboratorio!
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/with-ant-design-pro-layout-less)
+### Instalación de dependencias 💾
 
-## How to use
-
-### Using `create-next-app`
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+Una vez clonado el repositorio, hay que instalar las dependencias.
+Se recomienda utilizar `yarn` como gestor de paquetes.
 
 ```bash
-npx create-next-app --example with-ant-design-pro-layout-less with-ant-design-app
-# or
-yarn create next-app --example with-ant-design-pro-layout-less with-ant-design-app
+yarn install
 ```
 
-### Download manually
+### Entornos 💻
 
-Download the example:
+#### Dev server 🔧
+
+Para abrir el servidor de desarrollo usá el siguiente script
 
 ```bash
-curl https://codeload.github.com/vercel/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/with-ant-design-pro-layout-less
-cd with-ant-design-pro-layout-less
+yarn run dev
 ```
 
-Install it and run:
+## Construido con 🛠️
 
-```bash
-npm install
-npm run dev
-# or
-yarn
-yarn dev
-```
+- [React](https://es.reactjs.org/) - Creado con `create-react-app`
+- [AntD + Less](https://ant.design/) - Design System.
+- [Typescript](https://www.typescriptlang.org/) - Escrito con typescript
 
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## Autor ✒️
+
+- **Pablo Coronel** [Github](https://github.com/pablitxn)
+
+<!-- ### Acerca del proyecto
+
+Proximamente una mejor descripción! 😊
+
+### En qué se está trabajando hoy? 💡
+
+Construyendo las primeras vistas y componentes.
+Proximamente más y mejor información! -->
+
+## Gracias 🧘‍♂️
