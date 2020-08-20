@@ -28,9 +28,9 @@ yarn run dev
 
 ## Construido con 🛠️
 
-- [React](https://es.reactjs.org/) - Creado con `create-react-app`
-- [AntD + Less](https://ant.design/) - Design System.
-- [Typescript](https://www.typescriptlang.org/) - Escrito con typescript
+- [Typescript](https://www.typescriptlang.org/)
+- [AntD](https://ant.design/)
+- [Less](http://lesscss.org/)
 
 ## Autor ✒️
 
