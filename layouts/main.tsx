@@ -1,12 +1,10 @@
+// Types
+import { ReactNode } from 'react'
+// Router
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-
-import {
-  SmileOutlined,
-  SettingOutlined,
-  PlaySquareOutlined,
-} from '@ant-design/icons'
-
+// AntD
+import { SmileOutlined, PlayCircleOutlined } from '@ant-design/icons'
 import { Route, MenuDataItem } from '@ant-design/pro-layout/lib/typings'
 import { SiderMenuProps } from '@ant-design/pro-layout/lib/SiderMenu/SiderMenu'
 
@@ -21,25 +19,25 @@ const ROUTES: Route = {
       path: '/',
       name: 'Welcome',
       icon: <SmileOutlined />,
-      routes: [
-        {
-          path: '/welcome',
-          name: 'Account Settings',
-          icon: <SettingOutlined />,
-        },
-      ],
+      // routes: [
+      //   {
+      //     path: '/welcome',
+      //     name: 'Account Settings',
+      //     icon: <SettingOutlined />,
+      //   },
+      // ],
     },
     {
-      path: '/example',
-      name: 'Example Page',
-      icon: <PlaySquareOutlined />,
+      path: '/tic-tac-toe',
+      name: 'Tic Tac Toe',
+      icon: <PlayCircleOutlined />,
     },
   ],
 }
 
 const menuHeaderRender = (
-  logoDom: React.ReactNode,
-  titleDom: React.ReactNode,
+  logoDom: ReactNode,
+  titleDom: ReactNode,
   props: SiderMenuProps
 ) => (
   <Link href="/">
@@ -50,7 +48,7 @@ const menuHeaderRender = (
   </Link>
 )
 
-const menuItemRender = (options: MenuDataItem, element: React.ReactNode) => (
+const menuItemRender = (options: MenuDataItem, element: ReactNode) => (
   <Link href={options.path}>
     <a>{element}</a>
   </Link>
