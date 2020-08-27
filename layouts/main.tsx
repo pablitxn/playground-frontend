@@ -46,6 +46,11 @@ const ROUTES: Route = {
 			path: "/chroma-key",
 			name: "Chroma-key",
 			icon: <CameraOutlined />
+		},
+		{
+			path: "/360-slider",
+			name: "360 Slider",
+			icon: <CameraOutlined />
 		}
 	]
 };

@@ -15,6 +15,6 @@
 		"jsx": "preserve",
 		"baseUrl": ""
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.js", "pages/chroma-key.jsx", "components/chroma-key/chroma-key.component.jsx"],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.js", "pages/chroma-key.jsx", "components/chroma-key/chroma-key.component.jsx", "components/360-slider/slider.component.jsx"],
 	"exclude": ["node_modules"]
 }

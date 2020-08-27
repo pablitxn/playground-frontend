@@ -36,16 +36,14 @@ function App() {
 	const [elements, setElements] = useState();
 
 	useEffect(() => {
-		const currentCanvas = refCanvas.current;
-		const currentVideo = refVideo.current;
-		const contexto = currentCanvas.getContext("2d");
+		const context = refCanvas.current.getContext("2d");
 
 		setElements({
-			video: currentVideo,
-			canvas: currentCanvas
+			video: refVideo.current,
+			canvas: refCanvas.current
 		});
 
-		setCtx(contexto);
+		setCtx(context);
 	}, [ctx]);
 
 	useEffect(() => {
