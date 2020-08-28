@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { useEffect, useState } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
-import apiKey from "./utils";
+import apiKey from "./utils/utils";
 
 const BarDetail = (props) => {
 	// console.log(props);
