@@ -41,3 +41,7 @@ export async function getBriefData() {
 }
 
 const api = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDp9w89NeF8noYa6q5Xbn-jMUjCiW7L2nU"
+
+const apiKey = "AIzaSyDXc89dygNmBSG7eUMJKKp3Rp7IFcM0ZXc"
+
+export default apiKey

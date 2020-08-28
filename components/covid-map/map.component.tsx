@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { useEffect, useState } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
+import apiKey from "./utils";
 
 const BarDetail = (props) => {
 	// console.log(props);
@@ -29,5 +30,5 @@ const BarDetail = (props) => {
 };
 
 export default GoogleApiWrapper({
-	apiKey: "AIzaSyDp9w89NeF8noYa6q5Xbn-jMUjCiW7L2nU"
+	apiKey: apiKey
 })(BarDetail);
