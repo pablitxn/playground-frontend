@@ -31,7 +31,7 @@ export async function getBriefData() {
         const data = await response.json()
         return data
       case 400:
-        alert(`Ha ocurrido un error con la petición ${response.error}`)
+        // alert(`Ha ocurrido un error con la petición ${response.error}`)
         return []
     }
   } catch (error) {
