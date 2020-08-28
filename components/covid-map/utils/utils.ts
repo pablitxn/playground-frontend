@@ -14,7 +14,7 @@ export async function getGlobalData() {
         console.log("la data -> ", data)
         return data
       case 400:
-        alert(`Ha ocurrido un error con la petición ${response.error}`)
+        // alert(`Ha ocurrido un error con la petición ${response.error}`)
         return []
     }
   } catch (error) {
