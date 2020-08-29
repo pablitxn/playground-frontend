@@ -3,7 +3,6 @@ import { FC, useMemo, useState } from "react";
 // Components
 import MainLayout from "layouts/main";
 import Map from "components/covid-map/map.component";
-import OtherMap from "components/covid-map/other-map.component";
 // Hooks
 import useCovidData from "hooks/useCovidData";
 // Styles
@@ -35,7 +34,6 @@ const CovidMap: FC = () => {
 					</div>
 				</div>
 				<Map markers={markers} className="map" />
-				<OtherMap />
 			</div>
 		</MainLayout>
 	);
