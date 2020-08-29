@@ -1,31 +1,10 @@
 // Hooks
 import { useEffect, useRef, useState } from "react";
+// Utils
+import { chromaKey } from "./chroma-key.utils";
 // Styles
 import "./chroma-key.styles.less";
-
-function chromaKey(ctx, canvas, video, setCtx) {
-	const $ctx = ctx;
-
-	$ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-	const imageData = $ctx.getImageData(0, 0, canvas.width, canvas.height);
-	const dataLength = imageData.data.length / 4;
-
-	for (let i = 0; i < dataLength; i++) {
-		// solo itera los pixeles que tengo, pero cada 4 (?)
-		// esto es para
-		const offset = i * 4;
-		const red = imageData.data[offset + 0];
-		const green = imageData.data[offset + 1];
-		const blue = imageData.data[offset + 2];
-
-		if (blue > 90 && blue > red && blue > green) {
-			imageData.data[offset + 3] = 0;
-		}
-	}
-	$ctx.putImageData(imageData, 0, 0);
-
-	setCtx($ctx);
-}
+import ChromaOptions from "./options.component";
 
 function App() {
 	const refInput = useRef();
@@ -68,7 +47,10 @@ function App() {
 
 	return (
 		<p>
-			<input type="text" ref={refInput} defaultValue="Focus me" />
+			<div>
+				<h2> Customizá chroma! </h2>
+				<ChromaOptions />
+			</div>
 			<video ref={refVideo} autoPlay></video>
 			<canvas ref={refCanvas} className="canvas"></canvas>
 		</p>
