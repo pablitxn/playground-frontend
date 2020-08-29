@@ -1,34 +1,65 @@
 // @ts-nocheck
-import { useEffect, useState } from "react";
+// Hooks
+import { useState } from "react";
+// Google Maps
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
-import apiKey from "./utils/utils";
+// Utils
+import { apiKey } from "./utils";
 
-const BarDetail = (props) => {
-	// console.log(props);
-	const [bar, setBar] = useState({
-		latitud: "",
-		longitud: ""
+const mapStyles = {
+	width: "70%",
+	height: "70%"
+};
+
+// const scaleControl = 2;
+const zoom = 2;
+const initialCenter = { lat: 0, lng: 0 };
+
+const MapComponent = (props) => {
+	const { markers } = props;
+	const [popUp, setPopUp] = useState({
+		state: false,
+		marker: {}
 	});
+
+	const handlePopUp = (marker) => {
+		setPopUp({
+			state: !popUp.state,
+			marker: marker
+		});
+	};
 
 	return (
 		<Map
-			style={{ width: "100%", height: "150px" }}
-			draggable={false}
-			fullscreenControl={false}
-			scrollwheel={false}
-			zoomControl={false}
-			scaleControl={false}
-			streetViewControl={false}
-			mapTypeControl={false}
+			style={mapStyles}
+			draggable={props.draggable}
+			fullscreenControl={props.fullscreenControl}
+			scrollwheel={props.scrollwheel}
+			zoomControl={props.zoomControl}
+			scaleControl={props.scaleControl}
+			streetViewControl={props.streetViewControl}
+			mapTypeControl={props.mapTypeControl}
 			google={props.google}
-			zoom={14}
-			initialCenter={{ lat: bar.latitud, lng: bar.longitud }}
+			zoom={zoom}
+			initialCenter={initialCenter}
+			className={props.className}
 		>
-			<Marker position={{ lat: bar.latitud, lng: bar.longitud }} />
+			{markers.map((marker, i) => {
+				if (marker?.location) {
+					const { location } = marker;
+					return (
+						<Marker
+							key={i}
+							position={location}
+							onClick={() => handlePopUp(marker)}
+						/>
+					);
+				}
+			})}
 		</Map>
 	);
 };
 
 export default GoogleApiWrapper({
 	apiKey: apiKey
-})(BarDetail);
+})(MapComponent);
