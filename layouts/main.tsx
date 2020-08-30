@@ -33,18 +33,18 @@ const ROUTES: Route = {
 			// ],
 		},
 		{
-			path: "/tic-tac-toe",
-			name: "Tic Tac Toe",
+			path: "/ta-te-ti",
+			name: "Ta Te Ti",
 			icon: <PlayCircleOutlined />
 		},
 		{
 			path: "/covid-map",
-			name: "Covid-19 Map",
+			name: "CoVid-19 Map",
 			icon: <GlobalOutlined />
 		},
 		{
-			path: "/chroma-key",
-			name: "Chroma-key",
+			path: "/croma",
+			name: "Croma Customizable",
 			icon: <CameraOutlined />
 		},
 		{

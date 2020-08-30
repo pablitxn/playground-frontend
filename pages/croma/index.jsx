@@ -1,5 +1,5 @@
 import ChromaKey from "components/chroma-key/chroma-key.component";
-import MainLayout from "../layouts/main";
+import MainLayout from "../../layouts/main";
 
 const Chroma = () => {
 	return (

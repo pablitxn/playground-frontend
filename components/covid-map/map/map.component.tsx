@@ -4,19 +4,13 @@ import { useState } from "react";
 // Google Maps
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 // Utils
-import { apiKey } from "./utils";
+import { apiKey } from "../utils";
 
-const mapStyles = {
-	width: "70%",
-	height: "70%"
-};
-
-// const scaleControl = 2;
 const zoom = 2;
 const initialCenter = { lat: 0, lng: 0 };
 
 const MapComponent = (props) => {
-	const { markers } = props;
+	const { markers, className } = props;
 	const [popUp, setPopUp] = useState({
 		state: false,
 		marker: {}
@@ -31,7 +25,6 @@ const MapComponent = (props) => {
 
 	return (
 		<Map
-			style={mapStyles}
 			draggable={props.draggable}
 			fullscreenControl={props.fullscreenControl}
 			scrollwheel={props.scrollwheel}
@@ -42,7 +35,7 @@ const MapComponent = (props) => {
 			google={props.google}
 			zoom={zoom}
 			initialCenter={initialCenter}
-			className={props.className}
+			className={className}
 		>
 			{markers.map((marker, i) => {
 				if (marker?.location) {
