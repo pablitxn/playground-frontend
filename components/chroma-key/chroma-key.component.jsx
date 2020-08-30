@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { chromaKey } from "./chroma-key.utils";
 // Styles
 import "./chroma-key.styles.less";
-import ChromaOptions from "./options.component";
+import ChromaConfigurations from "components/chroma-key/configurations.component";
 
 function App() {
 	const refInput = useRef();
@@ -46,14 +46,16 @@ function App() {
 	}, [elements, ctx]);
 
 	return (
-		<p>
-			<div>
+		<div className="chroma-key">
+			<div className="chroma-key__options">
 				<h2> Customizá chroma! </h2>
-				<ChromaOptions />
+				<ChromaConfigurations />
 			</div>
-			<video ref={refVideo} autoPlay></video>
-			<canvas ref={refCanvas} className="canvas"></canvas>
-		</p>
+			<div className="chroma-key__content">
+				<video ref={refVideo} autoPlay></video>
+				<canvas ref={refCanvas} className="canvas"></canvas>
+			</div>
+		</div>
 	);
 }
 

@@ -1,16 +1,16 @@
-// Rect
-import { FC, useState } from "react";
+// Types
+import { FC } from "react";
+// Hooks
+import { useState } from "react";
+// Components
+import ColorsTab from "components/chroma-key/colors-tab.component";
 // AntD
 import { Tabs } from "antd";
-import {
-	AppstoreOutlined,
-	SettingOutlined,
-	MailOutlined
-} from "@ant-design/icons";
+import { BgColorsOutlined } from "@ant-design/icons";
 
 const { TabPane } = Tabs;
 
-const ChromaOptions: FC = () => {
+const ChromaConfigurations: FC = () => {
 	const [state, setState] = useState({ collapsed: false, current: "" });
 
 	const handleTab = (menuKey) => {
@@ -23,19 +23,23 @@ const ChromaOptions: FC = () => {
 
 	const { collapsed, current } = state;
 
+	const handleColor = () => {};
+
 	return (
 		<Tabs defaultActiveKey="1" onChange={handleTab}>
-			<TabPane tab="Tab 1" key="1">
-				<ColorsTab />
+			<TabPane tab="Colores" key="1">
+				<ColorsTab onSetColor={handleColor} />
 			</TabPane>
 			<TabPane tab="Tab 2" key="2">
-				<OpacityTab />
+				{/* <OpacityTab /> */}
+				asd
 			</TabPane>
 			<TabPane tab="Tab 3" key="3">
-				<ImageTab />
+				{/* <ImageTab /> */}
+				asd
 			</TabPane>
 		</Tabs>
 	);
 };
 
-export default ChromaOptions;
+export default ChromaConfigurations;
