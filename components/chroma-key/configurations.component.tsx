@@ -4,6 +4,9 @@ import { FC } from "react";
 import { useState } from "react";
 // Components
 import ColorsTab from "components/chroma-key/colors-tab.component";
+import ImagesTab from "components/chroma-key/images-tab.component";
+import GalleryTab from "components/chroma-key/gallery-tab.component";
+import UploadTab from "components/chroma-key/upload-tab.component";
 // AntD
 import { Tabs } from "antd";
 import { BgColorsOutlined } from "@ant-design/icons";
@@ -30,13 +33,14 @@ const ChromaConfigurations: FC = () => {
 			<TabPane tab="Colores" key="1">
 				<ColorsTab onSetColor={handleColor} />
 			</TabPane>
-			<TabPane tab="Tab 2" key="2">
-				{/* <OpacityTab /> */}
-				asd
+			<TabPane tab="Imagenes" key="2">
+				<ImagesTab />
 			</TabPane>
-			<TabPane tab="Tab 3" key="3">
-				{/* <ImageTab /> */}
-				asd
+			<TabPane tab="Imagenes subidas" key="3">
+				<GalleryTab />
+			</TabPane>
+			<TabPane tab="Subí tu fondo" key="4">
+				<UploadTab />
 			</TabPane>
 		</Tabs>
 	);
