@@ -4,13 +4,10 @@ import "./global-cases.styles.less";
 
 interface IGlobalCases {
 	className: string;
-	globalCases: string;
+	globalCases: number;
 }
 
-const GlobalCases: FC<IGlobalCases> = ({
-	className,
-	globalCases = "24.997.665"
-}) => {
+const GlobalCases: FC<IGlobalCases> = ({ className, globalCases }) => {
 	return (
 		<div className={`global-cases ${className}`}>
 			<h2 className="global-cases__title">Casos Globales</h2>

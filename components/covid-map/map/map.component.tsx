@@ -29,6 +29,7 @@ const MapComponent = (props) => {
 
 	return (
 		<Map
+			style={{}}
 			draggable={props.draggable}
 			fullscreenControl={props.fullscreenControl}
 			scrollwheel={props.scrollwheel}

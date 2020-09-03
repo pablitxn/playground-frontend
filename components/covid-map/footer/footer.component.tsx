@@ -5,14 +5,16 @@ import "./footer.styles.less";
 
 interface IFooter {
 	className: string;
-	cases: number;
+	affectedCountries: number;
 }
 
-const Footer: FC<IFooter> = ({ className, cases = 188 }) => {
+const Footer: FC<IFooter> = ({ className, affectedCountries = 188 }) => {
 	return (
 		<div className={`footer ${className}`}>
 			<div className="footer__brief-info brief-info">
-				<span className="brief-info__cases">{cases}</span>
+				<span className="brief-info__affected-countries">
+					{affectedCountries}
+				</span>
 				<h3 className="brief-info__description">Paises y regiones afectadas</h3>
 			</div>
 			<span className="footer__content">

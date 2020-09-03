@@ -1,6 +1,6 @@
 // Types
-import { FC, useMemo, useState } from "react";
-// Configs
+import { FC } from "react";
+// Next
 import Head from "next/head";
 // Components
 import MainLayout from "layouts/main";
@@ -19,20 +19,16 @@ import useCovidData from "hooks/useCovidData";
 import "./styles.less";
 
 const CovidMap: FC = () => {
-	const handleStyles = () => {
-		// selector
-	};
-	const { allData, briefData, markers } = useCovidData();
-
-	const [filteredData, setFilteredData] = useState({
-		casesByCountry: [{}],
-		casesByDeaths: [{}],
-		casesByCountries: [{}]
-	});
-
-	const { casesByCountries, casesByCountry, casesByDeaths } = filteredData;
-	const { globalCases, globalDeaths, countryCases } = tableColumns;
-	const lastUpdate = new Date();
+	const {
+		// allData,
+		// briefData,
+		markers,
+		globalCases,
+		casesByCountries,
+		casesByDeaths,
+		casesByCountry,
+		affectedCountries
+	} = useCovidData();
 
 	return (
 		<>
@@ -48,11 +44,14 @@ const CovidMap: FC = () => {
 			<MainLayout>
 				<div className="covid-map">
 					<Header className="covid-map__header" />
-					<GlobalCases className="covid-map__global-cases" />
+					<GlobalCases
+						globalCases={globalCases}
+						className="covid-map__global-cases"
+					/>
 					<CasesByFilter
 						cases={casesByCountries}
 						title="Casos - Global"
-						columns={globalCases}
+						columns={tableColumns.globalCases}
 						className="covid-map__cases-by-countries"
 					/>
 					<div className="covid-map__map">
@@ -61,20 +60,23 @@ const CovidMap: FC = () => {
 					<CasesByFilter
 						cases={casesByDeaths}
 						title="Muertes - Global"
-						columns={globalDeaths}
+						columns={tableColumns.globalDeaths}
 						subtitle={"845.547"}
 						className="covid-map__cases-by-deaths"
 					/>
 					<CasesByFilter
 						cases={casesByCountry}
 						title="Casos - Argentina"
-						columns={countryCases}
+						columns={tableColumns.countryCases}
 						subtitle={"45.365"}
 						className="covid-map__cases-by-country"
 					/>
 					<LastUpdate className="covid-map__last-update" />
 					<GraphCases className="covid-map__graph-cases" />
-					<Footer className="covid-map__footer" />
+					<Footer
+						affectedCountries={affectedCountries}
+						className="covid-map__footer"
+					/>
 				</div>
 			</MainLayout>
 		</>
