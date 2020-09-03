@@ -1,10 +1,14 @@
+@background: #000000;
+@component: #222222;
+
 .covid-map {
 	width: 100%;
 	height: 840px;
-
+	background-color: @background;
+	padding: 1rem;
 
 	display: grid;
-	grid-template-columns: 0.8fr 0.5fr 2.3fr repeat(2, 0.7fr);
+	grid-template-columns: 0.8fr 0.5fr 2.3fr repeat(2, 0.5fr);
 	grid-template-rows: repeat(2, 0.3fr) 4.1fr repeat(2, 0.3fr);
 	gap: 25px 25px;
 	grid-template-areas: "header header header header header"
@@ -13,41 +17,48 @@
 		"last-update footer footer graph-cases graph-cases"
 		"last-update footer footer graph-cases graph-cases";
 
-	.map {
-		grid-area: map;
-		width: 680px !important;
-		height: 660px !important;
+	.header {
+		grid-area: header;
+		background-color: @component;
 	}
 
-	.cases-by-deaths {
-		grid-area: cases-by-deaths;
-	}
-
-	.graph-cases {
-		grid-area: graph-cases;
-	}
-
-	.last-update {
-		grid-area: last-update;
-	}
-
-	.cases-by-country {
-		grid-area: cases-by-country;
+	.global-cases {
+		grid-area: global-cases;
+		background-color: @component;
 	}
 
 	.cases-by-countries {
 		grid-area: cases-by-countries;
 	}
 
-	.global-cases {
-		grid-area: global-cases;
+
+	.map {
+		grid-area: map;
+		background-color: @component;
+		width: 28rem !important;
+		height: 40rem !important;
 	}
 
-	.header {
-		grid-area: header;
+	.graph-cases {
+		grid-area: graph-cases;
+		background-color: @component;
+	}
+
+	.last-update {
+		grid-area: last-update;
+		background-color: @component;
+	}
+
+	.cases-by-country {
+		grid-area: cases-by-country;
+	}
+
+	.cases-by-deaths {
+		grid-area: cases-by-deaths;
 	}
 
 	.footer {
 		grid-area: footer;
+		background-color: @component;
 	}
 }

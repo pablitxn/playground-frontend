@@ -1,3 +1,5 @@
+// Types
+import { Columns } from "components/covid-map/cases-by-filter/cases-by-filter.types"
 
 const API_COVID_ALL =
   'https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest'
@@ -41,6 +43,57 @@ export async function getBriefData() {
 
 export const apiKey = "AIzaSyDXc89dygNmBSG7eUMJKKp3Rp7IFcM0ZXc"
 
+type TableColumns = {
+  globalCases: Columns;
+  globalDeaths: Columns;
+  countryCases: Columns;
+
+}
+
+export const tableColumns: TableColumns = {
+  globalCases: [
+    {
+      title: "Infectados",
+      // TODO: ver aca
+      dataIndex: "infected",
+      width: 50
+    },
+    {
+      title: "Paises",
+      // TODO: ver aca
+      dataIndex: "countryRegion",
+      width: 150
+    }
+  ],
+  globalDeaths: [
+    {
+      title: "Muertes",
+      // TODO: ver aca
+      dataIndex: "deaths",
+      width: 50
+    },
+    {
+      title: "Paises",
+      // TODO: ver aca
+      dataIndex: "countryRegion",
+      width: 150
+    }
+  ],
+  countryCases: [
+    {
+      title: "Infectados",
+      // TODO: ver aca
+      dataIndex: "deaths",
+      width: 50
+    },
+    {
+      title: "Region",
+      // TODO: ver aca
+      dataIndex: "province",
+      width: 150
+    }
+  ]
+}
 
 
 /**

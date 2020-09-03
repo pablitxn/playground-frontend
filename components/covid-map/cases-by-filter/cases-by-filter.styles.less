@@ -1,0 +1,53 @@
+@component: #222222;
+@font-primary: #AAAB93;
+@font-red: #E60000;
+@font-gray: #787869;
+@font-white: #FFFFFF;
+
+
+.cases-by-filter {
+  padding: 1rem;
+  background-color: @component;
+
+  &__header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: .5rem;
+  }
+
+  &__title {
+    color: @font-gray;
+    font-weight: 400;
+    font-size: 1rem;
+    margin: 0;
+
+    &--without-subtitle {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: .5rem;
+    font-weight: 800;
+    font-size: 2rem;
+    color: @font-white;
+
+    &--without-subtitle {
+      display: none
+    }
+  }
+
+  &__table {
+    width: 100%;
+    height: auto;
+
+    .ant-table-body {
+      max-height: 550px !important;
+    }
+  }
+
+}

@@ -1,5 +1,7 @@
 // Types
 import { FC } from "react";
+// Styles
+import "./header.styles.less";
 
 interface IHeader {
 	className: string;
@@ -7,9 +9,9 @@ interface IHeader {
 
 const Header: FC<IHeader> = ({ className }) => {
 	return (
-		<div className={className}>
-			<span>hola</span>
-		</div>
+		<header className={`header ${className}`}>
+			<h1 className="title">☣ CoVid 19 - Map ☣</h1>
+		</header>
 	);
 };
 
