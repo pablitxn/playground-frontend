@@ -9,7 +9,7 @@ import LastUpdate from "components/covid-map/last-update/last-update.component";
 import CasesByFilter from "components/covid-map/cases-by-filter/cases-by-filter.component";
 import GlobalCases from "components/covid-map/global-cases.component";
 import GraphCases from "components/covid-map/graph-cases.component";
-import Footer from "components/covid-map/footer.component";
+import Footer from "components/covid-map/footer/footer.component";
 import Header from "components/covid-map/header/header.component";
 // Utils
 import { tableColumns } from "components/covid-map/utils";

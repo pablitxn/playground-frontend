@@ -10,8 +10,8 @@ const zoom = 2;
 const initialCenter = { lat: 0, lng: 0 };
 
 const styles = {
-	maxWidth: "717px",
-	maxHeight: "674px"
+	width: "717px",
+	height: "674px"
 };
 
 const MapComponent = (props) => {

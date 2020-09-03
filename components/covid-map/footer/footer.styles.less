@@ -1,0 +1,40 @@
+@component: #222222;
+@font-primary: #aaab93;
+@font-red: #e60000;
+@font-gray: #787869;
+@font-white: #ffffff;
+
+.footer {
+	display: flex;
+	color: @font-white;
+	box-sizing: content-box;
+	width: 100%;
+	padding: 1rem 0 1rem 0;
+
+	.brief-info {
+		width: 80rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 0 1rem 0 1rem;
+
+		&__cases {
+			font-size: 2rem;
+			margin: 0;
+		}
+
+		&__description {
+			color: @font-white;
+			font-size: 0.9rem;
+			text-align: center;
+		}
+	}
+
+	&__content {
+		padding: 5px;
+		margin-right: 1rem;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+}
