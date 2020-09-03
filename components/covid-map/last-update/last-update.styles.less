@@ -1,10 +1,26 @@
+@component: #222222;
+@font-primary: #AAAB93;
+@font-red: #E60000;
+@font-gray: #787869;
+@font-white: #FFFFFF;
+
 .last-update {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: @font-white;
+
+  &__subtitle {
+    font-size: 1.1rem;
+    margin: 0;
+  }
 
   &__title {
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.6rem;
+    color: @font-white;
+    margin: 0;
   }
 
 }

@@ -1,5 +1,7 @@
 // Types
 import { FC, useMemo, useState } from "react";
+// Configs
+import Head from "next/head";
 // Components
 import MainLayout from "layouts/main";
 import Map from "components/covid-map/map/map.component";
@@ -33,36 +35,49 @@ const CovidMap: FC = () => {
 	const lastUpdate = new Date();
 
 	return (
-		<MainLayout>
-			<div className="covid-map">
-				<Header className="header" />
-				<GlobalCases className="global-cases" />
-				<CasesByFilter
-					cases={casesByCountries}
-					title="Casos - Global"
-					columns={globalCases}
-					className="cases-by-countries"
+		<>
+			<Head>
+				<title>CoVid 19 Map 🌎 </title>
+				<link rel="icon" href="/favicon.ico" />
+				<link
+					href="https://fonts.googleapis.com/css2?family=Heebo&family=Kumbh+Sans&display=swap"
+					rel="stylesheet"
 				/>
-				<Map markers={markers} className="map" />
-				<CasesByFilter
-					cases={casesByDeaths}
-					title="Muertes - Global"
-					columns={globalDeaths}
-					subtitle={"44444444"}
-					className="cases-by-deaths"
-				/>
-				<CasesByFilter
-					cases={casesByCountry}
-					title="Casos - Argentina"
-					columns={countryCases}
-					subtitle={"44444444"}
-					className="cases-by-country"
-				/>
-				<LastUpdate className="last-update" />
-				<GraphCases className="graph-cases" />
-				<Footer className="footer" />
-			</div>
-		</MainLayout>
+			</Head>
+
+			<MainLayout>
+				<div className="covid-map">
+					<Header className="covid-map__header" />
+					<GlobalCases className="covid-map__global-cases" />
+					<CasesByFilter
+						cases={casesByCountries}
+						title="Casos - Global"
+						columns={globalCases}
+						className="covid-map__cases-by-countries"
+					/>
+					<div className="covid-map__map">
+						<Map markers={markers} />
+					</div>
+					<CasesByFilter
+						cases={casesByDeaths}
+						title="Muertes - Global"
+						columns={globalDeaths}
+						subtitle={"44444444"}
+						className="covid-map__cases-by-deaths"
+					/>
+					<CasesByFilter
+						cases={casesByCountry}
+						title="Casos - Argentina"
+						columns={countryCases}
+						subtitle={"44444444"}
+						className="covid-map__cases-by-country"
+					/>
+					<LastUpdate className="covid-map__last-update" />
+					<GraphCases className="covid-map__graph-cases" />
+					<Footer className="covid-map__footer" />
+				</div>
+			</MainLayout>
+		</>
 	);
 };
 

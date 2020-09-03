@@ -19,7 +19,8 @@ const LastUpdate: FC<ILastUpdate> = ({ className }) => {
 	return (
 		<div className={`last-update ${className}`}>
 			<h2 className="last-update__title">Última actualización</h2>
-			<date title={createdAtFormated}>{timeago}</date>
+			<span className="last-update__subtitle">{createdAtFormated}</span>
+			<time title={createdAtFormated}>{timeago}</time>
 		</div>
 	);
 };

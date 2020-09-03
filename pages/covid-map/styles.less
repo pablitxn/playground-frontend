@@ -2,62 +2,61 @@
 @component: #222222;
 
 .covid-map {
-	width: 100%;
-	height: 840px;
+	width: auto;
+	height: 100%;
 	background-color: @background;
 	padding: 1rem;
+	font-family: "Kumbh Sans", "Heebo", sans-serif;
 
 	display: grid;
-	grid-template-columns: 0.8fr 0.5fr 2.3fr repeat(2, 0.5fr);
+	grid-template-columns: 1fr 0.5fr 2fr repeat(2, 0.5fr);
 	grid-template-rows: repeat(2, 0.3fr) 4.1fr repeat(2, 0.3fr);
 	gap: 25px 25px;
-	grid-template-areas: "header header header header header"
+	grid-template-areas:
+		"header header header header header"
 		"global-cases map map cases-by-deaths cases-by-country"
 		"cases-by-countries map map cases-by-deaths cases-by-country"
 		"last-update footer footer graph-cases graph-cases"
 		"last-update footer footer graph-cases graph-cases";
 
-	.header {
+	&__header {
 		grid-area: header;
 		background-color: @component;
 	}
 
-	.global-cases {
+	&__global-cases {
 		grid-area: global-cases;
 		background-color: @component;
 	}
 
-	.cases-by-countries {
+	&__cases-by-countries {
 		grid-area: cases-by-countries;
 	}
 
-
-	.map {
+	&__map {
 		grid-area: map;
 		background-color: @component;
-		width: 28rem !important;
-		height: 40rem !important;
 	}
 
-	.graph-cases {
+	&__graph-cases {
 		grid-area: graph-cases;
 		background-color: @component;
 	}
 
-	.last-update {
+	&__last-update {
 		grid-area: last-update;
 		background-color: @component;
 	}
 
-	.cases-by-country {
+	&__cases-by-country {
 		grid-area: cases-by-country;
 	}
 
-	.cases-by-deaths {
+	&__cases-by-deaths {
 		grid-area: cases-by-deaths;
 	}
 
-	.footer {
+	&__footer {
 		grid-area: footer;
 		background-color: @component;
 	}
