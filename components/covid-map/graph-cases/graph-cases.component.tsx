@@ -1,5 +1,7 @@
 // Types
 import { FC } from "react";
+// Styles
+import "./graph-cases.styles.less";
 
 interface IGraphCases {
 	className: string;
@@ -7,8 +9,10 @@ interface IGraphCases {
 
 const GraphCases: FC<IGraphCases> = ({ className }) => {
 	return (
-		<div className={className}>
-			<span>hola</span>
+		<div className={`graph-cases ${className}`}>
+			<div className="graph-cases__content">
+				<span>proximamente gráfico</span>
+			</div>
 		</div>
 	);
 };
