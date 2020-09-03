@@ -9,11 +9,6 @@ import { apiKey } from "../utils";
 const zoom = 2;
 const initialCenter = { lat: 0, lng: 0 };
 
-const styles = {
-	width: "717px",
-	height: "674px"
-};
-
 const MapComponent = (props) => {
 	const { markers, className } = props;
 	const [popUp, setPopUp] = useState({
@@ -34,7 +29,6 @@ const MapComponent = (props) => {
 
 	return (
 		<Map
-			style={styles}
 			draggable={props.draggable}
 			fullscreenControl={props.fullscreenControl}
 			scrollwheel={props.scrollwheel}

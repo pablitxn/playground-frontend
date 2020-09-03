@@ -10,7 +10,7 @@ interface IHeader {
 const Header: FC<IHeader> = ({ className }) => {
 	return (
 		<header className={`header ${className}`}>
-			<h1 className="title">☣ CoVid 19 - Map ☣</h1>
+			<h1 className="header__title">☣ CoVid 19 - Map ☣</h1>
 		</header>
 	);
 };

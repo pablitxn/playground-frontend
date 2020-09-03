@@ -7,7 +7,7 @@ import MainLayout from "layouts/main";
 import Map from "components/covid-map/map/map.component";
 import LastUpdate from "components/covid-map/last-update/last-update.component";
 import CasesByFilter from "components/covid-map/cases-by-filter/cases-by-filter.component";
-import GlobalCases from "components/covid-map/global-cases.component";
+import GlobalCases from "components/covid-map/global-cases/global-cases.component";
 import GraphCases from "components/covid-map/graph-cases/graph-cases.component";
 import Footer from "components/covid-map/footer/footer.component";
 import Header from "components/covid-map/header/header.component";
@@ -56,20 +56,20 @@ const CovidMap: FC = () => {
 						className="covid-map__cases-by-countries"
 					/>
 					<div className="covid-map__map">
-						<Map markers={markers} />
+						<Map markers={markers} style={{ padding: "1rem" }} />
 					</div>
 					<CasesByFilter
 						cases={casesByDeaths}
 						title="Muertes - Global"
 						columns={globalDeaths}
-						subtitle={"44444444"}
+						subtitle={"845.547"}
 						className="covid-map__cases-by-deaths"
 					/>
 					<CasesByFilter
 						cases={casesByCountry}
 						title="Casos - Argentina"
 						columns={countryCases}
-						subtitle={"44444444"}
+						subtitle={"45.365"}
 						className="covid-map__cases-by-country"
 					/>
 					<LastUpdate className="covid-map__last-update" />
