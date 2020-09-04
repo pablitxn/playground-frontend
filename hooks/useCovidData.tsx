@@ -69,7 +69,6 @@ const useCovidData = () => {
 	// Calculate total cases
 	const totalRecovered = calculateTotal(allDataFormated, "recovered");
 	const totalDeaths = calculateTotal(allDataFormated, "deaths");
-	const totalConfirmed = calculateTotal(allDataFormated, "confirmed");
 
 	return {
 		recovered,
@@ -79,8 +78,7 @@ const useCovidData = () => {
 		globalCases,
 		affectedCountries,
 		totalRecovered,
-		totalDeaths,
-		totalConfirmed
+		totalDeaths
 	};
 };
 

@@ -1,5 +1,5 @@
 // Types
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { ICasesByFilter } from "./cases-by-filter.types";
 // AntD
 import { Table } from "antd";
