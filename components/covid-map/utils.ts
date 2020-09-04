@@ -44,13 +44,13 @@ export async function getBriefData() {
 export const apiKey = "AIzaSyDXc89dygNmBSG7eUMJKKp3Rp7IFcM0ZXc"
 
 type TableColumns = {
-  infected: Columns;
+  confirmed: Columns;
   deaths: Columns;
   recovered: Columns;
 }
 
 export const tableColumns: TableColumns = {
-  infected: [
+  confirmed: [
     {
       title: "Infectados",
       dataIndex: "confirmed",
@@ -80,9 +80,9 @@ export const tableColumns: TableColumns = {
   ],
   recovered: [
     {
-      title: "Muertes",
-      dataIndex: "deaths",
-      key: "deaths",
+      title: "Recuperados",
+      dataIndex: "recovered",
+      key: "recovered",
       // width: 50
     },
     {

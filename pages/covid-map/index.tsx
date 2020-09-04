@@ -20,10 +20,11 @@ import "./styles.less";
 
 const CovidMap: FC = () => {
 	const {
-		allData,
-		// briefData,
 		markers,
 		globalCases,
+		confirmed,
+		deaths,
+		recovered,
 		affectedCountries
 	} = useCovidData();
 
@@ -46,23 +47,23 @@ const CovidMap: FC = () => {
 						className="covid-map__global-cases"
 					/>
 					<CasesByFilter
-						cases={allData}
+						cases={confirmed}
 						title="Infectados - Global"
-						columns={tableColumns.infected}
+						columns={tableColumns.confirmed}
 						className="covid-map__cases-by-countries"
 					/>
 					<div className="covid-map__map">
 						<Map markers={markers} style={{ padding: "1rem" }} />
 					</div>
 					<CasesByFilter
-						cases={allData}
+						cases={deaths}
 						title="Muertes - Global"
 						columns={tableColumns.deaths}
 						subtitle={"845.547"}
 						className="covid-map__cases-by-deaths"
 					/>
 					<CasesByFilter
-						cases={allData}
+						cases={recovered}
 						title="Recuperados - Argentina"
 						columns={tableColumns.recovered}
 						subtitle={"45.365"}
