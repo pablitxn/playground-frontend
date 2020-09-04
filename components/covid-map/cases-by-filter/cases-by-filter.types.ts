@@ -1,7 +1,8 @@
 type Column = {
   title: string;
   dataIndex: string;
-  width: number;
+  width?: number;
+  key: string;
 };
 
 export interface ICasesByFilter {

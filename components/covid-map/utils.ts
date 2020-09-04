@@ -44,53 +44,52 @@ export async function getBriefData() {
 export const apiKey = "AIzaSyDXc89dygNmBSG7eUMJKKp3Rp7IFcM0ZXc"
 
 type TableColumns = {
-  globalCases: Columns;
-  globalDeaths: Columns;
-  countryCases: Columns;
-
+  infected: Columns;
+  deaths: Columns;
+  recovered: Columns;
 }
 
 export const tableColumns: TableColumns = {
-  globalCases: [
+  infected: [
     {
       title: "Infectados",
-      // TODO: ver aca
-      dataIndex: "infected",
-      width: 50
+      dataIndex: "confirmed",
+      key: "confirmed",
+      // width: 50
     },
     {
       title: "Paises",
-      // TODO: ver aca
-      dataIndex: "countryRegion",
-      width: 150
+      dataIndex: "countryregion",
+      key: "countryregion",
+      // width: 150
     }
   ],
-  globalDeaths: [
+  deaths: [
     {
       title: "Muertes",
-      // TODO: ver aca
       dataIndex: "deaths",
-      width: 50
+      key: "deaths",
+      // width: 50
     },
     {
       title: "Paises",
-      // TODO: ver aca
-      dataIndex: "countryRegion",
-      width: 150
+      dataIndex: "countryregion",
+      key: "countryregion",
+      // width: 150
     }
   ],
-  countryCases: [
+  recovered: [
     {
-      title: "Infectados",
-      // TODO: ver aca
+      title: "Muertes",
       dataIndex: "deaths",
-      width: 50
+      key: "deaths",
+      // width: 50
     },
     {
-      title: "Region",
-      // TODO: ver aca
-      dataIndex: "province",
-      width: 150
+      title: "Paises",
+      dataIndex: "countryregion",
+      key: "countryregion",
+      // width: 150
     }
   ]
 }

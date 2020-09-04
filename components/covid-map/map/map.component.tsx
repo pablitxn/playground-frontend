@@ -1,6 +1,6 @@
 // @ts-nocheck
 // Hooks
-import { useState, useEffect } from "react";
+import { useState } from "react";
 // Google Maps
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 // Utils
@@ -22,10 +22,6 @@ const MapComponent = (props) => {
 			marker: marker
 		});
 	};
-
-	useEffect(() => {
-		console.log(markers);
-	}, [markers]);
 
 	return (
 		<Map

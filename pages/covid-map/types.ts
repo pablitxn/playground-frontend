@@ -1,4 +1,5 @@
 export type Case = {
+  key: number;
   confirmed: number;
   countrycode: {
     iso2: string;
