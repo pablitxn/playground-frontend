@@ -25,7 +25,9 @@ const CovidMap: FC = () => {
 		confirmed,
 		deaths,
 		recovered,
-		affectedCountries
+		affectedCountries,
+		totalRecovered,
+		totalDeaths
 	} = useCovidData();
 
 	return (
@@ -48,7 +50,7 @@ const CovidMap: FC = () => {
 					/>
 					<CasesByFilter
 						cases={confirmed}
-						title="Infectados - Global"
+						title="Confirmados"
 						columns={tableColumns.confirmed}
 						className="covid-map__cases-by-countries"
 					/>
@@ -57,16 +59,16 @@ const CovidMap: FC = () => {
 					</div>
 					<CasesByFilter
 						cases={deaths}
-						title="Muertes - Global"
+						title="Muertes"
 						columns={tableColumns.deaths}
-						subtitle={"845.547"}
+						subtitle={totalDeaths}
 						className="covid-map__cases-by-deaths"
 					/>
 					<CasesByFilter
 						cases={recovered}
-						title="Recuperados - Argentina"
+						title="Recuperados"
 						columns={tableColumns.recovered}
-						subtitle={"45.365"}
+						subtitle={totalRecovered}
 						className="covid-map__cases-by-country"
 					/>
 					<LastUpdate className="covid-map__last-update" />

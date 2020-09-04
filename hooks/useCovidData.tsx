@@ -32,8 +32,23 @@ function filterByCases(cases: Cases, filter: Filter) {
 			};
 		});
 		const orderedCases = formatedCases.sort((a, b) => b[filter] - a[filter]);
-		console.log(filter, orderedCases);
 		return orderedCases;
+	}
+}
+
+function calculateTotal(cases: Cases, filter: Filter) {
+	if (Array.isArray(cases)) {
+		const filteredCases = cases.map(($case) => {
+			const value = +$case[filter];
+			if (isNaN(value)) {
+				return 0;
+			} else {
+				return value;
+			}
+		});
+		const total = filteredCases.reduce((a, b) => a + b);
+
+		return formateNumber(total);
 	}
 }
 
@@ -42,15 +57,19 @@ const useCovidData = () => {
 	const allData = useSWR(API_COVID_ALL, fetcher);
 	const briefData = useSWR(API_COVID_BRIEF, fetcher);
 	// Formating Data
-	const allDataFormated = responseFormatter(allData);
-	const briefDataFormated = responseFormatter(briefData);
-	const markers = allDataFormated.data ?? [{ location: { lat: 0, lng: 0 } }];
-	const globalCases = formateNumber(briefDataFormated.data?.confirmed);
-	const affectedCountries = allDataFormated.data?.length;
+	const allDataFormated = responseFormatter(allData).data;
+	const briefDataFormated = responseFormatter(briefData).data;
+	const markers = allDataFormated ?? [{ location: { lat: 0, lng: 0 } }];
+	const globalCases = formateNumber(briefDataFormated?.confirmed);
+	const affectedCountries = allDataFormated?.length;
 	// Adding filter
-	const recovered = filterByCases(allDataFormated.data, "recovered");
-	const deaths = filterByCases(allDataFormated.data, "deaths");
-	const confirmed = filterByCases(allDataFormated.data, "confirmed");
+	const recovered = filterByCases(allDataFormated, "recovered");
+	const deaths = filterByCases(allDataFormated, "deaths");
+	const confirmed = filterByCases(allDataFormated, "confirmed");
+	// Calculate total cases
+	const totalRecovered = calculateTotal(allDataFormated, "recovered");
+	const totalDeaths = calculateTotal(allDataFormated, "deaths");
+	const totalConfirmed = calculateTotal(allDataFormated, "confirmed");
 
 	return {
 		recovered,
@@ -58,7 +77,10 @@ const useCovidData = () => {
 		confirmed,
 		markers,
 		globalCases,
-		affectedCountries
+		affectedCountries,
+		totalRecovered,
+		totalDeaths,
+		totalConfirmed
 	};
 };
 
