@@ -1,3 +1,3 @@
-export interface IWebAppLayout {
-  offersData: any;
+export interface IBackofficeLayout {
+  handleCreateOffer: any;
 }
