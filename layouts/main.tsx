@@ -24,7 +24,6 @@ const ROUTES: Route = {
 			path: "/",
 			name: "Welcome",
 			icon: <SmileOutlined />
-
 		},
 		{
 			path: "/tic-tac-toe",
@@ -50,18 +49,18 @@ const ROUTES: Route = {
 			path: "/hello-mern",
 			name: "Hello mern",
 			icon: <CameraOutlined />,
-				routes: [
-			  {
-			    path: '/hello-mern/backoffice',
-			    name: 'Backoffice',
-			    // icon: <SettingOutlined />,
+			routes: [
+				{
+					path: "/hello-mern/backoffice",
+					name: "Backoffice"
+					// icon: <SettingOutlined />,
 				},
 				{
-			    path: '/hello-mern/app',
-			    name: 'App',
-			    // icon: <SettingOutlined />,
-			  }
-			],
+					path: "/hello-mern/web-app",
+					name: "Web App"
+					// icon: <SettingOutlined />,
+				}
+			]
 		}
 	]
 };

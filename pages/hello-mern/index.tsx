@@ -7,7 +7,7 @@ const HelloMERN: FC = () => {
 	return (
 		<>
 			<MainLayout>
-        hello world with node and mongo
+        esta pagina no deberia existir...
 			</MainLayout>
 		</>
 	);
