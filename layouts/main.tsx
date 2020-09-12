@@ -56,7 +56,7 @@ const ROUTES: Route = {
 					// icon: <SettingOutlined />,
 				},
 				{
-					path: "/hello-mern/web-app",
+					path: "/hello-mern/ecommerce",
 					name: "Web App"
 					// icon: <SettingOutlined />,
 				}
