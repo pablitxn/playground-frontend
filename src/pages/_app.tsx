@@ -8,9 +8,9 @@ import "./app.less";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
 	return (
-		<>
+		<MainLayout>
 			<Component {...pageProps} />
-		</>
+		</MainLayout>
 	);
 };
 

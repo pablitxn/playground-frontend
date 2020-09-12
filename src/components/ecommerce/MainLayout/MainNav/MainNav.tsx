@@ -31,7 +31,7 @@ const MainNav: FC = () => {
 					<Link href="/cart">
 						<div>
 							<Badge
-								count={totalItems}
+								// count={totalItems}
 								style={{
 									backgroundColor: "#fff",
 									color: "#999",
