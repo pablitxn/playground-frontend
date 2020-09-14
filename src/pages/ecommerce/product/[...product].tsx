@@ -1,5 +1,5 @@
 // React
-import { FC, useState, useEffect, useMemo } from "react";
+import { FC, useState, useEffect } from "react";
 // Types
 import { IProduct } from "interfaces/ecommerce";
 // Components
@@ -7,25 +7,10 @@ import MainLayout from "components/ecommerce/MainLayout/MainLayout";
 import SingleProductRenderer from "components/ecommerce/SingleProduct/SingleProductRenderer";
 // Router
 import { useRouter } from "next/router";
-// Hooks
-// import { fetcher, responseFormatter } from "utils";
-// import useSWR from "swr";
 
 const Product = () => {
 	const [isLoading, setLoading] = useState(false);
-	const [product, setProduct] = useState<IProduct>({
-		_id: "",
-		name: "",
-		slug: "",
-		updatedAt: "",
-		description: "",
-		price: "",
-		regular_price: "",
-		sale_price: "",
-		on_sale: false,
-		related_ids: [1, 2, 3],
-		images: [{ _id: "", src: "", alt: "" }]
-	});
+	const [product, setProduct] = useState<IProduct>();
 
 	const router = useRouter();
 	const { product: productParam } = router.query;

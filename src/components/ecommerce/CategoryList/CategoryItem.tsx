@@ -1,7 +1,7 @@
 // React
 import { FC, useContext } from "react";
 // Types
-import { IProductCategory } from "interfaces/ecommerce";
+import { ICategory } from "interfaces/ecommerce";
 // AntD
 import { Col, Card } from "antd";
 // Router
@@ -12,7 +12,7 @@ import { SkeletonListContext } from "contexts";
 const { Meta } = Card;
 
 interface ICategoryItem {
-	category: IProductCategory;
+	category: ICategory;
 }
 
 const CategoryItem: FC<ICategoryItem> = ({ category }) => {
@@ -23,8 +23,8 @@ const CategoryItem: FC<ICategoryItem> = ({ category }) => {
 	return (
 		<Col xl={xl} lg={lg} md={md} sm={sm} xs={xs} className="centered-col">
 			<Link
-				href="/category/[...category]"
-				as={`/category/${category._id}/${category.slug}`}
+				href="/ecommerce/[...category]"
+				as={`/ecommerce/category/${category._id}`}
 				key={category._id}
 			>
 				<Card

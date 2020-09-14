@@ -2,7 +2,7 @@
 import { FC } from "react";
 // AntD
 import { Layout, Row, Col, Badge } from "antd";
-import { ShoppingCartOutlined, GithubOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 // Router
 import Link from "next/link";
 // Styles
@@ -19,10 +19,7 @@ const MainNav: FC = () => {
 			<Row justify="space-between">
 				<Col span={2}>
 					<div className="left-nav-items">
-						<a target="_blank" href="https://github.com/loq24/react-ecommerce">
-							<GithubOutlined style={{ fontSize: 25, cursor: "pointer" }} />
-						</a>
-						<Link href="/">
+						<Link href="/ecommerce">
 							<a>Home</a>
 						</Link>
 					</div>
