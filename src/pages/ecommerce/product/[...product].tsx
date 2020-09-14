@@ -1,46 +1,63 @@
 // React
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, useMemo } from "react";
+// Types
+import { IProduct } from "interfaces/ecommerce";
 // Components
-import MainLayout from 'components/ecommerce/MainLayout/MainLayout';
-import SingleProductRenderer from 'components/ecommerce/SingleProduct/SingleProductRenderer';
+import MainLayout from "components/ecommerce/MainLayout/MainLayout";
+import SingleProductRenderer from "components/ecommerce/SingleProduct/SingleProductRenderer";
 // Router
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
+// Hooks
+// import { fetcher, responseFormatter } from "utils";
+// import useSWR from "swr";
 
 const Product = () => {
-  const [isLoading, setLoading] = useState(false);
+	const [isLoading, setLoading] = useState(false);
+	const [product, setProduct] = useState<IProduct>({
+		_id: "",
+		name: "",
+		slug: "",
+		updatedAt: "",
+		description: "",
+		price: "",
+		regular_price: "",
+		sale_price: "",
+		on_sale: false,
+		related_ids: [1, 2, 3],
+		images: [{ _id: "", src: "", alt: "" }]
+	});
 
-  const router = useRouter();
-  const { product: productParam } = router.query;
-  const productId = productParam ? productParam[0] : null;
+	const router = useRouter();
+	const { product: productParam } = router.query;
+	const productId = [productParam] ?? null;
 
-  const currentProduct  = {id: "", name:""}
-  const currentProductId = `${currentProduct?.id ?? ''}`;
-  const currentProductName = currentProduct?.name ?? '...';
+	const API_PRODUCT = `http://localhost:4200/api/ecommerce/get-product/${productId}`;
 
+	useEffect(() => {
+		const getProduct = async () => {
+			try {
+				const productData = await fetch(API_PRODUCT);
+				const productFormated = await productData.json();
+				setProduct(productFormated.data);
+			} catch (err) {
+				console.log(err);
+			}
+		};
+		getProduct();
+	}, []);
 
-  // useEffect(() => {
-  //   if (productId && productId !== currentProductId) {
-  //     setLoading(true);
-  //     dispatch(
-  //       fetchProductById(productId, () => {
-  //         setLoading(false);
-  //       })
-  //     );
-  //   }
-  // }, [productId]);
-
-  return (
-    <MainLayout title={`React eCommerce - ${currentProductName}`}>
-      <SingleProductRenderer
-        product={currentProduct}
-        loading={isLoading}
-        breakpoints={[
-          { xl: 10, lg: 10, md: 10, sm: 24, xs: 0 },
-          { xl: 14, lg: 14, md: 14, sm: 24, xs: 0 }
-        ]}
-      />
-    </MainLayout>
-  );
+	return (
+		<MainLayout title={`React eCommerce - ${"sd"}`}>
+			<SingleProductRenderer
+				product={product}
+				loading={isLoading}
+				breakpoints={[
+					{ xl: 10, lg: 10, md: 10, sm: 24, xs: 0 },
+					{ xl: 14, lg: 14, md: 14, sm: 24, xs: 0 }
+				]}
+			/>
+		</MainLayout>
+	);
 };
 
 export default Product;

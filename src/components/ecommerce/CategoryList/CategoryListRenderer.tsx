@@ -1,6 +1,6 @@
 // Types
 import { FC } from "react";
-import { IProductCategory } from "interfaces/ecommerce";
+import { ICategory } from "interfaces/ecommerce";
 // Components
 import CategoryList from "./CategoryList";
 import SkeletonList from "../SkeletonList/SkeletonList";
@@ -8,7 +8,7 @@ import SkeletonList from "../SkeletonList/SkeletonList";
 import { SkeletonListContext, Breakpoints } from "contexts";
 
 interface ICategoryListRenderer {
-	categories: IProductCategory[];
+	categories: ICategory[];
 	breakpoints: Breakpoints;
 }
 

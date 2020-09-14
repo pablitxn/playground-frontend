@@ -24,8 +24,8 @@ const CategoryItem: FC<ICategoryItem> = ({ category }) => {
 		<Col xl={xl} lg={lg} md={md} sm={sm} xs={xs} className="centered-col">
 			<Link
 				href="/category/[...category]"
-				as={`/category/${category.id}/${category.slug}`}
-				key={category.id}
+				as={`/category/${category._id}/${category.slug}`}
+				key={category._id}
 			>
 				<Card
 					className="category-item-card"

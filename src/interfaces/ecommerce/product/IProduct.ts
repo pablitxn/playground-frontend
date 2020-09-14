@@ -1,14 +1,14 @@
 export interface IProductImage {
-	id: number;
+	_id: string;
 	src: string;
 	alt: string;
 }
 
 export interface IProduct {
-	id: number;
+	_id: string;
 	name: string;
 	slug: string;
-	date_created: string;
+	updatedAt?: string;
 	description: string;
 	price: string;
 	regular_price: string;

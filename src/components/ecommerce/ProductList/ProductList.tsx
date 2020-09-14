@@ -15,8 +15,8 @@ interface SaleProductListProps {
 const ProductList: FC<SaleProductListProps> = ({ products }) => {
 	return (
 		<MainRowLayout rowClassName="product-list">
-			{products.map((product) => {
-				return <ProductItem product={product} key={product.id} />;
+			{products.map((product, i) => {
+				return <ProductItem product={product} key={i} />;
 			})}
 		</MainRowLayout>
 	);

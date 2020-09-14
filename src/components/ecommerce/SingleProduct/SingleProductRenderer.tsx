@@ -8,7 +8,7 @@ import SingleProductSkeleton from "./SingleProductSkeleton/SingleProductSkeleton
 import { SingleProductContext, Breakpoints } from "contexts";
 
 interface ISingleProductRenderer {
-	product?: IProduct;
+	product: IProduct;
 	loading: boolean;
 	breakpoints: Breakpoints[];
 }
