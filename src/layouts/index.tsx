@@ -1,103 +1,54 @@
 // Types
-import { ReactNode } from "react";
-// Router
-import dynamic from "next/dynamic";
-import Link from "next/link";
+import { FC, ReactNode, useState } from "react";
 // AntD
-import {
-	SmileOutlined,
-	PlayCircleOutlined,
-	GlobalOutlined,
-	CameraOutlined
-} from "@ant-design/icons";
-import { Route, MenuDataItem } from "@ant-design/pro-layout/lib/typings";
-import { SiderMenuProps } from "@ant-design/pro-layout/lib/SiderMenu/SiderMenu";
+import { Layout, Menu } from "antd";
+import { DesktopOutlined, PieChartOutlined } from "@ant-design/icons";
+import Navigation from "components/_shared/nativagation.component";
 
-const ProLayout = dynamic(() => import("@ant-design/pro-layout"), {
-	ssr: true
-});
+// Definitions
+const { Content, Sider } = Layout;
+const { SubMenu } = Menu;
 
-const ROUTES: Route = {
-	path: "/",
-	routes: [
-		{
-			path: "/",
-			name: "Welcome",
-			icon: <SmileOutlined />
-		},
-		{
-			path: "/ta-te-ti",
-			name: "Ta Te Ti",
-			icon: <PlayCircleOutlined />
-		},
-		{
-			path: "/covid-map",
-			name: "CoVid-19 Map",
-			icon: <GlobalOutlined />
-		},
-		{
-			path: "/croma",
-			name: "Croma Customizable",
-			icon: <CameraOutlined />
-		},
-		{
-			path: "/360-slider",
-			name: "360 Slider",
-			icon: <CameraOutlined />
-		},
-		{
-			path: "/ecommerce",
-			name: "Ecommerce",
-			icon: <CameraOutlined />,
-			// routes: [
-			// 	{
-			// 		path: "/hello-mern/backoffice",
-			// 		name: "Backoffice"
-			// 		// icon: <SettingOutlined />,
-			// 	},
-			// 	{
-			// 		path: "/hello-mern/ecommerce",
-			// 		name: "Web App"
-			// 		// icon: <SettingOutlined />,
-			// 	}
-			// ]
-		},
-		{
-			path: "/backoffice",
-			name: "Backoffice",
-			icon: <CameraOutlined />
-		},
-	]
+interface IAppLayout {
+	children: ReactNode;
+}
+
+const AppLayout: FC<IAppLayout> = ({ children }) => {
+	const [collapsed, setCollapsed] = useState(false);
+
+	const handleCollapse = () => setCollapsed(!collapsed);
+
+	return (
+		<Layout style={{ minHeight: "100vh" }}>
+			<Sider collapsible collapsed={collapsed} onCollapse={handleCollapse}>
+				<div className="logo" />
+				<Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
+					<Menu.Item key="1" >
+						<Navigation href="/">Welcome</Navigation>
+					</Menu.Item>
+					<Menu.Item key="3" >
+						<Navigation href="/covid-map">Covid-Map</Navigation>
+					</Menu.Item>
+					<Menu.Item key="4" >
+						<Navigation href="/croma">Croma customizable</Navigation>
+					</Menu.Item>
+					<Menu.Item key="5" >
+						<Navigation href="/ecommerce">Ecommerce</Navigation>
+					</Menu.Item>
+					<Menu.Item key="6" >
+						<Navigation href="/backoffice">Backoffice</Navigation>
+					</Menu.Item>
+					<SubMenu key="juegos" title="Random">
+						<Menu.Item key="7">Ta-te-ti</Menu.Item>
+						<Menu.Item key="8">Slider 360</Menu.Item>
+					</SubMenu>
+				</Menu>
+			</Sider>
+			<Layout className="site-layout">
+				<Content style={{ margin: "0 16px" }}>{children}</Content>
+			</Layout>
+		</Layout>
+	);
 };
 
-const menuHeaderRender = (
-	logoDom: ReactNode,
-	titleDom: ReactNode,
-	props: SiderMenuProps
-) => (
-	<Link href="/">
-		<a>
-			{logoDom}
-			{!props?.collapsed && titleDom}
-		</a>
-	</Link>
-);
-
-const menuItemRender = (options: MenuDataItem, element: ReactNode) => (
-	<Link href={options.path}>
-		<a>{element}</a>
-	</Link>
-);
-
-export default function Main({ children }) {
-	return (
-		<ProLayout
-			style={{ minHeight: "100vh" }}
-			route={ROUTES}
-			menuItemRender={menuItemRender}
-			menuHeaderRender={menuHeaderRender}
-		>
-			{children}
-		</ProLayout>
-	);
-}
+export default AppLayout;

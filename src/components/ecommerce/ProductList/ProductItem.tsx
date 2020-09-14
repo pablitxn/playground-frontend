@@ -7,7 +7,7 @@ import { Row, Col, Card, Typography, Button } from "antd";
 // Router
 import Link from "next/link";
 // Contexts
-import { SkeletonListContext } from "contexts";
+import { SkeletonListContext } from "contexts/ecommerce";
 
 const { Text } = Typography;
 

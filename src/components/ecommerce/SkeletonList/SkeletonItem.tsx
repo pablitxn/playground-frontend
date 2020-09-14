@@ -2,7 +2,7 @@
 import { FC, useContext} from "react"
 // AntD
 import { Skeleton, Col } from 'antd';
-import { SkeletonListContext } from 'contexts';
+import { SkeletonListContext } from 'contexts/ecommerce';
 
 interface ISkeletonItem {
   itemCount: number;

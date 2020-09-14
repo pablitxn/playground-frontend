@@ -7,7 +7,7 @@ import ProductList from "./ProductList";
 import Spinner from "../Spinner/Spinner";
 import SkeletonList from "../SkeletonList/SkeletonList";
 // Context
-import { SkeletonListContext, Breakpoints } from "contexts";
+import { SkeletonListContext, Breakpoints } from "contexts/ecommerce";
 
 interface IProductListRenderer {
 	products: IProduct[];

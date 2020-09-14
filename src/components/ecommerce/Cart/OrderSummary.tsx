@@ -6,7 +6,7 @@ import CheckoutModal from "./Checkout/CheckoutModal";
 // AntD
 import { Typography, Button } from "antd";
 // Context
-import { CartContext } from "contexts";
+import { CartContext } from "contexts/ecommerce";
 
 const { Title, Text } = Typography;
 

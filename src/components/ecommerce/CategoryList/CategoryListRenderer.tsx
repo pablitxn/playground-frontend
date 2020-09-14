@@ -5,7 +5,7 @@ import { ICategory } from "interfaces/ecommerce";
 import CategoryList from "./CategoryList";
 import SkeletonList from "../SkeletonList/SkeletonList";
 // Context
-import { SkeletonListContext, Breakpoints } from "contexts";
+import { SkeletonListContext, Breakpoints } from "contexts/ecommerce";
 
 interface ICategoryListRenderer {
 	categories: ICategory[];

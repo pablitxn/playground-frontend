@@ -5,7 +5,7 @@ import { IProduct } from "interfaces/ecommerce";
 import SingleProduct from "./SingleProduct";
 import SingleProductSkeleton from "./SingleProductSkeleton/SingleProductSkeleton";
 // Context
-import { SingleProductContext, Breakpoints } from "contexts";
+import { SingleProductContext, Breakpoints } from "contexts/ecommerce";
 
 interface ISingleProductRenderer {
 	product: IProduct;

@@ -7,7 +7,7 @@ import { Col, Card } from "antd";
 // Router
 import Link from "next/link";
 // Context
-import { SkeletonListContext } from "contexts";
+import { SkeletonListContext } from "contexts/ecommerce";
 
 const { Meta } = Card;
 

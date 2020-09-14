@@ -7,7 +7,7 @@ import { Row, Col, Typography, Descriptions, Button } from "antd";
 // Components
 import cartNotification from "./CartNotification";
 // Context
-import { SingleProductContext } from "contexts";
+import { SingleProductContext } from "contexts/ecommerce";
 // Styles
 import "./SingleProduct.less";
 

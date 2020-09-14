@@ -7,7 +7,7 @@ import { Row, Col } from 'antd';
 import MainLayout from 'components/ecommerce/MainLayout/MainLayout';
 import CartListRenderer from 'components/ecommerce/Cart/CartListRenderer';
 import OrderSummary from 'components/ecommerce/Cart/OrderSummary';
-import { CartContext, SkeletonListContext, Breakpoints } from 'contexts';
+import { CartContext, SkeletonListContext, Breakpoints } from 'contexts/ecommerce';
 import './cart.less';
 
 const Cart = () => {

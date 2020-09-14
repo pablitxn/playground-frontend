@@ -1,9 +1,6 @@
 // Types
 import { Cases } from "pages/covid-map/types";
-// Hooks
-import useSWR from "swr";
 // Utils
-import { fetcher, responseFormatter } from "utils";
 import { DEFAULT_LANGUAGE } from "constants/locale";
 
 const API_COVID_ALL =
@@ -52,34 +49,35 @@ function calculateTotal(cases: Cases, filter: Filter) {
 	}
 }
 
-const useCovidData = () => {
-	// Fetching data
-	const allData = useSWR(API_COVID_ALL, fetcher);
-	const briefData = useSWR(API_COVID_BRIEF, fetcher);
-	// Formating Data
-	const allDataFormated = responseFormatter(allData).data;
-	const briefDataFormated = responseFormatter(briefData).data;
-	const markers = allDataFormated ?? [{ location: { lat: 0, lng: 0 } }];
-	const globalCases = formateNumber(briefDataFormated?.confirmed);
-	const affectedCountries = allDataFormated?.length;
-	// Adding filter
-	const recovered = filterByCases(allDataFormated, "recovered");
-	const deaths = filterByCases(allDataFormated, "deaths");
-	const confirmed = filterByCases(allDataFormated, "confirmed");
-	// Calculate total cases
-	const totalRecovered = calculateTotal(allDataFormated, "recovered");
-	const totalDeaths = calculateTotal(allDataFormated, "deaths");
-
-	return {
-		recovered,
-		deaths,
-		confirmed,
-		markers,
-		globalCases,
-		affectedCountries,
-		totalRecovered,
-		totalDeaths
-	};
+export const getCovidData = async () => {
+	try {
+		// Fetching data
+		const allData = await fetch(API_COVID_ALL);
+		const briefData = await fetch(API_COVID_BRIEF);
+		// Formating data
+		const allDataFormated = await allData.json();
+		const briefDataFormated = await briefData.json();
+		const markers = allDataFormated ?? [{ location: { lat: 0, lng: 0 } }];
+		const globalCases = formateNumber(briefDataFormated?.confirmed);
+		const affectedCountries = allDataFormated?.length;
+		// Adding filter
+		const recovered = filterByCases(allDataFormated, "recovered");
+		const deaths = filterByCases(allDataFormated, "deaths");
+		const confirmed = filterByCases(allDataFormated, "confirmed");
+		// Calculate total cases
+		const totalRecovered = calculateTotal(allDataFormated, "recovered");
+		const totalDeaths = calculateTotal(allDataFormated, "deaths");
+		return {
+			recovered,
+			deaths,
+			confirmed,
+			markers,
+			globalCases,
+			affectedCountries,
+			totalRecovered,
+			totalDeaths
+		};
+	} catch (err) {
+		console.log(err);
+	}
 };
-
-export default useCovidData;

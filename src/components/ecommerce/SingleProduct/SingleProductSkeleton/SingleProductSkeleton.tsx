@@ -3,7 +3,7 @@ import { FC, useContext } from "react";
 // AntD
 import { Row, Col, Skeleton } from "antd";
 // Context
-import { SingleProductContext } from "contexts";
+import { SingleProductContext } from "contexts/ecommerce";
 // Styles
 import "./SingleProductSkeleton.less";
 

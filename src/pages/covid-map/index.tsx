@@ -13,11 +13,11 @@ import Header from "components/covid-map/header/header.component";
 // Utils
 import { tableColumns } from "components/covid-map/utils";
 // Hooks
-import useCovidData from "hooks/useCovidData";
+import { getCovidData } from "utils/getCovidData";
 // Styles
 import "./styles.less";
 
-const CovidMap: FC = () => {
+const CovidMap = (initialProps) => {
 	const {
 		markers,
 		globalCases,
@@ -27,7 +27,7 @@ const CovidMap: FC = () => {
 		affectedCountries,
 		totalRecovered,
 		totalDeaths
-	} = useCovidData();
+	} = initialProps;
 
 	return (
 		<>
@@ -78,6 +78,12 @@ const CovidMap: FC = () => {
 			</div>
 		</>
 	);
+};
+
+CovidMap.getInitialProps = () => {
+	const mapData = getCovidData();
+
+	return mapData;
 };
 
 export default CovidMap;

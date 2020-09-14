@@ -5,7 +5,7 @@ import { IProduct } from "interfaces/ecommerce";
 // Components
 import CheckoutItem from "./CheckoutItem";
 // Context
-import { CartContext } from "contexts";
+import { CartContext } from "contexts/ecommerce";
 // Styles
 import "./CheckoutList.less";
 
