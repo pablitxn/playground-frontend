@@ -25,7 +25,7 @@ const MainNav: FC = () => {
 					</div>
 				</Col>
 				<Col span={2} style={{ textAlign: "right" }}>
-					<Link href="/cart">
+					<Link href="/ecommerce/cart">
 						<div>
 							<Badge
 								// count={totalItems}
