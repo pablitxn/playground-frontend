@@ -1,5 +1,5 @@
 // Types
-import { Cases } from "src/pages/covid-map/types";
+import { Cases } from "pages/covid-map/types";
 // Hooks
 import useSWR from "swr";
 // Utils
