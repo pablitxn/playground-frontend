@@ -7,12 +7,12 @@ import SkeletonList from "../SkeletonList/SkeletonList";
 // Context
 import { SkeletonListContext, Breakpoints } from "contexts";
 
-interface CategoryListRendererProps {
+interface ICategoryListRenderer {
 	categories: IProductCategory[];
 	breakpoints: Breakpoints;
 }
 
-const CategoryListRenderer: FC<CategoryListRendererProps> = ({
+const CategoryListRenderer: FC<ICategoryListRenderer> = ({
 	categories,
 	breakpoints
 }) => {

@@ -3,7 +3,6 @@ import { FC } from "react";
 // Next
 import Head from "next/head";
 // Components
-import MainLayout from "layouts";
 import Map from "components/covid-map/map/map.component";
 import LastUpdate from "components/covid-map/last-update/last-update.component";
 import CasesByFilter from "components/covid-map/cases-by-filter/cases-by-filter.component";
@@ -41,44 +40,42 @@ const CovidMap: FC = () => {
 				/>
 			</Head>
 
-			<MainLayout>
-				<div className="covid-map">
-					<Header className="covid-map__header" />
-					<GlobalCases
-						globalCases={globalCases}
-						className="covid-map__global-cases"
-					/>
-					<CasesByFilter
-						cases={confirmed}
-						title="Confirmados"
-						columns={tableColumns.confirmed}
-						className="covid-map__cases-by-countries"
-					/>
-					<div className="covid-map__map">
-						<Map markers={markers} style={{ padding: "1rem" }} />
-					</div>
-					<CasesByFilter
-						cases={deaths}
-						title="Muertes"
-						columns={tableColumns.deaths}
-						subtitle={totalDeaths}
-						className="covid-map__cases-by-deaths"
-					/>
-					<CasesByFilter
-						cases={recovered}
-						title="Recuperados"
-						columns={tableColumns.recovered}
-						subtitle={totalRecovered}
-						className="covid-map__cases-by-country"
-					/>
-					<LastUpdate className="covid-map__last-update" />
-					<GraphCases className="covid-map__graph-cases" />
-					<Footer
-						affectedCountries={affectedCountries}
-						className="covid-map__footer"
-					/>
+			<div className="covid-map">
+				<Header className="covid-map__header" />
+				<GlobalCases
+					globalCases={globalCases}
+					className="covid-map__global-cases"
+				/>
+				<CasesByFilter
+					cases={confirmed}
+					title="Confirmados"
+					columns={tableColumns.confirmed}
+					className="covid-map__cases-by-countries"
+				/>
+				<div className="covid-map__map">
+					<Map markers={markers} style={{ padding: "1rem" }} />
 				</div>
-			</MainLayout>
+				<CasesByFilter
+					cases={deaths}
+					title="Muertes"
+					columns={tableColumns.deaths}
+					subtitle={totalDeaths}
+					className="covid-map__cases-by-deaths"
+				/>
+				<CasesByFilter
+					cases={recovered}
+					title="Recuperados"
+					columns={tableColumns.recovered}
+					subtitle={totalRecovered}
+					className="covid-map__cases-by-country"
+				/>
+				<LastUpdate className="covid-map__last-update" />
+				<GraphCases className="covid-map__graph-cases" />
+				<Footer
+					affectedCountries={affectedCountries}
+					className="covid-map__footer"
+				/>
+			</div>
 		</>
 	);
 };
