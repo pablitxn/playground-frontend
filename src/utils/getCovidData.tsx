@@ -2,12 +2,8 @@
 import { Cases } from "pages/covid-map/types";
 // Utils
 import { DEFAULT_LANGUAGE } from "constants/locale";
+import { API_COVID_ALL, API_COVID_BRIEF } from "utils/constants";
 
-const API_COVID_ALL =
-	"https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest";
-
-const API_COVID_BRIEF =
-	"https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/brief";
 
 type Filter = "deaths" | "recovered" | "confirmed";
 

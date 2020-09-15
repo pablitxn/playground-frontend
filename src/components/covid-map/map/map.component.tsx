@@ -4,7 +4,7 @@ import { useState } from "react";
 // Google Maps
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 // Utils
-import { apiKey } from "../utils";
+import { API_KEY_GOOGLE_MAPS } from "utils/constants";
 
 const zoom = 2;
 const initialCenter = { lat: 0, lng: 0 };
@@ -55,5 +55,5 @@ const MapComponent = (props) => {
 };
 
 export default GoogleApiWrapper({
-	apiKey: apiKey
+	apiKey: API_KEY_GOOGLE_MAPS
 })(MapComponent);

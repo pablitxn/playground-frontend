@@ -1,5 +1,7 @@
 // Next
 import Head from "next/head";
+// Constants
+import { GOOGLE_SITE_VERIFICATION } from "utils/constants"
 
 export default function Home() {
 	return (
@@ -9,7 +11,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 				<meta
 					name="google-site-verification"
-					content="vPwDj4KviaNKoR8xbIwhjjHkfrRWXZRPxbXnvETP9OI"
+					content={GOOGLE_SITE_VERIFICATION}
 				/>
 			</Head>
 
