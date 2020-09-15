@@ -1,99 +1,95 @@
 // Types
-import { Columns } from "components/covid-map/cases-by-filter/cases-by-filter.types"
+import { Columns } from "components/covid-map/cases-by-filter/cases-by-filter.types";
 
-const API_COVID_ALL =
-  'https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest'
-
-const API_COVID_BRIEF =
-  'https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/brief'
+// Definitions
+const API_COVID_ALL = process.env.API_COVID_ALL;
+export const apiKey = process.env.API_KEY_GOOGLE_MAPS
+const API_COVID_BRIEF = process.env.API_COVID_BRIEF
 
 export async function getGlobalData() {
-  try {
-    const response = await fetch(API_COVID_ALL)
-    switch (response.status) {
-      case 200:
-        const data = await response.json()
-        return data
-      case 400:
-        // alert(`Ha ocurrido un error con la petición ${response.error}`)
-        return []
-    }
-  } catch (error) {
-    alert(`Ha ocurrido un error: ${error}`)
-    return []
-  }
+	try {
+		const response = await fetch(API_COVID_ALL);
+		switch (response.status) {
+			case 200:
+				const data = await response.json();
+				return data;
+			case 400:
+				// alert(`Ha ocurrido un error con la petición ${response.error}`)
+				return [];
+		}
+	} catch (error) {
+		alert(`Ha ocurrido un error: ${error}`);
+		return [];
+	}
 }
 
 export async function getBriefData() {
-  try {
-    const response = await fetch(API_COVID_BRIEF)
-    switch (response.status) {
-      case 200:
-        const data = await response.json()
-        return data
-      case 400:
-        // alert(`Ha ocurrido un error con la petición ${response.error}`)
-        return []
-    }
-  } catch (error) {
-    alert(`Perdón, ha ocurrido un error: ${error}`)
-    return []
-  }
+	try {
+		const response = await fetch(API_COVID_BRIEF);
+		switch (response.status) {
+			case 200:
+				const data = await response.json();
+				return data;
+			case 400:
+				// alert(`Ha ocurrido un error con la petición ${response.error}`)
+				return [];
+		}
+	} catch (error) {
+		alert(`Perdón, ha ocurrido un error: ${error}`);
+		return [];
+	}
 }
-
-export const apiKey = "AIzaSyDXc89dygNmBSG7eUMJKKp3Rp7IFcM0ZXc"
 
 type TableColumns = {
-  confirmed: Columns;
-  deaths: Columns;
-  recovered: Columns;
-}
+	confirmed: Columns;
+	deaths: Columns;
+	recovered: Columns;
+};
 
 export const tableColumns: TableColumns = {
-  confirmed: [
-    {
-      title: "Infectados",
-      dataIndex: "confirmed",
-      key: "confirmed",
-      // width: 50
-    },
-    {
-      title: "Paises",
-      dataIndex: "countryregion",
-      key: "countryregion",
-      // width: 150
-    }
-  ],
-  deaths: [
-    {
-      title: "Muertes",
-      dataIndex: "deaths",
-      key: "deaths",
-      // width: 50
-    },
-    {
-      title: "Paises",
-      dataIndex: "countryregion",
-      key: "countryregion",
-      // width: 150
-    }
-  ],
-  recovered: [
-    {
-      title: "Recuperados",
-      dataIndex: "recovered",
-      key: "recovered",
-      // width: 50
-    },
-    {
-      title: "Paises",
-      dataIndex: "countryregion",
-      key: "countryregion",
-      // width: 150
-    }
-  ]
-}
-
+	confirmed: [
+		{
+			title: "Infectados",
+			dataIndex: "confirmed",
+			key: "confirmed"
+			// width: 50
+		},
+		{
+			title: "Paises",
+			dataIndex: "countryregion",
+			key: "countryregion"
+			// width: 150
+		}
+	],
+	deaths: [
+		{
+			title: "Muertes",
+			dataIndex: "deaths",
+			key: "deaths"
+			// width: 50
+		},
+		{
+			title: "Paises",
+			dataIndex: "countryregion",
+			key: "countryregion"
+			// width: 150
+		}
+	],
+	recovered: [
+		{
+			title: "Recuperados",
+			dataIndex: "recovered",
+			key: "recovered"
+			// width: 50
+		},
+		{
+			title: "Paises",
+			dataIndex: "countryregion",
+			key: "countryregion"
+			// width: 150
+		}
+	]
+};
 
 /**
  *
