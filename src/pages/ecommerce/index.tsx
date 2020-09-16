@@ -1,13 +1,15 @@
 // Types
-import { NextComponentType } from "next";
+// import { NextComponentType } from "next";
 // Components
 import MainLayout from "components/ecommerce/MainLayout/MainLayout";
 import MainCarousel from "components/ecommerce/MainCarousel/MainCarousel";
 import CategoryListRenderer from "components/ecommerce/CategoryList/CategoryListRenderer";
 import ProductListRenderer from "components/ecommerce/ProductList/ProductListRenderer";
 import SimpleHeading from "components/ecommerce/SimpleHeading";
+// Services
+import ecommerceServices from "services/ecommerce";
 
-const Home = ({ categories, products }) => {
+const Home = ({ products, categories }) => {
 	return (
 		<MainLayout title="React eCommerce">
 			<MainCarousel />
@@ -33,32 +35,11 @@ const Home = ({ categories, products }) => {
 	);
 };
 
-Home.getInitialProps = () => {
-	const API_CATEGORIES = "http://localhost:4200/api/ecommerce/categories";
-	const API_PRODUCTS = "http://localhost:4200/api/ecommerce/products";
-	const API_OFFERS = "http://localhost:4200/api/ecommerce/offers";
+Home.getInitialProps = async () => {
+	const products = await ecommerceServices.getProducts();
+	const categories = await ecommerceServices.getCategories();
 
-	const fetchData = async () => {
-		try {
-			// Fetch
-			const productsData = await fetch(API_PRODUCTS);
-			const offersData = await fetch(API_OFFERS);
-			const categoriesData = await fetch(API_CATEGORIES);
-			// Format
-			const products = await productsData.json();
-			const offers = await offersData.json();
-			const categories = await categoriesData.json();
-			return {
-				products: products.data,
-				offers: offers.data,
-				categories: categories.data
-			};
-		} catch (err) {
-			console.log(err);
-		}
-	};
-
-	return fetchData();
+	return { products, categories };
 };
 
 export default Home;

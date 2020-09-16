@@ -11,7 +11,7 @@ import Header from "components/covid-map/header";
 // Utils
 import { tableColumns } from "utils/covid-map";
 // Services
-import { getCovidData } from "services/covid-map";
+import services from "services/covid-map";
 // Styles
 import "./styles.less";
 
@@ -78,12 +78,8 @@ const CovidMap = (initialProps) => {
 };
 
 CovidMap.getInitialProps = async () => {
-	try {
-		const data = await getCovidData();
-		return data;
-	} catch (err) {
-		console.log(err);
-	}
+	const data = await services.getCovidData();
+	return data;
 };
 
 export default CovidMap;

@@ -6,9 +6,7 @@ import { fetchModule } from "services/utils";
 import { API_PLAYGROUND_BACKEND as URL } from "utils/constants";
 import { API_KEY_HEROKU as token } from "utils/constants";
 
-class Services {
-	constructor() {}
-
+const services = {
 	async getProducts() {
 		try {
 			const data = await fetchModule(`${URL}/products`, token);
@@ -18,7 +16,7 @@ class Services {
 		} catch (err) {
 			console.log(err);
 		}
-	}
+	},
 
 	async getCategories() {
 		try {
@@ -29,7 +27,7 @@ class Services {
 		} catch (err) {
 			console.log(err);
 		}
-	}
+	},
 
 	async getOffers() {
 		try {
@@ -41,6 +39,6 @@ class Services {
 			console.log(err);
 		}
 	}
-}
+};
 
-export default Services;
+export default services;
