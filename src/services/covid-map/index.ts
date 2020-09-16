@@ -2,9 +2,10 @@
 import { ICountry } from "interfaces/covid-map/ICountry";
 import { IBriefData } from "interfaces/covid-map/IBriefData";
 // Utils
-import { API_COVID_ALL, API_COVID_BRIEF } from "utils/constants";
 import { formateNumber } from "utils/formatters";
 import { filterByCases, calculateTotal } from "./utils";
+// Constants
+import { API_COVID_ALL, API_COVID_BRIEF } from "utils/constants";
 
 export const getCovidData = async () => {
 	try {

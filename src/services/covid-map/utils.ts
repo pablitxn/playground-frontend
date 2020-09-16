@@ -1,6 +1,5 @@
 // Types
 import { ICountry } from "interfaces/covid-map/ICountry";
-import { IFormatedData } from "interfaces/covid-map/IFormatedData";
 // Utils
 import { formateNumber } from "utils/formatters";
 
