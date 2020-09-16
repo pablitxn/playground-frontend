@@ -12,7 +12,7 @@ interface ISkeletonList {
 
 const SkeletonList: FC<ISkeletonList> = ({ itemCount }) => {
 	return (
-		<MainRowLayout rowClassName="product-categories-skeleton">
+		<MainRowLayout className="product-categories-skeleton">
 			{Array.from(Array(itemCount)).map((_, i) => (
 				<SkeletonItem key={i} itemCount={itemCount} />
 			))}

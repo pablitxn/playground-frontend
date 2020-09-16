@@ -13,11 +13,11 @@ import Header from "components/covid-map/header/header.component";
 // Utils
 import { tableColumns } from "components/covid-map/utils";
 // Hooks
-import { getCovidData } from "utils/getCovidData";
+import { useGetCovidData } from "hooks/useGetCovidData";
 // Styles
 import "./styles.less";
 
-const CovidMap = (initialProps) => {
+const CovidMap: FC = () => {
 	const {
 		markers,
 		globalCases,
@@ -27,7 +27,7 @@ const CovidMap = (initialProps) => {
 		affectedCountries,
 		totalRecovered,
 		totalDeaths
-	} = initialProps;
+	} = useGetCovidData();
 
 	return (
 		<>
@@ -47,7 +47,7 @@ const CovidMap = (initialProps) => {
 					className="covid-map__global-cases"
 				/>
 				<CasesByFilter
-					cases={confirmed}
+					countries={confirmed}
 					title="Confirmados"
 					columns={tableColumns.confirmed}
 					className="covid-map__cases-by-countries"
@@ -56,14 +56,14 @@ const CovidMap = (initialProps) => {
 					<Map markers={markers} style={{ padding: "1rem" }} />
 				</div>
 				<CasesByFilter
-					cases={deaths}
+					countries={deaths}
 					title="Muertes"
 					columns={tableColumns.deaths}
 					subtitle={totalDeaths}
 					className="covid-map__cases-by-deaths"
 				/>
 				<CasesByFilter
-					cases={recovered}
+					countries={recovered}
 					title="Recuperados"
 					columns={tableColumns.recovered}
 					subtitle={totalRecovered}
@@ -80,10 +80,10 @@ const CovidMap = (initialProps) => {
 	);
 };
 
-CovidMap.getInitialProps = () => {
-	const mapData = getCovidData();
+// CovidMap.getInitialProps = () => {
+// 	const mapData = getCovidData();
 
-	return mapData;
-};
+// 	return mapData;
+// };
 
 export default CovidMap;

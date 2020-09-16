@@ -11,7 +11,7 @@ const CasesByFilter: FC<ICasesByFilter> = ({
 	columns,
 	title,
 	subtitle,
-	cases
+	countries
 }) => {
 	const onSubtitle = !subtitle ? "--without-subtitle" : "";
 
@@ -31,7 +31,7 @@ const CasesByFilter: FC<ICasesByFilter> = ({
 			</div>
 			<Table
 				columns={columns}
-				dataSource={cases}
+				dataSource={countries}
 				pagination={false}
 				size="small"
 				scroll={{ y: 240 }}

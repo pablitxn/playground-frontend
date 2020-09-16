@@ -14,9 +14,9 @@ interface ICheckoutItem {
 
 const CheckoutItem: FC<ICheckoutItem> = ({ product }) => {
 	const items = [{ id: "", price: "200", count: 200 }];
-	const { id, price } = product;
+	const { _id, price } = product;
 
-	const product_id = `${id}`;
+	const product_id = `${_id}`;
 	const totalItemCount = getCartItemCount(items, product_id);
 	const subtotal = parseFloat(price) * totalItemCount;
 

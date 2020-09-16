@@ -22,7 +22,7 @@ const SingleProduct: FC<ISingleProduct> = ({ product }) => {
 	const breakpoints = useContext(SingleProductContext);
 
 	const {
-		id,
+		_id,
 		name,
 		description,
 		images,
@@ -31,7 +31,7 @@ const SingleProduct: FC<ISingleProduct> = ({ product }) => {
 		on_sale,
 		price
 	} = product;
-	const productId = `${id}`;
+	const productId = `${_id}`;
 	const featured_image = images.length > 0 ? images[0].src : "";
 
 	const addItemToCart = () => {

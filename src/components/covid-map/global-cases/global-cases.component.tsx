@@ -4,7 +4,7 @@ import "./global-cases.styles.less";
 
 interface IGlobalCases {
 	className: string;
-	globalCases: string;
+	globalCases?: string;
 }
 
 const GlobalCases: FC<IGlobalCases> = ({ className, globalCases }) => {

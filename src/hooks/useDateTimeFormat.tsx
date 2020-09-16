@@ -1,4 +1,4 @@
-import { DEFAULT_LANGUAGE } from "constants/locale";
+import { DEFAULT_LANGUAGE } from "utils/constants";
 
 export default function useDateTimeFormat(timestamp) {
 	const date = new Date(timestamp);

@@ -9,12 +9,12 @@ import Link from "next/link";
 const { Title, Text } = Typography;
 
 interface IProductInfo {
-	product: IProduct ;
+	product: IProduct;
 }
 
 const ProductInfo: FC<IProductInfo> = ({ product }) => {
 	const {
-		id,
+		_id,
 		name,
 		images,
 		regular_price,
@@ -23,7 +23,7 @@ const ProductInfo: FC<IProductInfo> = ({ product }) => {
 		slug
 	} = product;
 	const featured_image = images.length > 0 ? images[0].src : "";
-	const product_id = `${id}`;
+	const product_id = `${_id}`;
 	return (
 		<>
 			<div className="featured-pp">

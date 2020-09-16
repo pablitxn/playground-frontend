@@ -38,8 +38,8 @@ const MapComponent = (props) => {
 			initialCenter={initialCenter}
 			className={className}
 		>
-			{markers.map((marker, i) => {
-				if (marker?.location) {
+			{markers?.map((marker, i) => {
+				if (marker.location) {
 					const { location } = marker;
 					return (
 						<Marker

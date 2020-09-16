@@ -5,13 +5,13 @@ import { Layout, Row } from "antd";
 
 interface IMainRowLayout {
 	children: ReactNode;
-	rowClassName?: string;
+	className?: string;
 }
 
-const MainRowLayout: FC<IMainRowLayout> = ({ children, rowClassName }) => {
+const MainRowLayout: FC<IMainRowLayout> = ({ children, className }) => {
 	return (
 		<Layout className="boxed-width">
-			<Row className={rowClassName} gutter={[24, 24]}>
+			<Row className={className} gutter={[24, 24]}>
 				{children}
 			</Row>
 		</Layout>

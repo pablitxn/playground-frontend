@@ -17,8 +17,8 @@ const CartItem: FC<ICartItem> = ({ product }) => {
 	const [isDeleting, setDeleting] = useState(false);
 	const [itemCount, setItemCount] = useState(0);
 
-	const { id, price } = product;
-	const product_id = `${id}`;
+	const { _id, price } = product;
+	const product_id = `${_id}`;
 
 	const items = [];
 

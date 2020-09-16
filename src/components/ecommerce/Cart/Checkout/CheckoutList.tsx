@@ -23,8 +23,8 @@ const CheckoutList: FC<ICheckoutList> = ({ products }) => {
 				<div>Amount</div>
 				<div>Item Subtotal</div>
 			</div>
-			{products.map((product) => {
-				return <CheckoutItem product={product} key={product.id} />;
+			{products.map((product, i) => {
+				return <CheckoutItem product={product} key={i} />;
 			})}
 			<div className="overall-total-price">
 				<div>

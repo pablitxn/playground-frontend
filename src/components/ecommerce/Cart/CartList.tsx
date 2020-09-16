@@ -11,8 +11,8 @@ interface ICartList {
 const CartList: FC<ICartList> = ({ products }) => {
 	return (
 		<div className="cart-list">
-			{products.map((product) => {
-				return <CartItem product={product} key={product.id} />;
+			{products.map((product, i) => {
+				return <CartItem product={product} key={i} />;
 			})}
 		</div>
 	);
