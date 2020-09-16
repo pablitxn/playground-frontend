@@ -7,8 +7,10 @@ import MainLayout from "components/ecommerce/MainLayout/MainLayout";
 import SingleProductRenderer from "components/ecommerce/SingleProduct/SingleProductRenderer";
 // Router
 import { useRouter } from "next/router";
+// Services
+import services from "services/ecommerce";
 
-const Product = () => {
+const Product: FC = () => {
 	const [isLoading, setLoading] = useState(false);
 	const [product, setProduct] = useState<IProduct>();
 
@@ -16,18 +18,12 @@ const Product = () => {
 	const { product: productParam } = router.query;
 	const productId = [productParam] ?? null;
 
-	const API_PRODUCT = `http://localhost:4200/api/ecommerce/get-product/${productId}`;
-
 	useEffect(() => {
 		const getProduct = async () => {
-			try {
-				const productData = await fetch(API_PRODUCT);
-				const productFormated = await productData.json();
-				setProduct(productFormated.data);
-			} catch (err) {
-				console.log(err);
-			}
+			const productData = await services.getProductById(productId);
+			setProduct(productData);
 		};
+
 		getProduct();
 	}, []);
 

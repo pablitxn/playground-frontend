@@ -14,7 +14,7 @@ interface CategoryListProps {
 const CategoryList: FC<CategoryListProps> = ({ categories }) => {
 	return (
 		<MainRowLayout>
-			{categories?.map((category, i) => {
+			{categories.map((category, i) => {
 				return <CategoryItem category={category} key={i} />;
 			})}
 		</MainRowLayout>

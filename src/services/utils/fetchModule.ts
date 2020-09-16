@@ -31,7 +31,7 @@ export const fetchModule: IFetchModule = async (
 	// Request
 	try {
 		const response = await fetch(url, requestOptions);
-		const data = await response.json();
+		const { data } = await response.json();
 		return { response, data };
 	} catch (err) {
 		console.log(`fetchModule error -> ${err}`);

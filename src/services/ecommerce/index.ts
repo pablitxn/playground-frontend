@@ -9,8 +9,7 @@ import { API_KEY_HEROKU as token } from "utils/constants";
 const services = {
 	async getProducts() {
 		try {
-			const data = await fetchModule(`${URL}/products`, token);
-			const products = await data.json();
+			const { data: products } = await fetchModule(`${URL}/products`, token);
 
 			return products as IProduct[];
 		} catch (err) {
@@ -18,10 +17,25 @@ const services = {
 		}
 	},
 
+	async getProductById(id) {
+		try {
+			const { data: product } = await fetchModule(
+				`${URL}/get-product/${id}`,
+				token
+			);
+
+			return product as IProduct;
+		} catch (err) {
+			console.log(err);
+		}
+	},
+
 	async getCategories() {
 		try {
-			const data = await fetchModule(`${URL}/categories`, token);
-			const categories = await data.json();
+			const { data: categories } = await fetchModule(
+				`${URL}/categories`,
+				token
+			);
 
 			return categories as ICategory[];
 		} catch (err) {
@@ -31,8 +45,7 @@ const services = {
 
 	async getOffers() {
 		try {
-			const data = await fetchModule(`${URL}/offers`, token);
-			const offers = await data.json();
+			const { data: offers } = await fetchModule(`${URL}/offers`, token);
 
 			return offers as IOffer[];
 		} catch (err) {
