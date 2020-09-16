@@ -7,13 +7,14 @@ type Filter = "confirmed" | "recovered" | "deaths";
 
 export function filterByCases(countries: ICountry[], filter: Filter) {
 	if (Array.isArray(countries)) {
-		const formatedCases = countries.map((country) => {
+		const formatedCases = countries.map((country, i) => {
 			const { confirmed, countryregion, deaths, recovered } = country;
 			return {
 				confirmed: confirmed,
 				countryregion: countryregion,
 				deaths: deaths,
-				recovered: recovered
+				recovered: recovered,
+				key: i
 			};
 		});
 		const orderedCases = formatedCases.sort((a, b) => b[filter] - a[filter]);
