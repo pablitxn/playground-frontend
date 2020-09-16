@@ -5,7 +5,7 @@ import { FC } from "react";
 import useTimeAgo from "hooks/useTimeAgo";
 import useDateTimeFormat from "hooks/useDateTimeFormat";
 // Styles
-import "./last-update.styles.less";
+import "./styles.less";
 
 interface ILastUpdate {
 	className: string;

@@ -11,7 +11,7 @@ import GraphCases from "components/covid-map/graph-cases";
 import Footer from "components/covid-map/footer";
 import Header from "components/covid-map/header";
 // Utils
-import { tableColumns } from "components/covid-map/utils";
+import { tableColumns } from "utils/covid-map";
 // Hooks
 import { useGetCovidData } from "hooks/useGetCovidData";
 // Styles

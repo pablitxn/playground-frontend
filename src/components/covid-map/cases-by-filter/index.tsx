@@ -4,7 +4,7 @@ import { ICasesByFilter } from "./types";
 // AntD
 import { Table } from "antd";
 // Styles
-import "./cases-by-filter.styles.less";
+import "./styles.less";
 
 const CasesByFilter: FC<ICasesByFilter> = ({
 	className,

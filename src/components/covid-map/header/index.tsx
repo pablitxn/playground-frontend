@@ -1,7 +1,7 @@
 // Types
 import { FC } from "react";
 // Styles
-import "./header.styles.less";
+import "./styles.less";
 
 interface IHeader {
 	className: string;

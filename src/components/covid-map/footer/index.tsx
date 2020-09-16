@@ -1,7 +1,7 @@
 // Types
 import { FC } from "react";
 // Styles
-import "./footer.styles.less";
+import "./styles.less";
 
 interface IFooter {
 	className: string;

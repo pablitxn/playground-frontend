@@ -1,6 +1,6 @@
 // Types
 import { FC } from "react";
-import "./global-cases.styles.less";
+import "./styles.less";
 
 interface IGlobalCases {
 	className: string;

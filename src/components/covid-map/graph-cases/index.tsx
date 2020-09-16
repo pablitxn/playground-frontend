@@ -1,7 +1,7 @@
 // Types
 import { FC } from "react";
 // Styles
-import "./graph-cases.styles.less";
+import "./styles.less";
 
 interface IGraphCases {
 	className: string;
