@@ -3,13 +3,13 @@ import { FC } from "react";
 // Next
 import Head from "next/head";
 // Components
-import Map from "components/covid-map/map/map.component";
-import LastUpdate from "components/covid-map/last-update/last-update.component";
-import CasesByFilter from "components/covid-map/cases-by-filter/cases-by-filter.component";
-import GlobalCases from "components/covid-map/global-cases/global-cases.component";
-import GraphCases from "components/covid-map/graph-cases/graph-cases.component";
-import Footer from "components/covid-map/footer/footer.component";
-import Header from "components/covid-map/header/header.component";
+import Map from "components/covid-map/map";
+import LastUpdate from "components/covid-map/last-update";
+import CasesByFilter from "components/covid-map/cases-by-filter";
+import GlobalCases from "components/covid-map/global-cases";
+import GraphCases from "components/covid-map/graph-cases";
+import Footer from "components/covid-map/footer";
+import Header from "components/covid-map/header";
 // Utils
 import { tableColumns } from "components/covid-map/utils";
 // Hooks
@@ -39,7 +39,7 @@ const CovidMap: FC = () => {
 					rel="stylesheet"
 				/>
 			</Head>
-
+			{console.log("sera?", process.env.API_KEY_GOOGLE_MAPS)}
 			<div className="covid-map">
 				<Header className="covid-map__header" />
 				<GlobalCases

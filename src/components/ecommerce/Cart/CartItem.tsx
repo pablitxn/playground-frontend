@@ -7,7 +7,7 @@ import ProductInfo from "./ProductInfo";
 // AntD
 import { InputNumber } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
-import { getCartItemCount } from "utils/cart_helper";
+import { getCartItemCount } from "utils/ecommerce";
 
 interface ICartItem {
 	product: IProduct;

@@ -1,4 +1,4 @@
-import Game from 'components/tict-tac-toe/game.component'
+import Game from 'components/ta-te-ti/game.component'
 
 export default function TicTacToe() {
   return (

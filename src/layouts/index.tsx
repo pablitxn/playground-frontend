@@ -3,7 +3,7 @@ import { FC, ReactNode, useState } from "react";
 // AntD
 import { Layout, Menu } from "antd";
 import { DesktopOutlined, PieChartOutlined } from "@ant-design/icons";
-import Navigation from "components/_shared/nativagation.component";
+import Navigation from "components/_shared/nativagation";
 
 // Definitions
 const { Content, Sider } = Layout;

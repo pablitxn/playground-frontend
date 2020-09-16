@@ -6,7 +6,7 @@ import ProductInfo from "../ProductInfo";
 // Router
 import Link from "next/link";
 // Utils
-import { getCartItemCount } from "utils/cart_helper";
+import { getCartItemCount } from "utils/ecommerce";
 
 interface ICheckoutItem {
 	product: IProduct;

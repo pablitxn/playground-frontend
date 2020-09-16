@@ -1,6 +1,6 @@
 // Types
 import { FC } from "react";
-import { ICasesByFilter } from "./cases-by-filter.types";
+import { ICasesByFilter } from "./types";
 // AntD
 import { Table } from "antd";
 // Styles

@@ -3,7 +3,7 @@ import { FC } from "react";
 // Hooks
 import { useState } from "react";
 // Utils
-import { calculateWinner } from "utils/ta-te-ti.utils";
+import { calculateWinner } from "utils/ta-te-ti";
 // Game Components
 import Board from "./board.component";
 // Styles

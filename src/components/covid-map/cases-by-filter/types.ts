@@ -1,11 +1,11 @@
 import { ICountry } from "interfaces/covid-map/ICountry";
 
-type Column = {
+export type Columns = {
 	title: string;
 	dataIndex: string;
 	width?: number;
 	key: string;
-};
+}[];
 
 export interface ICasesByFilter {
 	className: string;
@@ -14,5 +14,3 @@ export interface ICasesByFilter {
 	subtitle?: string;
 	countries?: ICountry[];
 }
-
-export type Columns = Column[];
