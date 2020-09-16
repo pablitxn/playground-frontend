@@ -7,7 +7,6 @@ import { formateNumber } from "utils/formatters";
 import { filterByCases, calculateTotal } from "./utils";
 
 export const getCovidData = async () => {
-	console.log("constats", API_COVID_ALL, API_COVID_BRIEF);
 	try {
 		// Fetching data
 		const allData = await fetch(API_COVID_ALL);
@@ -15,8 +14,7 @@ export const getCovidData = async () => {
 		// Formating data
 		const allDataFormated: ICountry[] = await allData.json();
 		const briefDataFormated: IBriefData = await briefData.json();
-		// const markers = allDataFormated ?? [{ location: { lat: 0, lng: 0 } }];
-		const markers = [{ location: { lat: 0, lng: 0 } }];
+		const markers = allDataFormated ?? [{ location: { lat: 0, lng: 0 } }];
 		const globalCases = formateNumber(briefDataFormated?.confirmed);
 		const affectedCountries = allDataFormated?.length;
 		// Adding filter
@@ -37,6 +35,6 @@ export const getCovidData = async () => {
 			totalDeaths
 		};
 	} catch (err) {
-		console.log("get covid-map data", err);
+		console.log(err);
 	}
 };

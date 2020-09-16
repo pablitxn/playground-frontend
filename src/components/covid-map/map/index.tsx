@@ -1,6 +1,6 @@
 // @ts-nocheck
 // Hooks
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // Google Maps
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 // Utils
@@ -23,6 +23,8 @@ const MapComponent = (props) => {
 		});
 	};
 
+	useEffect(() => {console.log(markers)},[markers])
+
 	return (
 		<Map
 			style={{}}
@@ -38,7 +40,7 @@ const MapComponent = (props) => {
 			initialCenter={initialCenter}
 			className={className}
 		>
-			{markers?.map((marker, i) => {
+			{markers.map((marker, i) => {
 				if (marker.location) {
 					const { location } = marker;
 					return (

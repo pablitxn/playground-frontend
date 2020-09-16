@@ -1,5 +1,3 @@
-// Types
-import { FC } from "react";
 // Next
 import Head from "next/head";
 // Components
@@ -12,12 +10,12 @@ import Footer from "components/covid-map/footer";
 import Header from "components/covid-map/header";
 // Utils
 import { tableColumns } from "utils/covid-map";
-// Hooks
-import { useGetCovidData } from "hooks/useGetCovidData";
+// Services
+import { getCovidData } from "services/covid-map";
 // Styles
 import "./styles.less";
 
-const CovidMap: FC = () => {
+const CovidMap = (initialProps) => {
 	const {
 		markers,
 		globalCases,
@@ -27,7 +25,7 @@ const CovidMap: FC = () => {
 		affectedCountries,
 		totalRecovered,
 		totalDeaths
-	} = useGetCovidData();
+	} = initialProps;
 
 	return (
 		<>
@@ -39,7 +37,6 @@ const CovidMap: FC = () => {
 					rel="stylesheet"
 				/>
 			</Head>
-			{console.log("sera?", process.env.API_KEY_GOOGLE_MAPS)}
 			<div className="covid-map">
 				<Header className="covid-map__header" />
 				<GlobalCases
@@ -80,10 +77,13 @@ const CovidMap: FC = () => {
 	);
 };
 
-// CovidMap.getInitialProps = () => {
-// 	const mapData = getCovidData();
-
-// 	return mapData;
-// };
+CovidMap.getInitialProps = async () => {
+	try {
+		const data = await getCovidData();
+		return data;
+	} catch (err) {
+		console.log(err);
+	}
+};
 
 export default CovidMap;
