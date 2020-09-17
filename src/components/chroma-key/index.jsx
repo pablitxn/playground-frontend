@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { chromaKey } from "./canvas/utils";
 // Styles
 // import "./chroma-key.styles.less";
-import ChromaConfigurations from "components/chroma-key/tabs";
+import ChromaConfigurations from "components/chroma-key/configs";
 
 function App() {
 	const refInput = useRef();

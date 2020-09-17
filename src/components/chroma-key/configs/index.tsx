@@ -3,21 +3,20 @@ import { FC } from "react";
 // Hooks
 import { useState } from "react";
 // Components
-import ColorsTab from "components/chroma-key/tabs/colors";
-import ImagesTab from "components/chroma-key/tabs/background";
-import GalleryTab from "components/chroma-key/tabs/gallery";
-import UploadTab from "components/chroma-key/tabs/upload";
+import ColorsTab from "./tabs/colors";
+import ImagesTab from "./tabs/background";
+import GalleryTab from "./tabs/gallery";
+import UploadTab from "./tabs/upload";
 // AntD
 import { Tabs } from "antd";
 import { BgColorsOutlined } from "@ant-design/icons";
 
 const { TabPane } = Tabs;
 
-const ChromaConfigurations: FC = () => {
+const ChromaConfigs: FC = () => {
 	const [currentTab, setCurrentTab] = useState("colors");
 
-	const handleTab = (value) => setCurrentTab(value)
-
+	const handleTab = (value) => setCurrentTab(value);
 
 	const handleColor = () => {};
 
@@ -40,4 +39,4 @@ const ChromaConfigurations: FC = () => {
 	);
 };
 
-export default ChromaConfigurations;
+export default ChromaConfigs;

@@ -1,13 +1,13 @@
 // React
 import { FC } from "react";
 // Components
-import Tabs from "components/chroma-key/tabs";
 import Canvas from "components/chroma-key/canvas";
+import ChromaConfigs from "components/chroma-key/configs";
 
 const Chroma: FC = () => {
 	return (
 		<>
-			{/* <Tabs /> */}
+			<ChromaConfigs />
 			<Canvas />
 		</>
 	);
