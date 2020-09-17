@@ -1,10 +1,10 @@
 // Hooks
 import { useEffect, useRef, useState } from "react";
 // Utils
-import { chromaKey } from "./chroma-key.utils";
+import { chromaKey } from "./canvas/utils";
 // Styles
-import "./chroma-key.styles.less";
-import ChromaConfigurations from "components/chroma-key/configurations.component";
+// import "./chroma-key.styles.less";
+import ChromaConfigurations from "components/chroma-key/tabs";
 
 function App() {
 	const refInput = useRef();

@@ -1,9 +1,14 @@
-import ChromaKey from "components/chroma-key/chroma-key.component";
+// React
+import { FC } from "react";
+// Components
+import Tabs from "components/chroma-key/tabs";
+import Canvas from "components/chroma-key/canvas";
 
-const Chroma = () => {
+const Chroma: FC = () => {
 	return (
 		<>
-				<ChromaKey />
+			{/* <Tabs /> */}
+			<Canvas />
 		</>
 	);
 };
