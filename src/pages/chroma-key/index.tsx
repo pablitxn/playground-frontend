@@ -1,16 +1,16 @@
 // React
 import { FC } from "react";
-// Components
-import Canvas from "components/chroma-key/canvas";
-import ChromaConfigs from "components/chroma-key/configs";
+// Layouts
+import ChromaKeyLayout from "layouts/chroma-key";
+// Styles
+import "./styles.less";
 
-const Chroma: FC = () => {
+const ChromaView: FC = () => {
 	return (
-		<>
-			<ChromaConfigs />
-			<Canvas />
-		</>
+		<div className="chroma-view">
+			<ChromaKeyLayout />
+		</div>
 	);
 };
 
-export default Chroma;
+export default ChromaView;

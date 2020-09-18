@@ -3,6 +3,7 @@ import { FC, useState, useRef, useEffect } from "react";
 // Utils
 import { handleChroma } from "./utils";
 // Styles
+import "./styles.less";
 
 interface IState {
 	ctx: any;
@@ -10,7 +11,11 @@ interface IState {
 	videoEl: any;
 }
 
-const Canvas: FC = () => {
+interface ICanvas {
+	className: string;
+}
+
+const Canvas: FC<ICanvas> = ({ className }) => {
 	const [state, setState] = useState<IState>();
 	const canvasRef = useRef(null);
 	const videoRef = useRef(null);
@@ -57,11 +62,9 @@ const Canvas: FC = () => {
 	});
 
 	return (
-		<div className="chroma-key__content">
-			<>
-				<video onLoadedData={handleVideo} ref={videoRef} autoPlay></video>
-				<canvas ref={canvasRef} className="canvas"></canvas>
-			</>
+		<div className={`canvas ${className}`}>
+			<video onLoadedData={handleVideo} ref={videoRef} autoPlay></video>
+			<canvas ref={canvasRef} className="canvas"></canvas>
 		</div>
 	);
 };

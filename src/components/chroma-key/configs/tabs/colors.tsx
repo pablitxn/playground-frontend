@@ -4,7 +4,7 @@ import { FC } from "react";
 import { useState } from "react";
 // AntD
 import { Form, Col, Row, Input } from "antd";
-import { BgColorsOutlined } from "@ant-design/icons";
+// import { BgColorsOutlined } from "@ant-design/icons";
 // Color Picker
 import { AlphaPicker, HuePicker } from "react-color";
 // Styles
@@ -15,56 +15,28 @@ interface IColorsTab {
 }
 
 const ColorsTab: FC<IColorsTab> = ({ onSetColor }) => {
-	const [state, setState] = useState({
-		colorChroma: "#FFFFF",
-		colorPicker: "#FFFFF",
-		alphaPicker: "60%",
-		sensibility: "0.8"
-	});
+	const [chroma, setChroma] = useState("#fffff");
+	const [sensibility, setSensibility] = useState({ r: 0, g: 0, b: 0, a: 0 });
+	const [replaceColor, setReplaceColor] = useState("#fffff");
 
-	const { colorChroma, colorPicker, alphaPicker, sensibility } = state;
-
-	const handleSketchPicker = () => {
-		// onSetColor(color)
-	};
+	const handleChroma = (color) => setChroma(color.hex);
+	const handleSensibility = (color) => setSensibility(color.rgb);
+	const handleReplaceColor = (color) => setReplaceColor(color.hex);
 
 	return (
 		<Form className="colors-form">
-			<Row gutter={[25, 25]}>
-				<Col span={12}>
-					<Form.Item className="colors-form__field">
-						<h3>¿Qué color de tu input vamos a reemplazar?</h3>
-						<h4>Color Seleccionado</h4>
-						<Input defaultValue="#4447F" />
-						<HuePicker />
-					</Form.Item>
-
-					<Form.Item className="colors-form__field">
-						<h3>Tambié selecciona la sensibilidad</h3>
-						<h4>Sensibilidad</h4>
-						<Input defaultValue="#4447F" />
-
-						<AlphaPicker />
-					</Form.Item>
-				</Col>
-
-				<Col span={12}>
-					<Form.Item className="colors-form__field">
-						<h3>¿Por qué color lo reemplazamos?</h3>
-						<h4>Color Seleccionado</h4>
-
-						<Input defaultValue="#4447F" />
-
-						<HuePicker />
-					</Form.Item>
-					<Form.Item className="colors-form__field">
-						<h3>También seleccioná la opacidad</h3>
-						<h4>Opacidad</h4>
-						<Input defaultValue="#4447F" />
-						<AlphaPicker />
-					</Form.Item>
-				</Col>
-			</Row>
+			<Form.Item>
+				<h3>Seleccioná el color para el croma</h3>
+				<HuePicker color={chroma} onChange={handleChroma} />
+			</Form.Item>
+			<Form.Item>
+				<h3>Con cuánta sensibilidad buscamos el color</h3>
+				<AlphaPicker color={sensibility} onChange={handleSensibility} />
+			</Form.Item>
+			<Form.Item>
+				<h3>Seleccioná un color para reemplazar </h3>
+				<HuePicker color={replaceColor} onChange={handleReplaceColor} />
+			</Form.Item>
 		</Form>
 	);
 };
