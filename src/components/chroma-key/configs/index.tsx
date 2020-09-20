@@ -4,7 +4,7 @@ import { FC } from "react";
 import { useState } from "react";
 // Components
 import ColorsTab from "./tabs/colors";
-import ImagesTab from "./tabs/background";
+import ImagesTab from "./tabs/images";
 import GalleryTab from "./tabs/gallery";
 import UploadTab from "./tabs/upload";
 // AntD
