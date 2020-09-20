@@ -1,45 +1,38 @@
-// Types
-// import { NextComponentType } from "next";
-// Components
-import MainLayout from "components/ecommerce/MainLayout/MainLayout";
-import MainCarousel from "components/ecommerce/MainCarousel/MainCarousel";
-import CategoryListRenderer from "components/ecommerce/CategoryList/CategoryListRenderer";
-import ProductListRenderer from "components/ecommerce/ProductList/ProductListRenderer";
-import SimpleHeading from "components/ecommerce/SimpleHeading";
+// React
+import { FC, useEffect, useState } from "react";
+// Layouts
+import EcommerceLayout from "layouts/ecommerce";
 // Services
-import ecommerceServices from "services/ecommerce";
+import services from "services/ecommerce";
 
-const Home = ({ products, categories }) => {
+const Ecommerce: FC = () => {
+	const [state, setState] = useState<any>();
+
+	useEffect(() => {
+		const getData = async () => {
+			const products = await services.getProducts();
+			const categories = await services.getCategories();
+			setState({
+				products,
+				categories
+			});
+		};
+
+		getData();
+	}, []);
+
 	return (
-		<MainLayout title="React eCommerce">
-			<MainCarousel />
-			<SimpleHeading title="Product Categories" />
-			<CategoryListRenderer
-				categories={categories}
-				breakpoints={{
-					xl: 8,
-					lg: 8,
-					md: 8,
-					sm: 24,
-					xs: 24
-				}}
-			/>
-			<SimpleHeading title="On sale Products" level={2} />
-			<ProductListRenderer
-				skeleton
-				skeletonCount={4}
-				products={products}
-				breakpoints={{ xl: 6, lg: 6, md: 6, sm: 12, xs: 24 }}
-			/>
-		</MainLayout>
+		<div className="ecommerce">
+			{state ? (
+				<EcommerceLayout
+					products={state.products}
+					categories={state.categories}
+				/>
+			) : (
+				<span>loading...</span>
+			)}
+		</div>
 	);
 };
 
-Home.getInitialProps = async () => {
-	const products = await ecommerceServices.getProducts();
-	const categories = await ecommerceServices.getCategories();
-
-	return { products, categories };
-};
-
-export default Home;
+export default Ecommerce;
