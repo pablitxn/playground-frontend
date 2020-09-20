@@ -1,9 +1,10 @@
 // Types
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 // AntD
 import { Layout, Menu } from "antd";
-import { DesktopOutlined, PieChartOutlined } from "@ant-design/icons";
 import Navigation from "components/_shared/nativagation";
+// Router
+import { useRouter } from "next/router";
 
 // Definitions
 const { Content, Sider } = Layout;
@@ -14,33 +15,39 @@ interface IAppLayout {
 }
 
 const AppLayout: FC<IAppLayout> = ({ children }) => {
-	const [collapsed, setCollapsed] = useState(false);
+	const router = useRouter();
+	const [state, setState] = useState({
+		collapsed: false,
+		defaultKey: [router.asPath]
+	});
 
-	const handleCollapse = () => setCollapsed(!collapsed);
+	const handleCollapse = () => setState({ ...state, collapsed: !collapsed });
+
+	const { collapsed, defaultKey } = state;
 
 	return (
 		<Layout style={{ minHeight: "100vh" }}>
 			<Sider collapsible collapsed={collapsed} onCollapse={handleCollapse}>
 				<div className="logo" />
-				<Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-					<Menu.Item key="1" >
+				<Menu theme="dark" mode="inline" defaultSelectedKeys={defaultKey}>
+					<Menu.Item key="/">
 						<Navigation href="/">Welcome</Navigation>
 					</Menu.Item>
-					<Menu.Item key="3" >
+					<Menu.Item key="/covid-map">
 						<Navigation href="/covid-map">Covid-Map</Navigation>
 					</Menu.Item>
-					<Menu.Item key="4" >
+					<Menu.Item key="/chroma-key">
 						<Navigation href="/chroma-key">Croma customizable</Navigation>
 					</Menu.Item>
-					<Menu.Item key="5" >
+					<Menu.Item key="/ecommerce">
 						<Navigation href="/ecommerce">Ecommerce</Navigation>
 					</Menu.Item>
-					<Menu.Item key="6" >
+					<Menu.Item key="/backoffice">
 						<Navigation href="/backoffice">Backoffice</Navigation>
 					</Menu.Item>
-					<SubMenu key="juegos" title="Random">
-						<Menu.Item key="7">Ta-te-ti</Menu.Item>
-						<Menu.Item key="8">Slider 360</Menu.Item>
+					<SubMenu key="submenu" title="Random">
+						<Menu.Item key="/ta-te-ti">Ta-te-ti</Menu.Item>
+						<Menu.Item key="/slider-360">Slider 360</Menu.Item>
 					</SubMenu>
 				</Menu>
 			</Sider>

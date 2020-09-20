@@ -1,7 +1,7 @@
 // Types
 import { FC } from "react";
 // Components
-import BackofficeLayout from "layouts/hello-mern/backoffice.layout";
+import BackofficeLayout from "layouts/backoffice/backoffice.layout";
 
 const Backoffice: FC = () => {
 	const handleCreateOffer = (formData) => {
