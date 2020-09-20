@@ -16,7 +16,7 @@ import "./styles.less"
 const { TabPane } = Tabs;
 
 interface IChromaConfigs {
-	className: string;
+	className?: string;
 }
 
 const ChromaConfigs: FC<IChromaConfigs> = ({ className }) => {

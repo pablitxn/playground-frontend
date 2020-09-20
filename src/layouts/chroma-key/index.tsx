@@ -9,8 +9,8 @@ import "./styles.less";
 const Chroma: FC = () => {
 	return (
 		<div className="chroma-key">
-			<ChromaConfigs className="chroma-key__configs" />
-			<Canvas className="chroma-key__canvas" />
+			<ChromaConfigs />
+			<Canvas />
 		</div>
 	);
 };

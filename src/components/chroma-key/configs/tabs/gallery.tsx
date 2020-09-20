@@ -6,7 +6,7 @@ import { Card } from "antd";
 import "./styles.less";
 
 interface IGalleryTab {
-	images: any
+	images?: any
 }
 
 const GalleryTab: FC<IGalleryTab> = ({ images = [{},{},{},{},{},{},]}) => {

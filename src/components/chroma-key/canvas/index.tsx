@@ -12,7 +12,7 @@ interface IState {
 }
 
 interface ICanvas {
-	className: string;
+	className?: string;
 }
 
 const Canvas: FC<ICanvas> = ({ className }) => {
@@ -62,7 +62,7 @@ const Canvas: FC<ICanvas> = ({ className }) => {
 	});
 
 	return (
-		<div className={`canvas ${className}`}>
+		<div className="canvas">
 			<video onLoadedData={handleVideo} ref={videoRef} autoPlay></video>
 			<canvas ref={canvasRef} className="canvas"></canvas>
 		</div>

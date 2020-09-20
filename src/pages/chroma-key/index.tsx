@@ -8,7 +8,9 @@ import "./styles.less";
 const ChromaView: FC = () => {
 	return (
 		<div className="chroma-view">
-			<ChromaKeyLayout />
+			<div className="cv-content">
+				<ChromaKeyLayout />
+			</div>
 		</div>
 	);
 };
