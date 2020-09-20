@@ -10,7 +10,10 @@ interface IImagesTab {}
 const ImagesTab: FC<IImagesTab> = ({}) => {
 	const gridStyle = {
 		width: "16.665%",
-		height: "50%"
+		height: "50%",
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center"
 	};
 
 	return (

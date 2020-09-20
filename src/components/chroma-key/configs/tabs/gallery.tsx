@@ -12,7 +12,10 @@ interface IGalleryTab {
 const GalleryTab: FC<IGalleryTab> = ({ images = [{},{},{},{},{},{},]}) => {
 	const gridStyle = {
 		width: "16.665%",
-		height: "50%"
+		height: "50%",
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center"
 	};
 
 	// const handleImage = (event) => {
