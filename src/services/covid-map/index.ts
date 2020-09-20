@@ -10,14 +10,8 @@ const services = {
 	async getCovidData() {
 		try {
 			// Fetching data
-			const allData = await fetch(API_COVID_ALL, {
-				method: "GET",
-				headers: { Accept: "application/json" }
-			});
-			const briefData = await fetch(API_COVID_BRIEF, {
-				method: "GET",
-				headers: { Accept: "application/json" }
-			});
+			const allData = await fetch(API_COVID_ALL);
+			const briefData = await fetch(API_COVID_BRIEF);
 			// Formating data
 			const allDataFormated: ICountry[] = await allData.json();
 			const briefDataFormated: IBriefData = await briefData.json();
@@ -43,6 +37,18 @@ const services = {
 			};
 		} catch (err) {
 			console.log(err);
+			const test = async () => {
+				try {
+					const allData = await fetch(API_COVID_ALL);
+					const briefData = await fetch(API_COVID_BRIEF);
+
+					console.log("fetch paralelo", allData, briefData);
+					console.log(await allData.json());
+				} catch (err) {
+					console.log("fuaa mono", err);
+				}
+			};
+			test();
 		}
 	}
 };
