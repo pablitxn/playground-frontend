@@ -30,7 +30,7 @@ const AppLayout: FC<IAppLayout> = ({ children }) => {
 						<Navigation href="/covid-map">Covid-Map</Navigation>
 					</Menu.Item>
 					<Menu.Item key="4" >
-						<Navigation href="/croma">Croma customizable</Navigation>
+						<Navigation href="/chroma-key">Croma customizable</Navigation>
 					</Menu.Item>
 					<Menu.Item key="5" >
 						<Navigation href="/ecommerce">Ecommerce</Navigation>

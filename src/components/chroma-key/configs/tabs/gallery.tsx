@@ -5,15 +5,30 @@ import { Card } from "antd";
 // Styles
 import "./styles.less";
 
-interface IGalleryTab {}
+interface IGalleryTab {
+	images?: any
+}
 
-const GalleryTab: FC<IGalleryTab> = ({}) => {
+const GalleryTab: FC<IGalleryTab> = ({ images = [{},{},{},{},{},{},]}) => {
 	const gridStyle = {
-		width: "25%"
+		width: "16.665%",
+		height: "50%",
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center"
 	};
+
+	// const handleImage = (event) => {
+	// 	const { key: image } = event.target
+	// 	console.log("le diste clic a la img ", image)
+	// }
 
 	return (
 		<Card>
+			<Card.Grid style={gridStyle}>IMAGES 64558 x 3.1416</Card.Grid>
+			<Card.Grid style={gridStyle}>IMAGES 64558 x 3.1416</Card.Grid>
+			<Card.Grid style={gridStyle}>IMAGES 64558 x 3.1416</Card.Grid>
+			<Card.Grid style={gridStyle}>IMAGES 64558 x 3.1416</Card.Grid>
 			<Card.Grid style={gridStyle}>IMAGES 64558 x 3.1416</Card.Grid>
 			<Card.Grid style={gridStyle}>IMAGES 64558 x 3.1416</Card.Grid>
 			<Card.Grid style={gridStyle}>IMAGES 64558 x 3.1416</Card.Grid>

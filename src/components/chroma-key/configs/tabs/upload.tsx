@@ -1,62 +1,16 @@
 // @ts-nocheck
-// Types
-import { FC } from "react";
-// Hooks
-import { useState } from "react";
+// React
+import { FC, useState } from "react";
+// Utils
+import { getBase64, initialState } from "utils/chroma-key";
 // AntD
 import { Upload, Modal } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-
-function getBase64(file) {
-	return new Promise((resolve, reject) => {
-		const reader = new FileReader();
-		reader.readAsDataURL(file);
-		reader.onload = () => resolve(reader.result);
-		reader.onerror = (error) => reject(error);
-	});
-}
+// Styles
+import "./styles.less";
 
 const UploadTab: FC = () => {
-	const [state, setState] = useState({
-		previewVisible: false,
-		previewImage: "",
-		previewTitle: "",
-		fileList: [
-			{
-				uid: "-1",
-				name: "image.png",
-				status: "done",
-				url:
-					"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-			},
-			{
-				uid: "-2",
-				name: "image.png",
-				status: "done",
-				url:
-					"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-			},
-			{
-				uid: "-3",
-				name: "image.png",
-				status: "done",
-				url:
-					"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-			},
-			{
-				uid: "-4",
-				name: "image.png",
-				status: "done",
-				url:
-					"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-			},
-			{
-				uid: "-5",
-				name: "image.png",
-				status: "error"
-			}
-		]
-	});
+	const [state, setState] = useState(initialState);
 
 	const handleCancel = () => setState({ ...state, previewVisible: false });
 
@@ -77,6 +31,7 @@ const UploadTab: FC = () => {
 	const handleChange = ({ fileList }) => setState({ ...state, fileList });
 
 	const { previewVisible, previewImage, fileList, previewTitle } = state;
+
 	const uploadButton = (
 		<div>
 			<PlusOutlined />
@@ -85,7 +40,7 @@ const UploadTab: FC = () => {
 	);
 
 	return (
-		<div className="clearfix">
+		<div className="upload-images">
 			<Upload
 				action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
 				listType="picture-card"
