@@ -1,24 +1,16 @@
 // App
-const API_KEY_HEROKU =
-	process.env.API_KEY_HEROKU ?? process.env.NEXT_PUBLIC_API_KEY_HEROKU;
+const API_KEY_HEROKU = process.env.NEXT_PUBLIC_API_KEY_HEROKU;
 const GOOGLE_SITE_VERIFICATION =
-	process.env.GOOGLE_SITE_VERIFICATION ??
 	process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 const DEFAULT_LANGUAGE = "es-ES";
 
 // Covid Map
-const API_COVID_ALL =
-	process.env.API_COVID_ALL ?? process.env.NEXT_PUBLIC_API_COVID_ALL;
-const API_COVID_BRIEF =
-	process.env.API_COVID_BRIEF ?? process.env.NEXT_PUBLIC_API_COVID_BRIEF;
-const API_KEY_GOOGLE_MAPS =
-	process.env.API_KEY_GOOGLE_MAPS ??
-	process.env.NEXT_PUBLIC_API_KEY_GOOGLE_MAPS;
+const API_COVID_ALL = process.env.NEXT_PUBLIC_API_COVID_ALL;
+const API_COVID_BRIEF = process.env.NEXT_PUBLIC_API_COVID_BRIEF;
+const API_KEY_GOOGLE_MAPS = process.env.NEXT_PUBLIC_API_KEY_GOOGLE_MAPS;
 
 // Ecommerce
-const API_PLAYGROUND_BACKEND =
-	process.env.API_PLAYGROUND_BACKEND ??
-	process.env.NEXT_PUBLIC_API_PLAYGROUND_BACKEND;
+const API_PLAYGROUND_BACKEND = process.env.NEXT_PUBLIC_API_PLAYGROUND_BACKEND;
 
 export {
 	API_KEY_HEROKU,
@@ -29,3 +21,8 @@ export {
 	API_KEY_GOOGLE_MAPS,
 	API_PLAYGROUND_BACKEND
 };
+
+/**
+ * TODO: restaurar api-keys, y volver privadas las
+ * variables de la db y heroku
+ */
