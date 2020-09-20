@@ -12,8 +12,12 @@ const CovidMap: FC = () => {
 
 	useEffect(() => {
 		const getData = async () => {
-			const data = await services.getCovidData();
-			setState(data);
+			try {
+				const data = await services.getCovidData();
+				setState(data);
+			} catch (err) {
+				console.log(err);
+			}
 		};
 
 		getData();

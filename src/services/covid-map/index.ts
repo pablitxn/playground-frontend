@@ -19,8 +19,8 @@ const services = {
 				headers: { Accept: "application/json" }
 			});
 			// Formating data
-			const allDataFormated = (await allData.json()) as ICountry[];
-			const briefDataFormated = (await briefData.json()) as IBriefData;
+			const allDataFormated: ICountry[] = await allData.json();
+			const briefDataFormated: IBriefData = await briefData.json();
 			const markers = allDataFormated ?? [{ location: { lat: 0, lng: 0 } }];
 			const globalCases = formateNumber(briefDataFormated?.confirmed);
 			const affectedCountries = allDataFormated?.length;
