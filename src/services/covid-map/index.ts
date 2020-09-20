@@ -10,11 +10,17 @@ const services = {
 	async getCovidData() {
 		try {
 			// Fetching data
-			const allData = await fetch(API_COVID_ALL);
-			const briefData = await fetch(API_COVID_BRIEF);
+			const allData = await fetch(API_COVID_ALL, {
+				method: "GET",
+				headers: { Accept: "application/json" }
+			});
+			const briefData = await fetch(API_COVID_BRIEF, {
+				method: "GET",
+				headers: { Accept: "application/json" }
+			});
 			// Formating data
-			const allDataFormated: ICountry[] = await allData.json();
-			const briefDataFormated: IBriefData = await briefData.json();
+			const allDataFormated = (await allData.json()) as ICountry[];
+			const briefDataFormated = (await briefData.json()) as IBriefData;
 			const markers = allDataFormated ?? [{ location: { lat: 0, lng: 0 } }];
 			const globalCases = formateNumber(briefDataFormated?.confirmed);
 			const affectedCountries = allDataFormated?.length;

@@ -6,8 +6,6 @@ import MainCarousel from "components/ecommerce/MainCarousel/MainCarousel";
 import CategoryListRenderer from "components/ecommerce/CategoryList/CategoryListRenderer";
 import ProductListRenderer from "components/ecommerce/ProductList/ProductListRenderer";
 import SimpleHeading from "components/ecommerce/SimpleHeading";
-// Services
-import ecommerceServices from "services/ecommerce";
 
 interface IEcommerceLayout {
 	products: any;
