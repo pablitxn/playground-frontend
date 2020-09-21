@@ -6,13 +6,18 @@ import ChromaConfigs from "components/chroma-key/configs";
 // Styles
 import "./styles.less";
 
-const Chroma: FC = () => {
+interface IChromaLayout {
+	handleConfigs: () => void;
+	handleCanvas: () => void;
+}
+
+const ChromaLayout: FC<IChromaLayout> = ({ handleCanvas, handleConfigs }) => {
 	return (
 		<div className="chroma-key">
-			<ChromaConfigs />
-			<Canvas />
+			<ChromaConfigs handleConfigs={handleConfigs} />
+			<Canvas handleCanvas={handleCanvas} />
 		</div>
 	);
 };
 
-export default Chroma;
+export default ChromaLayout;

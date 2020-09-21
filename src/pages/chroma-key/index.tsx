@@ -8,7 +8,7 @@ import "./styles.less";
 const ChromaView: FC = () => {
 	return (
 		<div className="chroma-view">
-			<div className="cv-content">
+			<div className="card">
 				<ChromaKeyLayout />
 			</div>
 		</div>

@@ -11,20 +11,23 @@ import UploadTab from "./tabs/upload";
 import { Tabs } from "antd";
 import { BgColorsOutlined } from "@ant-design/icons";
 // Styles
-import "./styles.less"
+import "./styles.less";
 
 const { TabPane } = Tabs;
 
 interface IChromaConfigs {
 	className?: string;
+	handleConfigs: () => void;
 }
 
-const ChromaConfigs: FC<IChromaConfigs> = ({ className }) => {
+const ChromaConfigs: FC<IChromaConfigs> = ({ className, handleConfigs }) => {
 	const [currentTab, setCurrentTab] = useState("colors");
 
 	const handleTab = (value) => setCurrentTab(value);
 
-	const handleColor = () => {};
+	const handleColor = () => {
+		// handleConfigs()
+	};
 
 	return (
 		<div className={`chroma-configs ${className}`}>

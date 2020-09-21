@@ -13,10 +13,12 @@ interface IState {
 
 interface ICanvas {
 	className?: string;
+	handleCanvas: () => void;
 }
 
-const Canvas: FC<ICanvas> = ({ className }) => {
+const Canvas: FC<ICanvas> = ({ className, handleCanvas }) => {
 	const [state, setState] = useState<IState>();
+	const [permisos, setPermisos] = useState(false);
 	const canvasRef = useRef(null);
 	const videoRef = useRef(null);
 
@@ -30,7 +32,7 @@ const Canvas: FC<ICanvas> = ({ className }) => {
 	};
 
 	useEffect(() => {
-		if (canvasRef && videoRef) {
+		if (canvasRef.current && videoRef.current) {
 			const context = canvasRef.current.getContext("2d");
 			const videoEl = videoRef.current;
 			const canvasEl = canvasRef.current;
@@ -63,8 +65,14 @@ const Canvas: FC<ICanvas> = ({ className }) => {
 
 	return (
 		<div className="canvas">
-			<video onLoadedData={handleVideo} ref={videoRef} autoPlay></video>
-			<canvas ref={canvasRef} className="canvas"></canvas>
+			{permisos ? (
+				<>
+					<video onLoadedData={handleVideo} ref={videoRef} autoPlay></video>
+					<canvas ref={canvasRef}></canvas>
+				</>
+			) : (
+				<span>esperando permisos...</span>
+			)}
 		</div>
 	);
 };
