@@ -10,6 +10,7 @@ import {
 	VideoCameraOutlined,
 	ShopOutlined,
 	AuditOutlined,
+	CoffeeOutlined,
 	PlayCircleOutlined
 } from "@ant-design/icons";
 // Router
@@ -70,6 +71,9 @@ const AppLayout: FC<IAppLayout> = ({ children }) => {
 					</Menu.Item>
 					<Menu.Item icon={<AuditOutlined />} key="/backoffice">
 						<Navigation href="/backoffice">Backoffice</Navigation>
+					</Menu.Item>
+					<Menu.Item icon={<CoffeeOutlined />} key="/coffe-chat">
+						<Navigation href="/coffee-chat">Coffee Chat</Navigation>
 					</Menu.Item>
 					<SubMenu icon={<PlayCircleOutlined />} key="submenu" title="Random">
 						<Menu.Item key="/ta-te-ti">Ta-te-ti</Menu.Item>
