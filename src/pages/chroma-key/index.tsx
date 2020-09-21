@@ -6,10 +6,16 @@ import ChromaKeyLayout from "layouts/chroma-key";
 import "./styles.less";
 
 const ChromaView: FC = () => {
+	const handleCanvas = () => {};
+	const handleConfigs = () => {};
+
 	return (
 		<div className="chroma-view">
 			<div className="card">
-				<ChromaKeyLayout />
+				<ChromaKeyLayout
+					handleCanvas={handleCanvas}
+					handleConfigs={handleConfigs}
+				/>
 			</div>
 		</div>
 	);
