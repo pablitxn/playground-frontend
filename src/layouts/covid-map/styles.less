@@ -2,60 +2,51 @@
 @component: #222222;
 
 // @sm: 320px;
-@responsive: 720px;
+@responsive: 1023px;
 @desktop: 1024px;
 
 .covid-map {
-	width: auto;
-	height: 1024px;
+	// width: auto;
+	// height: 1024px;
+	gap: 25px 25px;
 	background-color: @background;
 	padding: 1rem;
 	font-family: "Kumbh Sans", "Heebo", sans-serif;
 
-	gap: 25px 25px;
-
-	&__header {
-		background-color: @component;
-	}
-
-	&__global-cases {
-		background-color: @component;
-	}
-
-	&__graph-cases {
-		background-color: @component;
-	}
-
-	&__last-update {
-		background-color: @component;
-	}
-
+	&__header,
+	&__global-cases,
+	&__graph-cases,
+	&__last-update,
+	&__map,
 	&__footer {
 		background-color: @component;
 	}
+
 	&__map {
-		background-color: @component;
 		position: relative !important;
 	}
 
 	@media screen and (max-width: @responsive) {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
+		height: 100%;
 
-		&__cases-by-countries {
-			display: none;
+		&__map {
+			height: 100%;
 		}
-		&__graph-cases {
-			display: none;
-		}
-		&__last-update {
-			display: none;
-		}
-		&__cases-by-deaths {
+
+		&__cases-by-country,
+		&__cases-by-countries,
+		&__graph-cases,
+		&__last-update,
+		&__cases-by-deaths,
+		&__footer {
 			display: none;
 		}
 	}
 	@media screen and (min-width: @desktop) {
+		width: auto;
+		height: 1024px;
 		display: grid;
 		grid-template-columns: 0.8fr 0.6fr 1.5fr repeat(2, 0.7fr);
 		grid-template-rows: repeat(2, 0.3fr) 4.1fr repeat(2, 0.3fr);
