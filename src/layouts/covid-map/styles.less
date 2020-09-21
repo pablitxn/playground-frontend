@@ -1,6 +1,10 @@
 @background: #000000;
 @component: #222222;
 
+// @sm: 320px;
+@responsive: 720px;
+@desktop: 1024px;
+
 .covid-map {
 	width: auto;
 	height: 1024px;
@@ -8,57 +12,85 @@
 	padding: 1rem;
 	font-family: "Kumbh Sans", "Heebo", sans-serif;
 
-	display: grid;
-	grid-template-columns: .8fr 0.6fr 1.5fr repeat(2, 0.7fr);
-	grid-template-rows: repeat(2, 0.3fr) 4.1fr repeat(2, 0.3fr);
 	gap: 25px 25px;
-	grid-template-areas:
-		"header header header header header"
-		"global-cases map map cases-by-deaths cases-by-country"
-		"cases-by-countries map map cases-by-deaths cases-by-country"
-		"last-update footer footer graph-cases graph-cases"
-		"last-update footer footer graph-cases graph-cases";
 
 	&__header {
-		grid-area: header;
 		background-color: @component;
 	}
 
 	&__global-cases {
-		grid-area: global-cases;
 		background-color: @component;
-	}
-
-	&__cases-by-countries {
-		grid-area: cases-by-countries;
-	}
-
-	&__map {
-		grid-area: map;
-		background-color: @component;
-		position: relative !important;
 	}
 
 	&__graph-cases {
-		grid-area: graph-cases;
 		background-color: @component;
 	}
 
 	&__last-update {
-		grid-area: last-update;
 		background-color: @component;
-	}
-
-	&__cases-by-country {
-		grid-area: cases-by-country;
-	}
-
-	&__cases-by-deaths {
-		grid-area: cases-by-deaths;
 	}
 
 	&__footer {
-		grid-area: footer;
 		background-color: @component;
+	}
+	&__map {
+		background-color: @component;
+		position: relative !important;
+	}
+
+	@media screen and (max-width: @responsive) {
+		display: flex;
+		flex-direction: row;
+
+		&__cases-by-countries {
+			display: none;
+		}
+		&__graph-cases {
+			display: none;
+		}
+		&__last-update {
+			display: none;
+		}
+		&__cases-by-deaths {
+			display: none;
+		}
+	}
+	@media screen and (min-width: @desktop) {
+		display: grid;
+		grid-template-columns: 0.8fr 0.6fr 1.5fr repeat(2, 0.7fr);
+		grid-template-rows: repeat(2, 0.3fr) 4.1fr repeat(2, 0.3fr);
+		grid-template-areas:
+			"header header header header header"
+			"global-cases map map cases-by-deaths cases-by-country"
+			"cases-by-countries map map cases-by-deaths cases-by-country"
+			"last-update footer footer graph-cases graph-cases"
+			"last-update footer footer graph-cases graph-cases";
+		&__header {
+			grid-area: header;
+		}
+		&__cases-by-country {
+			grid-area: cases-by-country;
+		}
+		&__cases-by-deaths {
+			grid-area: cases-by-deaths;
+		}
+		&__cases-by-countries {
+			grid-area: cases-by-countries;
+		}
+		&__last-update {
+			grid-area: last-update;
+		}
+		&__graph-cases {
+			grid-area: graph-cases;
+		}
+		&__global-cases {
+			grid-area: global-cases;
+		}
+		&__map {
+			grid-area: map;
+		}
+		&__footer {
+			grid-area: footer;
+		}
 	}
 }

@@ -1,0 +1,37 @@
+// @sm: 320px;
+@responsive: 720px;
+@desktop: 1024px;
+
+.app-layout {
+	min-height: 97vh;
+
+	@media screen and (min-width: @desktop) {
+		&__slider {
+			display: initial;
+		}
+		&__home-button {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: @responsive) {
+		.ant-layout-content {
+			margin: 0 !important;
+		}
+		&__slider {
+			display: none;
+		}
+		&__home-button {
+			position: absolute !important;
+			cursor: pointer;
+			left: 1rem;
+			z-index: 5;
+			top: 1rem;
+			svg {
+				width: 1.5rem;
+				height: 1.5rem;
+				background-color: rgba(22, 22, 22, 0.438);
+			}
+		}
+	}
+}
