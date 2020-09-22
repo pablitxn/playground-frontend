@@ -4,37 +4,58 @@ import { FC, useState } from "react";
 import "./styles.less";
 
 interface IJoin {
-	handleSignIn: () => void;
+	handleSignIn: (data: any) => void;
 }
 
 const Join: FC<IJoin> = ({ handleSignIn }) => {
-	const [name, setName] = useState("");
-	const [room, setRoom] = useState("");
+	const [state, setState] = useState({
+		name: "",
+		room: ""
+	});
+
+	const handleChange = (event) => {
+		const { value, name } = event.target;
+		setState({
+			...state,
+			[name]: value
+		});
+	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		handleSignIn(state);
+	};
+
+	const { name, room } = state;
 
 	return (
-		<div className="joinOuterContainer">
-			<div className="joinInnerContainer">
-				<h1 className="heading">Join</h1>
+		<div className="join">
+			<form noValidate autoComplete="off" className="join__form">
+				<h1 className="join__header">Join</h1>
 				<div>
 					<input
+						name="name"
 						placeholder="Name"
-						className="joinInput"
+						className="join__name"
 						type="text"
-						onChange={(event) => setName(event.target.value)}
+						value={name}
+						onChange={handleChange}
 					/>
 				</div>
 				<div>
 					<input
+						name="room"
 						placeholder="Room"
-						className="joinInput mt-20"
+						className="join__room"
 						type="text"
-						onChange={(event) => setRoom(event.target.value)}
+						value={room}
+						onChange={handleChange}
 					/>
 				</div>
-				<button className={"button mt-20"} type="submit">
+				<button className={"join__submit"} type="submit" onClick={handleSubmit}>
 					Sign In
 				</button>
-			</div>
+			</form>
 		</div>
 	);
 };

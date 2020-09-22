@@ -15,7 +15,9 @@ export const useCoffeChat = () => {
 	const [messages, setMessages] = useState([]);
 
 	useEffect(() => {
-		const { name, room } = queryString.parse(location.search);
+		// const { name, room } = queryString.parse(location.search);
+		const name = "";
+		const room = "";
 
 		socket = io(ENDPOINT);
 
@@ -27,7 +29,7 @@ export const useCoffeChat = () => {
 				alert(error);
 			}
 		});
-	}, [ENDPOINT, location.search]);
+	}, [ENDPOINT /**location */]);
 
 	useEffect(() => {
 		socket.on("message", (message) => {

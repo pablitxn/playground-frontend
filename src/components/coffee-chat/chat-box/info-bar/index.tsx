@@ -4,9 +4,13 @@ import { FC } from "react";
 import OnlineIcon from "assets/icons/coffee-chat/onlineIcon";
 import CloseIcon from "assets/icons/coffee-chat/closeIcon";
 
-import "./InfoBar.css";
+import "./styles.less";
 
-const InfoBar = ({ room }) => (
+interface IInfoBar {
+	room: any;
+}
+
+const InfoBar: FC<IInfoBar> = ({ room }) => (
 	<div className="infoBar">
 		<div className="leftInnerContainer">
 			{/* <img className="onlineIcon" src={onlineIcon} alt="online icon" /> */}
