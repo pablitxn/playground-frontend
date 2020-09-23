@@ -2,9 +2,16 @@
 import { FC } from "react";
 // Layouts
 import CoffeChatLayout from "layouts/coffee-chat";
+// Router
+import { useRouter } from "next/router";
 
 const CoffeChat: FC = () => {
-	const handleSignIn = (data: any) => console.log("sign in ->", data);
+	const router = useRouter();
+
+	const handleSignIn = (data: any) => {
+		console.log("sign in ->", data);
+		router.push("/coffee-chat/room/general");
+	};
 
 	return (
 		<>

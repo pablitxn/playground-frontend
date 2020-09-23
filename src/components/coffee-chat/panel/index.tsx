@@ -4,6 +4,7 @@ import { FC } from "react";
 import OnlineIcon from "assets/icons/coffee-chat/onlineIcon";
 
 import "./styles.less";
+import { Divider } from "antd";
 
 interface IPanel {
 	users: any;
@@ -14,6 +15,7 @@ const Panel: FC<IPanel> = ({ users }) => (
 		{users ? (
 			<>
 				<h1 className="panel__title">usuarios conectados</h1>
+				<Divider className="panel__divider" />
 				<div className="panel__active-users">
 					<h2>
 						{users.map(({ name }) => (
