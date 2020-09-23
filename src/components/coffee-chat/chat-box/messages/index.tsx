@@ -1,3 +1,4 @@
+// @ts-nochecks
 // React
 import { FC } from "react";
 // Components
@@ -9,16 +10,19 @@ import "./styles.less";
 
 interface IMessages {
 	messages: any;
-	name: any;
+	name: string;
 }
 
 const Messages: FC<IMessages> = ({ messages, name }) => (
 	<ScrollToBottom className="messages">
-		{messages.map((message, i) => (
-			<div key={i}>
-				<Message message={message} name={name} />
-			</div>
-		))}
+		{messages.map((element, i) => {
+			const { message, name } = element;
+			return (
+				<div key={i}>
+					<Message message={message} name={name} />
+				</div>
+			);
+		})}
 	</ScrollToBottom>
 );
 

@@ -11,13 +11,13 @@ interface IInfoBar {
 }
 
 const InfoBar: FC<IInfoBar> = ({ room }) => (
-	<div className="infoBar">
-		<div className="leftInnerContainer">
-			{/* <img className="onlineIcon" src={onlineIcon} alt="online icon" /> */}
+	<div className="info-bar">
+		<div className="info-bar__room">
+			{/* <img className="online-icon" src={onlineIcon} alt="online icon" /> */}
 			<OnlineIcon />
-			<h3>{room}</h3>
+			<h3>{`test peronista - sala ${room}`}</h3>
 		</div>
-		<div className="rightInnerContainer">
+		<div className="info-bar__actions">
 			<a href="/">
 				{/* <img src={closeIcon} alt="close icon" /> */}
 				<CloseIcon />

@@ -1,5 +1,5 @@
 // React
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 // Layouts
 import RoomLayout from "layouts/coffee-chat/room";
 // Hooks
@@ -7,17 +7,22 @@ import { useCoffeChat } from "hooks/useCoffeeChat";
 // Router
 import { useRouter } from "next/router";
 
-const Room = () => {
-	// const router = useRouter();
-	// const { category: categoryParam } = router.query;
-	// const category_id = categoryParam ? categoryParam[0] : null;
-	// const currentCategoryName = categoryParam ? categoryParam[1] : "...";
+const Room: FC = () => {
+	const [room, setRoom] = useState("");
+	const router = useRouter();
 
-	const chatData = useCoffeChat();
+	const { handleChat, users } = useCoffeChat();
+
+	useEffect(() => {
+		if (router.query.room) {
+			const room = router.query.room[0];
+			setRoom(room);
+		}
+	}, [router]);
 
 	return (
 		<>
-			<RoomLayout chatData={chatData} users={chatData.users} />
+			<RoomLayout handleChat={handleChat} room={room} users={users} />
 		</>
 	);
 };

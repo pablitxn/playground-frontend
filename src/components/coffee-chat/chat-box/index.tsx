@@ -4,31 +4,27 @@ import { FC } from "react";
 import Messages from "components/coffee-chat/chat-box/messages";
 import InfoBar from "components/coffee-chat/chat-box/info-bar";
 import Input from "components/coffee-chat/chat-box/input";
+// Styles
+import "./styles.less";
 
 interface IChatBox {
-	chatData: {
-		room: any;
+	handleChat: {
 		messages: any;
-		name: any;
-		message: any;
-		setMessage: any;
-		sendMessage: any;
+		name: string;
+		sendMessage: (message: string) => void;
 		users: any;
 	};
+	room: string;
 }
 
-const ChatBox: FC<IChatBox> = ({ chatData }) => {
+const ChatBox: FC<IChatBox> = ({ handleChat, room }) => {
 	return (
-		<div className="container">
-			{chatData ? (
+		<div className="chat-box">
+			{true ? (
 				<>
-					<InfoBar room={chatData.room} />
-					<Messages messages={chatData.messages} name={chatData.name} />
-					<Input
-						message={chatData.message}
-						setMessage={chatData.setMessage}
-						sendMessage={chatData.sendMessage}
-					/>
+					<InfoBar room={room} />
+					<Messages messages={handleChat.messages} name={handleChat.name} />
+					<Input sendMessage={handleChat.sendMessage} />
 				</>
 			) : (
 				<span>loading...</span>

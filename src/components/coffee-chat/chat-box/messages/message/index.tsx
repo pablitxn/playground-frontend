@@ -1,5 +1,5 @@
 // React
-import { FC } from "react";
+import { FC, useEffect } from "react";
 // Utils
 import ReactEmoji from "react-emoji";
 // Styles
@@ -22,19 +22,28 @@ const Message: FC<IMessage> = ({ message: { text, user }, name }) => {
 		isSentByCurrentUser = true;
 	}
 
+	useEffect(() => {
+		console.log(text, user, name);
+	}, [text, user, name]);
 	return isSentByCurrentUser ? (
-		<div className="messageContainer justifyEnd">
-			<p className="sentText pr-10">{trimmedName}</p>
-			<div className="messageBox backgroundBlue">
-				<p className="messageText colorWhite">{ReactEmoji.emojify(text)}</p>
+		<div className="message message--end">
+			<p className="message__sent-text message__sent-text--end ">
+				{trimmedName}
+			</p>
+			<div className="message__box message__box--blue">
+				<p className="message__text message__text--white ">
+					{ReactEmoji.emojify(text)}
+				</p>
 			</div>
 		</div>
 	) : (
-		<div className="messageContainer justifyStart">
-			<div className="messageBox backgroundLight">
-				<p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
+		<div className="message message--start">
+			<div className="message__box message__box--light">
+				<p className="message__text message__text--dark">
+					{ReactEmoji.emojify(text)}
+				</p>
 			</div>
-			<p className="sentText pl-10 ">{user}</p>
+			<p className="message__sent-text message__sent-text--start ">{user}</p>
 		</div>
 	);
 };
