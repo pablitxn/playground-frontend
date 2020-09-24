@@ -1,5 +1,8 @@
 // React
 import { FC, useState } from "react";
+// AntD
+import { Select, Input, Button } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 // Styles
 import "./styles.less";
 
@@ -8,11 +11,14 @@ interface IJoin {
 	chatId: string;
 }
 
+const { Option } = Select;
+
 const Join: FC<IJoin> = ({ handleSignIn, chatId }) => {
 	const [state, setState] = useState({
 		name: "",
 		room: "",
-		chatId: chatId
+		chatId: chatId,
+		loading: false
 	});
 
 	const handleChange = (event) => {
@@ -25,38 +31,45 @@ const Join: FC<IJoin> = ({ handleSignIn, chatId }) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		handleSignIn(state);
+		setState({ ...state, loading: true });
+		setTimeout(() => {
+			handleSignIn(state);
+		}, 1500);
 	};
 
-	const { name, room } = state;
+	const handleRoom = (value) => {
+		setState({ ...state, room: value });
+	};
+
+	const { name, room, loading } = state;
 
 	return (
 		<div className="join">
 			<form noValidate autoComplete="off" className="join__form">
 				<h1 className="join__header">Join</h1>
-				<div>
-					<input
-						name="name"
-						placeholder="Name"
-						className="join__name"
-						type="text"
-						value={name}
-						onChange={handleChange}
-					/>
-				</div>
-				<div>
-					<input
-						name="room"
-						placeholder="Room"
-						className="join__room"
-						type="text"
-						value={room}
-						onChange={handleChange}
-					/>
-				</div>
-				<button className={"join__submit"} type="submit" onClick={handleSubmit}>
+				<Input
+					size="large"
+					placeholder="username"
+					className="join__username"
+					prefix={<UserOutlined />}
+				/>
+				<Select
+					defaultValue="general"
+					onChange={handleRoom}
+					className="join__room"
+				>
+					<Option value="general">General</Option>
+					<Option value="javascript">Javascript</Option>
+					<Option value="music">Música</Option>
+				</Select>
+				<Button
+					className={"join__submit"}
+					type="primary"
+					onClick={handleSubmit}
+					loading={loading}
+				>
 					Sign In
-				</button>
+				</Button>
 			</form>
 		</div>
 	);

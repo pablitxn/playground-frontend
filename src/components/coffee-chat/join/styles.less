@@ -4,10 +4,18 @@
 	text-align: center;
 	height: 100vh;
 	align-items: center;
-	background-color: #1a1a1d;
+	background-color: #000000e8;
 
 	&__form {
-		width: 20%;
+		width: 300px;
+		padding: 2rem;
+		background: rgba(56, 65, 190, 0.692);
+		border-radius: 10px;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.856);
+		display: flex;
+		flex-direction: column;
+		overflow-y: auto;
+		position: relative;
 	}
 
 	&__header {
@@ -16,25 +24,19 @@
 		padding-bottom: 10px;
 		border-bottom: 2px solid white;
 	}
-	&__name,
+	&__username {
+		margin-bottom: 1rem;
+	}
 	&__room {
-		border-radius: 0;
-		padding: 15px 20px;
 		width: 100%;
-		margin-bottom: 0.5rem
+		margin-bottom: 1rem;
 	}
 
 	&__submit {
-		color: #fff !important;
 		text-transform: uppercase;
-		text-decoration: none;
-		background: #2979ff;
-		padding: 20px;
-		border-radius: 5px;
-		display: inline-block;
-		border: none;
+		border-radius: 20px;
 		width: 100%;
-		margin-top: 20px;
+		margin-bottom: 10px;
 	}
 }
 
