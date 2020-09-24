@@ -5,12 +5,14 @@ import "./styles.less";
 
 interface IJoin {
 	handleSignIn: (data: any) => void;
+	chatId: string;
 }
 
-const Join: FC<IJoin> = ({ handleSignIn }) => {
+const Join: FC<IJoin> = ({ handleSignIn, chatId }) => {
 	const [state, setState] = useState({
 		name: "",
-		room: ""
+		room: "",
+		chatId: chatId
 	});
 
 	const handleChange = (event) => {

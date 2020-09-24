@@ -15,7 +15,7 @@ interface IMessages {
 
 const Messages: FC<IMessages> = ({ messages, me }) => (
 	<ScrollToBottom className="messages">
-		{messages.map((element, i) => {
+		{messages?.map((element, i) => {
 			const { message } = element;
 			return (
 				<div key={i}>

@@ -24,7 +24,7 @@ const Message: FC<IMessage> = ({ message: { text, user }, me }) => {
 
 	useEffect(() => {
 		console.log("message chat", text, user, me);
-	}, [text, user, name]);
+	}, [text, user, me]);
 	return isSentByCurrentUser ? (
 		<div className="message message--end">
 			<p className="message__sent-text message__sent-text--end ">
