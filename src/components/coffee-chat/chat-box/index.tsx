@@ -10,21 +10,23 @@ import "./styles.less";
 interface IChatBox {
 	handleChat: {
 		messages: any;
-		name: string;
+		me: string;
 		sendMessage: (message: string) => void;
-		users: any;
 	};
 	room: string;
 }
 
 const ChatBox: FC<IChatBox> = ({ handleChat, room }) => {
+
+	const { messages, sendMessage, me } = handleChat;
+
 	return (
 		<div className="chat-box">
 			{true ? (
 				<>
 					<InfoBar room={room} />
-					<Messages messages={handleChat.messages} name={handleChat.name} />
-					<Input sendMessage={handleChat.sendMessage} />
+					<Messages messages={messages} me={me} />
+					<Input sendMessage={sendMessage} />
 				</>
 			) : (
 				<span>loading...</span>

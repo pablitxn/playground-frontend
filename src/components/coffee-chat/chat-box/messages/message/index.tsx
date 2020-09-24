@@ -10,25 +10,25 @@ interface IMessage {
 		text: string;
 		user: string;
 	};
-	name: string;
+	me: string;
 }
 
-const Message: FC<IMessage> = ({ message: { text, user }, name }) => {
+const Message: FC<IMessage> = ({ message: { text, user }, me }) => {
 	let isSentByCurrentUser = false;
 
-	const trimmedName = name.trim().toLowerCase();
+	const trimmedMyName = me.trim().toLowerCase();
 
-	if (user === trimmedName) {
+	if (user === trimmedMyName) {
 		isSentByCurrentUser = true;
 	}
 
 	useEffect(() => {
-		console.log(text, user, name);
+		console.log("message chat", text, user, me);
 	}, [text, user, name]);
 	return isSentByCurrentUser ? (
 		<div className="message message--end">
 			<p className="message__sent-text message__sent-text--end ">
-				{trimmedName}
+				{trimmedMyName}
 			</p>
 			<div className="message__box message__box--blue">
 				<p className="message__text message__text--white ">

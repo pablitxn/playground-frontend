@@ -8,7 +8,11 @@ import "./styles.less";
 
 interface IRoomLayout {
 	room: string;
-	handleChat: any;
+	handleChat: {
+		messages: any;
+		me: string;
+		sendMessage: (message: string) => void;
+	};
 	users: any;
 }
 
