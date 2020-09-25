@@ -10,16 +10,16 @@ import "./styles.less";
 
 interface IMessages {
 	messages: any;
-	me: string;
+	name: string;
 }
 
-const Messages: FC<IMessages> = ({ messages, me }) => (
+const Messages: FC<IMessages> = ({ messages, name }) => (
 	<ScrollToBottom className="messages">
 		{messages?.map((element, i) => {
 			const { message } = element;
 			return (
 				<div key={i}>
-					<Message message={message} me={me} />
+					<Message message={message} />
 				</div>
 			);
 		})}

@@ -2,13 +2,9 @@
 import { FC } from "react";
 // Components
 import Join from "components/coffee-chat/join";
-import Room from "components/coffee-chat/room";
+import Chat from "components/coffee-chat/chat";
 // Hooks
-import {
-	useJoinSocket,
-	useChat,
-	useSession
-} from "hooks/coffee-chat";
+import { useJoinSocket, useChat, useSession } from "hooks/coffee-chat";
 // Websockets
 import io from "socket.io-client";
 // Styles
@@ -46,7 +42,12 @@ const CoffeChat: FC = () => {
 					{!userA.active ? (
 						<Join handleSignIn={handleSignIn} chatId="user-a" />
 					) : (
-						<Room handleRoom={roomUserA} chatId="user-a" />
+						<Chat
+							room={userA.room}
+							stateChat={chatUserA}
+							sendMessage={sendMessage}
+							chatId="user-a"
+						/>
 					)}
 				</div>
 				{test ? (
@@ -54,7 +55,12 @@ const CoffeChat: FC = () => {
 						{!userB.active ? (
 							<Join handleSignIn={handleSignIn} chatId="user-b" />
 						) : (
-							<Room handleRoom={roomUserB} chatId="user-b" />
+							<Chat
+								room={userB.room}
+								stateChat={chatUserB}
+								sendMessage={sendMessage}
+								chatId="user-b"
+							/>
 						)}
 					</div>
 				) : null}
