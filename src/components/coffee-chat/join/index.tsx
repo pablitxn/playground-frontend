@@ -1,5 +1,7 @@
 // React
 import { FC, useState } from "react";
+// Types
+import { IHandleSignIn } from "interfaces/coffee-chat";
 // AntD
 import { Select, Input, Button } from "antd";
 import { UserOutlined } from "@ant-design/icons";
@@ -7,8 +9,8 @@ import { UserOutlined } from "@ant-design/icons";
 import "./styles.less";
 
 interface IJoin {
-	handleSignIn: (data: any) => void;
-	chatId: string;
+	handleSignIn: IHandleSignIn;
+	chatId: "user-a" | "user-b";
 }
 
 const { Option } = Select;
@@ -58,12 +60,13 @@ const Join: FC<IJoin> = ({ handleSignIn, chatId }) => {
 					className="join__room"
 				>
 					<Option value="general">General</Option>
+					<Option value="music">Music</Option>
 					<Option value="javascript">Javascript</Option>
-					<Option value="music">Música</Option>
 				</Select>
 				<Button
 					className={"join__submit"}
 					type="primary"
+					htmlType="submit"
 					onClick={handleSubmit}
 					loading={loading}
 					disabled={name === "" ?? false}

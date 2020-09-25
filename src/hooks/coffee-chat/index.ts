@@ -1,10 +1,21 @@
 // React
 import { useEffect, useState } from "react";
+// Types
+import {
+	IUseJoinSocket,
+	IUseChat,
+	IUseSession,
+	IHandleSignIn,
+	IUser,
+	IMessage,
+	IHandleQuit
+} from "interfaces/coffee-chat";
 
-export const useJoinSocket = (user, socket) => {
+export const useJoinSocket: IUseJoinSocket = (user, socket) => {
 	useEffect(() => {
-		if (user.active) {
-			const { name, room } = user;
+		const { name, room, active } = user;
+
+		if (active) {
 			socket.emit("join", { name, room }, (error) => {
 				if (error) {
 					console.log(`socket error -> `, error);
@@ -14,29 +25,26 @@ export const useJoinSocket = (user, socket) => {
 	}, [user]);
 };
 
-export const useChat = (socket) => {
-	const [state, setState] = useState({
-		messages: [{ message: { user: "", text: "" } }],
-		users: [{ user: "" }]
+export const useChat: IUseChat = (socket) => {
+	const [messages, setMessages] = useState<IMessage[]>([]);
+	const [users, setUsers] = useState<IUser[]>([]);
+
+	socket.on("info-message", (message) => {
+		console.log("socket.on -> info-message", message);
+		setMessages((messages) => [...messages, message]);
+	});
+	socket.on("roomData", ({ users }) => {
+		setUsers({ ...users, users });
+	});
+	socket.on("new-message", (message) => {
+		console.log("socket.on -> new-message", message);
+		setMessages((messages) => [...messages, message]);
 	});
 
-	useEffect(() => {
-		socket.on("message", ({ user, text }) => {
-			const { messages: prevMessages } = state;
-			setState({
-				...state,
-				messages: [...prevMessages, { message: { text, user } }]
-			});
-		});
-		socket.on("roomData", ({ users }) => {
-			setState({ ...state, users });
-		});
-	}, []);
-
-	return state;
+	return { messages, users };
 };
 
-export const useSession = () => {
+export const useSession: IUseSession = () => {
 	const [state, setState] = useState({
 		test: false,
 		userA: {
@@ -46,14 +54,14 @@ export const useSession = () => {
 		},
 		userB: {
 			active: false,
-			room: "",
-			name: ""
+			name: "",
+			room: ""
 		}
 	});
 
 	const handleTest = () => setState({ ...state, test: !state.test });
 
-	const handleSignIn = (payload: any) => {
+	const handleSignIn: IHandleSignIn = (payload) => {
 		const { name, room, chatId } = payload;
 		chatId === "user-a" &&
 			setState({ ...state, userA: { active: true, name, room } });
@@ -62,7 +70,32 @@ export const useSession = () => {
 			setState({ ...state, userB: { active: true, name, room } });
 	};
 
+	const handleQuit: IHandleQuit = (chatId) => {
+		if (chatId === "user-a") {
+			setState((prevState) => ({
+				...prevState,
+				userA: {
+					active: false,
+					room: "",
+					name: ""
+				},
+				test: false
+			}));
+		}
+		if (chatId === "user-b") {
+			setState((prevState) => ({
+				...prevState,
+				userB: {
+					active: false,
+					room: "",
+					name: ""
+				},
+				test: false
+			}));
+		}
+	};
+
 	const { test, userA, userB } = state;
 
-	return { handleSignIn, handleTest, userA, userB, test };
+	return { handleSignIn, handleTest, userA, userB, test, handleQuit };
 };

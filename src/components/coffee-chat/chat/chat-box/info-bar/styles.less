@@ -6,13 +6,33 @@
 	border-radius: 4px 4px 0 0;
 	height: 60px;
 	width: 100%;
-	&__room {
-		flex: 0.5;
+	&__header {
 		display: flex;
+		flex-direction: row;
+		width: 100%;
 		align-items: center;
-		margin-left: 5%;
 		color: white;
-		flex-direction: column;
+	}
+	&__my-name {
+		width: 100px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: black;
+
+		@media screen and (max-width: 720px) {
+			display: none;
+		}
+	}
+	&__room {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		font-size: 1.1rem;
+		margin: 0;
 	}
 	&__actions {
 		display: flex;

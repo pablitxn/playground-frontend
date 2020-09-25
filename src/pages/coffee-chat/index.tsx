@@ -1,5 +1,7 @@
 // React
 import { FC } from "react";
+// Types
+import { ISendMessage } from "interfaces/coffee-chat";
 // Components
 import Join from "components/coffee-chat/join";
 import Chat from "components/coffee-chat/chat";
@@ -14,7 +16,14 @@ const WEBSOCKET_URL = "http://localhost:4420/";
 
 const CoffeChat: FC = () => {
 	// Handle view //
-	const { userA, userB, test, handleSignIn, handleTest } = useSession();
+	const {
+		userA,
+		userB,
+		test,
+		handleSignIn,
+		handleTest,
+		handleQuit
+	} = useSession();
 	// Websockets connection //
 	const socketUserA = io(WEBSOCKET_URL);
 	const socketUserB = io(WEBSOCKET_URL);
@@ -24,11 +33,19 @@ const CoffeChat: FC = () => {
 	const chatUserA = useChat(socketUserA);
 	const chatUserB = useChat(socketUserB);
 
-	const sendMessage = (payload) => {
-		const { chatId, message } = payload;
-		if (message !== "") {
-			chatId === "user-a" && socketUserA.emit("sendMessage", message);
-			chatId === "user-b" && socketUserB.emit("sendMessage", message);
+	const sendMessage: ISendMessage = (payload) => {
+		const { chatId, text } = payload;
+		if (text !== "") {
+			if (chatId === "user-a") {
+				const { room, name } = userA;
+				const $payload = { name, room, text };
+				socketUserA.emit("send-message", $payload);
+			}
+			if (chatId === "user-b") {
+				const { room, name } = userB;
+				const $payload = { name, room, text };
+				socketUserB.emit("send-message", $payload);
+			}
 		}
 	};
 
@@ -44,9 +61,11 @@ const CoffeChat: FC = () => {
 					) : (
 						<Chat
 							room={userA.room}
+							myName={userA.name}
 							stateChat={chatUserA}
 							sendMessage={sendMessage}
 							chatId="user-a"
+							handleQuit={handleQuit}
 						/>
 					)}
 				</div>
@@ -57,9 +76,11 @@ const CoffeChat: FC = () => {
 						) : (
 							<Chat
 								room={userB.room}
+								myName={userB.name}
 								stateChat={chatUserB}
 								sendMessage={sendMessage}
 								chatId="user-b"
+								handleQuit={handleQuit}
 							/>
 						)}
 					</div>

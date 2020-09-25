@@ -1,6 +1,7 @@
-// @ts-nochecks
 // React
 import { FC } from "react";
+// Types
+import { IMessage } from "interfaces/coffee-chat";
 // Components
 import Message from "./message";
 // Utils
@@ -9,17 +10,16 @@ import ScrollToBottom from "react-scroll-to-bottom";
 import "./styles.less";
 
 interface IMessages {
-	messages: any;
-	name: string;
+	messages: IMessage[];
+	myName: string;
 }
 
-const Messages: FC<IMessages> = ({ messages, name }) => (
+const Messages: FC<IMessages> = ({ messages, myName }) => (
 	<ScrollToBottom className="messages">
-		{messages?.map((element, i) => {
-			const { message } = element;
+		{messages.map((message, i) => {
 			return (
 				<div key={i}>
-					<Message message={message} />
+					<Message message={message} myName={myName} />
 				</div>
 			);
 		})}

@@ -1,24 +1,23 @@
 // React
-import { FC, useEffect } from "react";
+import { FC } from "react";
+// Types
+import { IMessage as $IMessage } from "interfaces/coffee-chat";
 // Utils
 import ReactEmoji from "react-emoji";
 // Styles
 import "./styles.less";
 
 interface IMessage {
-	message: {
-		text: string;
-		user: string;
-	};
-	name: string;
+	message: $IMessage;
+	myName: string;
 }
 
-const Message: FC<IMessage> = ({ message: { text, user }, name = "" }) => {
+const Message: FC<IMessage> = ({ message: { text, name }, myName }) => {
 	let isSentByCurrentUser = false;
 
-	const trimmedMyName = name.trim().toLowerCase();
+	const trimmedMyName = myName.trim().toLowerCase();
 
-	if (user === trimmedMyName) {
+	if (name === trimmedMyName) {
 		isSentByCurrentUser = true;
 	}
 
@@ -40,7 +39,7 @@ const Message: FC<IMessage> = ({ message: { text, user }, name = "" }) => {
 					{ReactEmoji.emojify(text)}
 				</p>
 			</div>
-			<p className="message__sent-text message__sent-text--start ">{user}</p>
+			<p className="message__sent-text message__sent-text--start ">{name}</p>
 		</div>
 	);
 };

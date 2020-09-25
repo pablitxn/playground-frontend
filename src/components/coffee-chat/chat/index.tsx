@@ -1,5 +1,12 @@
 // React
 import { FC } from "react";
+// Types
+import {
+	IStateChat,
+	ISendMessage,
+	IHandleQuit,
+	ChatId
+} from "interfaces/coffee-chat";
 // Components
 import ChatBox from "./chat-box";
 // import Panel from "./panel";
@@ -7,16 +14,33 @@ import ChatBox from "./chat-box";
 import "./styles.less";
 
 interface IChat {
-	stateChat: any;
-	chatId: string;
-	sendMessage: (payload: any) => void;
+	stateChat: IStateChat;
+	chatId: ChatId;
+	sendMessage: ISendMessage;
 	room: string;
+	myName: string;
+	handleQuit: IHandleQuit;
 }
 
-const Chat: FC<IChat> = ({ stateChat, sendMessage, room }) => {
+const Chat: FC<IChat> = ({
+	stateChat,
+	sendMessage,
+	room,
+	chatId,
+	myName,
+	handleQuit
+}) => {
+	const { messages } = stateChat;
 	return (
-		<div className="room">
-			<ChatBox room={room} stateChat={stateChat} sendMessage={sendMessage} />
+		<div className="chat">
+			<ChatBox
+				room={room}
+				chatId={chatId}
+				messages={messages}
+				sendMessage={sendMessage}
+				myName={myName}
+				handleQuit={handleQuit}
+			/>
 			{/* <Panel users={users} /> */}
 		</div>
 	);

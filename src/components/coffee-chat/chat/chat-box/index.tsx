@@ -1,5 +1,12 @@
 // React
 import { FC } from "react";
+// Types
+import {
+	IMessage,
+	ISendMessage,
+	IHandleQuit,
+	ChatId
+} from "interfaces/coffee-chat";
 // Components
 import Messages from "components/coffee-chat/chat/chat-box/messages";
 import InfoBar from "components/coffee-chat/chat/chat-box/info-bar";
@@ -8,21 +15,32 @@ import Input from "components/coffee-chat/chat/chat-box/input";
 import "./styles.less";
 
 interface IChatBox {
-	stateChat: {
-		messages: any;
-		name: string;
-	};
+	messages: IMessage[];
 	room: string;
-	sendMessage: (message: string) => void;
+	sendMessage: ISendMessage;
+	chatId: ChatId;
+	myName: string;
+	handleQuit: IHandleQuit;
 }
 
-const ChatBox: FC<IChatBox> = ({ stateChat, sendMessage, room }) => {
-	const { messages, name } = stateChat;
+const ChatBox: FC<IChatBox> = ({
+	messages,
+	sendMessage,
+	room,
+	chatId,
+	myName,
+	handleQuit
+}) => {
 	return (
 		<div className="chat-box">
-			<InfoBar room={room} />
-			<Messages messages={messages} name={name} />
-			<Input sendMessage={sendMessage} />
+			<InfoBar
+				room={room}
+				handleQuit={handleQuit}
+				chatId={chatId}
+				myName={myName}
+			/>
+			<Messages messages={messages} myName={myName} />
+			<Input sendMessage={sendMessage} chatId={chatId} />
 		</div>
 	);
 };
