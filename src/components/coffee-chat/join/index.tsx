@@ -16,29 +16,26 @@ const { Option } = Select;
 const Join: FC<IJoin> = ({ handleSignIn, chatId }) => {
 	const [state, setState] = useState({
 		name: "",
-		room: "",
-		chatId: chatId,
+		room: "general",
 		loading: false
 	});
 
-	const handleChange = (event) => {
-		const { value, name } = event.target;
-		setState({
-			...state,
-			[name]: value
-		});
+	const handleUser = (event) => {
+		const { value } = event.target;
+		setState({ ...state, name: value });
+	};
+
+	const handleRoom = (event) => {
+		const { value } = event.target;
+		setState({ ...state, room: value });
 	};
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		setState({ ...state, loading: true });
 		setTimeout(() => {
-			handleSignIn(state);
+			handleSignIn({ name, room, chatId });
 		}, 1500);
-	};
-
-	const handleRoom = (value) => {
-		setState({ ...state, room: value });
 	};
 
 	const { name, room, loading } = state;
@@ -50,6 +47,8 @@ const Join: FC<IJoin> = ({ handleSignIn, chatId }) => {
 				<Input
 					size="large"
 					placeholder="username"
+					value={name}
+					onChange={handleUser}
 					className="join__username"
 					prefix={<UserOutlined />}
 				/>
@@ -67,6 +66,7 @@ const Join: FC<IJoin> = ({ handleSignIn, chatId }) => {
 					type="primary"
 					onClick={handleSubmit}
 					loading={loading}
+					disabled={name === "" ?? false}
 				>
 					Sign In
 				</Button>
