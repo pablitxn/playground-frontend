@@ -51,9 +51,10 @@ const CoffeChat: FC = () => {
 
 	return (
 		<>
-			<button onClick={handleTest} className="coffee-chat__action-test">
-				test{console.log("sda", WEBSOCKET_URL)}
-			</button>
+			<button
+				onClick={handleTest}
+				className="coffee-chat__action-test"
+			></button>
 			<div className="coffee-chat">
 				<div className="coffee-chat__user-a">
 					{!userA.active ? (

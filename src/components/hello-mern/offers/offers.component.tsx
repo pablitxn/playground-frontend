@@ -7,8 +7,6 @@ import Offer from "./offer/offer.component";
 import { Carousel } from "antd";
 
 const Offers: FC<IOffers> = ({ offersData }) => {
-	useEffect(() => console.log(offersData), [offersData]);
-
 	return (
 		<div className="offers">
 			<Carousel dots autoplay dotPosition="left">

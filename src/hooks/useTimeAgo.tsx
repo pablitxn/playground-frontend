@@ -9,7 +9,6 @@ const DATE_UNITS = [
 ];
 
 const getDateDiffs = (timestamp) => {
-	console.log("getDateDiffs");
 	const now = Date.now();
 	const elapsed = (timestamp - now) / 1000;
 

@@ -30,14 +30,12 @@ export const useChat: IUseChat = (socket) => {
 	const [users, setUsers] = useState<IUser[]>([]);
 
 	socket.on("info-message", (message) => {
-		console.log("socket.on -> info-message", message);
 		setMessages((messages) => [...messages, message]);
 	});
 	socket.on("roomData", ({ users }) => {
 		setUsers({ ...users, users });
 	});
 	socket.on("new-message", (message) => {
-		console.log("socket.on -> new-message", message);
 		setMessages((messages) => [...messages, message]);
 	});
 
