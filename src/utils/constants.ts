@@ -12,6 +12,9 @@ const API_KEY_GOOGLE_MAPS = process.env.NEXT_PUBLIC_API_KEY_GOOGLE_MAPS;
 // Ecommerce
 const API_PLAYGROUND_BACKEND = process.env.NEXT_PUBLIC_API_PLAYGROUND_BACKEND;
 
+// Coffee Chat
+const WEBSOCKET_URL = process.env.NEXT_PUBLIC_WEBSOCKET_URL;
+
 export {
 	API_KEY_HEROKU,
 	GOOGLE_SITE_VERIFICATION,
@@ -19,10 +22,7 @@ export {
 	API_COVID_ALL,
 	API_COVID_BRIEF,
 	API_KEY_GOOGLE_MAPS,
-	API_PLAYGROUND_BACKEND
+	API_PLAYGROUND_BACKEND,
+	WEBSOCKET_URL
 };
 
-/**
- * TODO: restaurar api-keys, y volver privadas las
- * variables de la db y heroku
- */

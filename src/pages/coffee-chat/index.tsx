@@ -9,10 +9,10 @@ import Chat from "components/coffee-chat/chat";
 import { useJoinSocket, useChat, useSession } from "hooks/coffee-chat";
 // Websockets
 import io from "socket.io-client";
+// Constants
+import { WEBSOCKET_URL } from "utils/constants";
 // Styles
 import "./styles.less";
-
-const WEBSOCKET_URL = "http://localhost:4420/";
 
 const CoffeChat: FC = () => {
 	// Handle view //
@@ -52,7 +52,7 @@ const CoffeChat: FC = () => {
 	return (
 		<>
 			<button onClick={handleTest} className="coffee-chat__action-test">
-				test
+				test{console.log("sda", WEBSOCKET_URL)}
 			</button>
 			<div className="coffee-chat">
 				<div className="coffee-chat__user-a">
