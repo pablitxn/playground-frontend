@@ -1,0 +1,62 @@
+.message {
+	display: flex;
+	justify-content: flex-end;
+	padding: 0 5%;
+	margin-top: 3px;
+	&--end {
+		justify-content: flex-end;
+	}
+	&--start {
+		justify-content: flex-start;
+	}
+
+	&__sent-text {
+		display: flex;
+		align-items: center;
+		font-family: Helvetica;
+		color: #828282;
+		letter-spacing: 0.3px;
+
+		&--end {
+			padding-right: 10px;
+		}
+		&--start {
+			padding-left: 10px;
+		}
+	}
+
+	&__box {
+		background: #f3f3f3;
+		border-radius: 20px;
+		padding: 5px 20px;
+		color: white;
+		display: inline-block;
+		max-width: 80%;
+
+		&--blue {
+			background: #2979ff;
+		}
+		&--white {
+			color: white;
+		}
+	}
+
+	&__text {
+		width: 100%;
+		letter-spacing: 0;
+		float: left;
+		font-size: 1.1em;
+		word-wrap: break-word;
+
+		&--light {
+			background: #f3f3f3;
+		}
+		&--dark {
+			color: #353535;
+		}
+
+		img {
+			vertical-align: middle;
+		}
+	}
+}

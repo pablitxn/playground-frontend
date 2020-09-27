@@ -37,18 +37,6 @@ const services = {
 			};
 		} catch (err) {
 			console.log(err);
-			const test = async () => {
-				try {
-					const allData = await fetch(API_COVID_ALL);
-					const briefData = await fetch(API_COVID_BRIEF);
-
-					console.log("fetch paralelo", allData, briefData);
-					console.log(await allData.json());
-				} catch (err) {
-					console.log("fuaa mono", err);
-				}
-			};
-			test();
 		}
 	}
 };

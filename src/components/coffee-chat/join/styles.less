@@ -1,0 +1,45 @@
+.join {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	height: 100vh;
+	align-items: center;
+	background-color: #000000e8;
+
+	&__form {
+		width: 300px;
+		padding: 2rem;
+		background: rgba(56, 65, 190, 0.692);
+		border-radius: 10px;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.856);
+		display: flex;
+		flex-direction: column;
+		overflow-y: auto;
+		position: relative;
+	}
+
+	&__header {
+		color: white;
+		font-size: 2.5em;
+		padding-bottom: 10px;
+		border-bottom: 2px solid white;
+	}
+	&__username {
+		margin-bottom: 1rem;
+	}
+	&__room {
+		width: 100%;
+		margin-bottom: 1rem;
+	}
+
+	&__submit {
+		text-transform: uppercase;
+		border-radius: 20px;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+}
+
+button:focus {
+	outline: 0;
+}

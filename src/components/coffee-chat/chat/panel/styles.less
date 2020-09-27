@@ -1,0 +1,32 @@
+.panel {
+	display: flex;
+	flex-direction: column;
+	margin-left: 100px;
+	background-color: rgba(245, 245, 245, 0.699);
+	color: white;
+	height: 60%;
+
+	&__divider {
+		margin: 0;
+	}
+
+	&__title {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 0px;
+		width: 100%;
+		height: 3rem;
+		color: gray;
+		font-size: 1rem;
+	}
+
+	&__active-users {
+		display: flex;
+		padding: 10px;
+	}
+
+	@media (min-width: 320px) and (max-width: 1200px) {
+		display: none;
+	}
+}

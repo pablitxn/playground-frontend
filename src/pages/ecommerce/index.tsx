@@ -21,10 +21,6 @@ const Ecommerce: FC = () => {
 		getData();
 	}, []);
 
-	useEffect(() => {
-		console.log(state);
-	}, [state]);
-
 	return (
 		<div className="ecommerce">
 			{state ? (
