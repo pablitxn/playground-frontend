@@ -10,7 +10,7 @@ const services = {
 	async getProducts() {
 		try {
 			const { data: products } = await fetchModule(`${URL}/products`, token);
-
+			console.log("url", URL);
 			return products as IProduct[];
 		} catch (err) {
 			console.log(err);
@@ -23,7 +23,7 @@ const services = {
 				`${URL}/get-product/${id}`,
 				token
 			);
-
+			console.log("url", URL);
 			return product as IProduct;
 		} catch (err) {
 			console.log(err);
@@ -36,7 +36,7 @@ const services = {
 				`${URL}/categories`,
 				token
 			);
-
+			console.log("url", URL);
 			return categories as ICategory[];
 		} catch (err) {
 			console.log(err);
@@ -46,7 +46,7 @@ const services = {
 	async getOffers() {
 		try {
 			const { data: offers } = await fetchModule(`${URL}/offers`, token);
-
+			console.log("url", URL);
 			return offers as IOffer[];
 		} catch (err) {
 			console.log(err);

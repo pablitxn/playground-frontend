@@ -17,6 +17,7 @@ const Ecommerce: FC = () => {
 				categories
 			});
 		};
+
 		getData();
 	}, []);
 
