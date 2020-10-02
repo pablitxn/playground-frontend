@@ -1,7 +1,9 @@
 // Next
 import Head from "next/head";
 // Constants
-import { GOOGLE_SITE_VERIFICATION } from "utils/constants"
+import { GOOGLE_SITE_VERIFICATION } from "utils/constants";
+// Layouts
+import HomeLayout from "layouts/home";
 
 export default function Home() {
 	return (
@@ -15,9 +17,7 @@ export default function Home() {
 				/>
 			</Head>
 
-			<div>
-				<h2>hola bienvenide</h2>
-			</div>
+			<HomeLayout />
 		</>
 	);
 }
