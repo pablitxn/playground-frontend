@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Form, Col, Row, Input } from "antd";
 // import { BgColorsOutlined } from "@ant-design/icons";
 // Color Picker
-import { AlphaPicker, HuePicker } from "react-color";
+import { HuePicker } from "react-color";
 // Styles
 import "./styles.less";
 
@@ -20,19 +20,10 @@ const ColorsTab: FC<IColorsTab> = ({ onSetColor }) => {
 	const [replaceColor, setReplaceColor] = useState("#fffff");
 
 	const handleChroma = (color) => setChroma(color.hex);
-	const handleSensibility = (color) => setSensibility(color.rgb);
 	const handleReplaceColor = (color) => setReplaceColor(color.hex);
 
 	return (
 		<Form className="colors-form">
-			<Form.Item>
-				<h3>Seleccioná el color para el croma</h3>
-				<HuePicker color={chroma} onChange={handleChroma} />
-			</Form.Item>
-			<Form.Item>
-				<h3>Con cuánta sensibilidad buscamos el color</h3>
-				<AlphaPicker color={sensibility} onChange={handleSensibility} />
-			</Form.Item>
 			<Form.Item>
 				<h3>Seleccioná un color para reemplazar </h3>
 				<HuePicker color={replaceColor} onChange={handleReplaceColor} />

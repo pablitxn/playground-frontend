@@ -1,15 +1,9 @@
 // React
 import { FC, useState, useRef, useEffect } from "react";
-// Utils
-import { handleChroma } from "./utils";
 // Styles
 import "./styles.less";
-
-interface IState {
-	ctx: any;
-	canvasEl: any;
-	videoEl: any;
-}
+// Utils
+import { handleChroma, handleWebcamVideo } from "./utils";
 
 interface ICanvas {
 	className?: string;
@@ -17,58 +11,45 @@ interface ICanvas {
 }
 
 const Canvas: FC<ICanvas> = ({ className, handleCanvas }) => {
-	const [state, setState] = useState<IState>();
-	const [permisos, setPermisos] = useState(false);
-	const canvasRef = useRef(null);
-	const videoRef = useRef(null);
+	/** Definitions */
+	const [permission, setPermission] = useState(false);
 
-	const handleVideo = () => {
-		if (state) {
-			const { canvasEl, videoEl } = state;
-			canvasEl.width = videoEl.videoWidth;
-			canvasEl.height = videoEl.videoHeight;
-			setInterval(() => handleChroma(state, setState), 40);
-		}
-	};
+	/** Refs DOM elements */
+	const canvas = useRef(null);
+	const video = useRef(null);
 
+	/** Catching webcam data */
 	useEffect(() => {
-		if (canvasRef.current && videoRef.current) {
-			const context = canvasRef.current.getContext("2d");
-			const videoEl = videoRef.current;
-			const canvasEl = canvasRef.current;
-
-			setState({
-				...state,
-				ctx: context,
-				videoEl: videoEl,
-				canvasEl: canvasEl
-			});
+		if (video.current) {
+			handleWebcamVideo(video);
 		}
-	}, [canvasRef, videoRef]);
+	}, [video]);
 
-	useEffect(() => {
-		if (state) {
-			const { videoEl } = state;
-			const handleWebcamVideo = async () => {
-				try {
-					videoEl.srcObject = await navigator.mediaDevices.getUserMedia({
-						video: true
-					});
-				} catch (err) {
-					console.log(err);
-					// return await navigator.mediaDevices.getUserMedia({ video: false });
-				}
-			};
-			handleWebcamVideo();
-		}
-	});
+	/**
+	 * useEffect(() => {
+	 * 	// actualizar permisos para mostrar seccion canvas
+	 * // handler / listener
+	 * setPermisos(true)
+	 * }, [permisos])
+	 */
+
+	// useEffect(() => {
+	// 	if (video.current && video.current.srcObject) {
+	// 		setPermission(true);
+	// 	} else {
+	// 		setPermission(false);
+	// 	}
+	// }, [video]);
+
+	/** Handlers */
+	const handleVideo = () => setInterval(() => handleChroma(canvas, video), 20);
 
 	return (
 		<div className="canvas">
-			{permisos ? (
+			{true ? (
 				<>
-					<video onLoadedData={handleVideo} ref={videoRef} autoPlay></video>
-					<canvas ref={canvasRef}></canvas>
+					<canvas ref={canvas}></canvas>
+					<video onLoadedData={handleVideo} ref={video} autoPlay></video>
 				</>
 			) : (
 				<span>esperando permisos...</span>
