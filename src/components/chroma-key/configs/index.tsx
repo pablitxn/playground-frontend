@@ -1,5 +1,6 @@
 // Types
 import { FC } from "react";
+import { ChromaColor, IHandleConfigs } from "interfaces/chroma-key";
 // Hooks
 import { useState } from "react";
 // Components
@@ -16,24 +17,26 @@ import "./styles.less";
 const { TabPane } = Tabs;
 
 interface IChromaConfigs {
-	className?: string;
-	handleConfigs: () => void;
+	handleConfigs: IHandleConfigs;
+	chromaColor: ChromaColor;
 }
 
-const ChromaConfigs: FC<IChromaConfigs> = ({ className, handleConfigs }) => {
+const ChromaConfigs: FC<IChromaConfigs> = ({ handleConfigs, chromaColor }) => {
+	/** Tabs */
 	const [currentTab, setCurrentTab] = useState("colors");
+	const handleTab = (value: string) => setCurrentTab(value);
 
-	const handleTab = (value) => setCurrentTab(value);
-
-	const handleColor = () => {
-		// handleConfigs()
-	};
+	/** Handle Configs */
+	const { handleBackgroundColor } = handleConfigs;
 
 	return (
-		<div className={`chroma-configs ${className}`}>
+		<div className="chroma-configs">
 			<Tabs defaultActiveKey="1" onChange={handleTab} activeKey={currentTab}>
 				<TabPane tab="Colores" key="colors">
-					<ColorsTab onSetColor={handleColor} />
+					<ColorsTab
+						handleBackgroundColor={handleBackgroundColor}
+						chromaColor={chromaColor}
+					/>
 				</TabPane>
 				<TabPane tab="Imagenes" key="images">
 					<ImagesTab />

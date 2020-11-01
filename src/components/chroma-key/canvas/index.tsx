@@ -1,48 +1,26 @@
 // React
-import { FC, useState, useRef, useEffect } from "react";
+import { FC, useRef } from "react";
+// Types
+import { IChromaConfigs } from "interfaces/chroma-key";
+// Hooks
+import { useColorControler } from "hooks/chroma-key";
 // Styles
 import "./styles.less";
-// Utils
-import { handleChroma, handleWebcamVideo } from "./utils";
 
 interface ICanvas {
-	className?: string;
-	handleCanvas: () => void;
+	chromaConfig: IChromaConfigs;
 }
 
-const Canvas: FC<ICanvas> = ({ className, handleCanvas }) => {
+const Canvas: FC<ICanvas> = ({ chromaConfig }) => {
 	/** Definitions */
-	const [permission, setPermission] = useState(false);
+	const { chromaColor } = chromaConfig;
 
 	/** Refs DOM elements */
 	const canvas = useRef(null);
 	const video = useRef(null);
 
-	/** Catching webcam data */
-	useEffect(() => {
-		if (video.current) {
-			handleWebcamVideo(video);
-		}
-	}, [video]);
-
-	/**
-	 * useEffect(() => {
-	 * 	// actualizar permisos para mostrar seccion canvas
-	 * // handler / listener
-	 * setPermisos(true)
-	 * }, [permisos])
-	 */
-
-	// useEffect(() => {
-	// 	if (video.current && video.current.srcObject) {
-	// 		setPermission(true);
-	// 	} else {
-	// 		setPermission(false);
-	// 	}
-	// }, [video]);
-
 	/** Handlers */
-	const handleVideo = () => setInterval(() => handleChroma(canvas, video), 20);
+	const handleVideo = useColorControler(canvas, video, chromaColor);
 
 	return (
 		<div className="canvas">

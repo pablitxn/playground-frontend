@@ -1,5 +1,7 @@
 // React
 import { FC } from "react";
+// Types
+import { IHandleConfigs, IChromaConfigs } from "interfaces/chroma-key";
 // Components
 import Canvas from "components/chroma-key/canvas";
 import ChromaConfigs from "components/chroma-key/configs";
@@ -7,15 +9,18 @@ import ChromaConfigs from "components/chroma-key/configs";
 import "./styles.less";
 
 interface IChromaLayout {
-	handleConfigs: () => void;
-	handleCanvas: () => void;
+	handleConfigs: IHandleConfigs;
+	chromaConfig: IChromaConfigs;
 }
 
-const ChromaLayout: FC<IChromaLayout> = ({ handleCanvas, handleConfigs }) => {
+const ChromaLayout: FC<IChromaLayout> = ({ chromaConfig, handleConfigs }) => {
 	return (
 		<div className="chroma-key">
-			<ChromaConfigs handleConfigs={handleConfigs} />
-			<Canvas handleCanvas={handleCanvas} />
+			<ChromaConfigs
+				handleConfigs={handleConfigs}
+				chromaColor={chromaConfig.chromaColor}
+			/>
+			<Canvas chromaConfig={chromaConfig} />
 		</div>
 	);
 };

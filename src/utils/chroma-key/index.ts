@@ -1,3 +1,5 @@
+export * from "./chroma";
+
 export function getBase64(file) {
 	return new Promise((resolve, reject) => {
 		const reader = new FileReader();
@@ -7,6 +9,7 @@ export function getBase64(file) {
 	});
 }
 
+/** Initial States */
 export const initialState = {
 	previewVisible: false,
 	previewImage: "",
@@ -46,4 +49,21 @@ export const initialState = {
 			status: "error"
 		}
 	]
+};
+
+export const initialStateChroma = {
+	backgroundImage: undefined,
+	chromaColor: {
+		r: 0,
+		g: 0,
+		b: 255,
+		a: 1
+	}
+};
+
+export const initialColor = {
+	r: 0,
+	g: 0,
+	b: 255,
+	a: 1
 };

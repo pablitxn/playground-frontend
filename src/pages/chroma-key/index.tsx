@@ -1,20 +1,45 @@
 // React
-import { FC } from "react";
+import { FC, useState } from "react";
+// Types
+import { ChromaColor } from "interfaces/chroma-key";
 // Layouts
 import ChromaKeyLayout from "layouts/chroma-key";
 // Styles
 import "./styles.less";
+// Utils
+import { initialStateChroma, initialColor } from "utils/chroma-key";
 
 const ChromaView: FC = () => {
-	const handleCanvas = () => {};
-	const handleConfigs = () => {};
+	// const [chromaConfig, setChromaConfig] = useState(initialStateChroma);
+
+	/** test */
+	const [color, setColor] = useState(initialColor);
+
+	/** Handle Configs */
+	const handleBackgroundImage = (image: any) => {
+		// setChromaConfig((prevState) => ({
+		// 	...prevState,
+		// 	backgroundImage: image
+		// }));
+	};
+
+	const handleBackgroundColor = (newColor: ChromaColor) => setColor(newColor);
+
+	const handleConfigs = {
+		handleBackgroundColor,
+		handleBackgroundImage
+	};
+	const chromaConfig = {
+		chromaColor: color,
+		backgroundImage: undefined
+	};
 
 	return (
 		<div className="chroma-view">
 			<div className="card">
 				<ChromaKeyLayout
-					handleCanvas={handleCanvas}
 					handleConfigs={handleConfigs}
+					chromaConfig={chromaConfig}
 				/>
 			</div>
 		</div>
@@ -22,3 +47,10 @@ const ChromaView: FC = () => {
 };
 
 export default ChromaView;
+
+// const handleBackgroundColor = (color: ChromaColor) => {
+// 	setChromaConfig((prevState) => ({
+// 		...prevState,
+// 		chromaColor: color
+// 	}));
+// };
