@@ -3,7 +3,7 @@ import { FC, useRef } from "react";
 // Types
 import { IChromaConfigs } from "interfaces/chroma-key";
 // Hooks
-import { useColorControler } from "hooks/chroma-key";
+import { useChroma } from "hooks/chroma-key";
 // Styles
 import "./styles.less";
 
@@ -20,7 +20,7 @@ const Canvas: FC<ICanvas> = ({ chromaConfig }) => {
 	const video = useRef(null);
 
 	/** Handlers */
-	const handleVideo = useColorControler(canvas, video, chromaColor);
+	const handleVideo = useChroma(canvas, video, chromaColor);
 
 	return (
 		<div className="canvas">

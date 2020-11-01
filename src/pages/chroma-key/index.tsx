@@ -7,24 +7,19 @@ import ChromaKeyLayout from "layouts/chroma-key";
 // Styles
 import "./styles.less";
 // Utils
-import { initialStateChroma, initialColor } from "utils/chroma-key";
+import { initialColor } from "utils/chroma-key";
 
 const ChromaView: FC = () => {
-	// const [chromaConfig, setChromaConfig] = useState(initialStateChroma);
-
-	/** test */
+	/** Definitions */
 	const [color, setColor] = useState(initialColor);
 
 	/** Handle Configs */
 	const handleBackgroundImage = (image: any) => {
-		// setChromaConfig((prevState) => ({
-		// 	...prevState,
-		// 	backgroundImage: image
-		// }));
+		//
 	};
-
 	const handleBackgroundColor = (newColor: ChromaColor) => setColor(newColor);
 
+	/** Props */
 	const handleConfigs = {
 		handleBackgroundColor,
 		handleBackgroundImage
@@ -47,10 +42,3 @@ const ChromaView: FC = () => {
 };
 
 export default ChromaView;
-
-// const handleBackgroundColor = (color: ChromaColor) => {
-// 	setChromaConfig((prevState) => ({
-// 		...prevState,
-// 		chromaColor: color
-// 	}));
-// };

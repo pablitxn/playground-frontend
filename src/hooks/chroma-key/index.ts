@@ -1,7 +1,18 @@
-import { useState, useEffect } from "react";
+// React
+import { useState, useEffect, MutableRefObject } from "react";
+// Types
+import { ChromaColor } from "interfaces/chroma-key";
+// Utils
 import { handleChroma, handleWebcamVideo } from "utils/chroma-key";
 
-export const useColorControler = (canvas, video, chromaColor) => {
+type HandleVideo = () => void;
+type IUseChroma = (
+	canvas: MutableRefObject<HTMLCanvasElement>,
+	video: MutableRefObject<HTMLVideoElement>,
+	chromaColor: ChromaColor
+) => HandleVideo;
+
+export const useChroma: IUseChroma = (canvas, video, chromaColor) => {
 	/** Definitions */
 	const [state, setState] = useState({
 		intervalA: undefined,
@@ -14,7 +25,7 @@ export const useColorControler = (canvas, video, chromaColor) => {
 			...prevState,
 			intervalA: setInterval(() => {
 				handleChroma(canvas, video, chromaColor);
-			}, 2000)
+			}, 30)
 		}));
 	};
 
@@ -28,14 +39,13 @@ export const useColorControler = (canvas, video, chromaColor) => {
 	/** Change color in chroma */
 	useEffect(() => {
 		console.log("color picked", chromaColor);
-		/** Test */
 		if (intervalA) {
 			clearInterval(intervalA);
 			setState({
 				intervalA: undefined,
 				intervalB: setInterval(() => {
 					handleChroma(canvas, video, chromaColor);
-				}, 2000)
+				}, 30)
 			});
 		}
 
