@@ -25,7 +25,7 @@ export const useChroma: IUseChroma = (canvas, video, chromaColor) => {
 			...prevState,
 			intervalA: setInterval(() => {
 				handleChroma(canvas, video, chromaColor);
-			}, 30)
+			}, 25)
 		}));
 	};
 
@@ -54,7 +54,7 @@ export const useChroma: IUseChroma = (canvas, video, chromaColor) => {
 			setState({
 				intervalA: setInterval(() => {
 					handleChroma(canvas, video, chromaColor);
-				}, 2000),
+				}, 30),
 				intervalB: undefined
 			});
 		}

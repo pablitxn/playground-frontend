@@ -6,35 +6,21 @@ import { ChromaColor } from "interfaces/chroma-key";
 import ChromaKeyLayout from "layouts/chroma-key";
 // Styles
 import "./styles.less";
-// Utils
-import { initialColor } from "utils/chroma-key";
 
 const ChromaView: FC = () => {
 	/** Definitions */
-	const [color, setColor] = useState(initialColor);
+	const [color, setColor] = useState<ChromaColor>("green");
 
 	/** Handle Configs */
-	const handleBackgroundImage = (image: any) => {
-		//
-	};
+	const handleBackgroundImage = (image: any) => {};
 	const handleBackgroundColor = (newColor: ChromaColor) => setColor(newColor);
-
-	/** Props */
-	const handleConfigs = {
-		handleBackgroundColor,
-		handleBackgroundImage
-	};
-	const chromaConfig = {
-		chromaColor: color,
-		backgroundImage: undefined
-	};
 
 	return (
 		<div className="chroma-view">
 			<div className="card">
 				<ChromaKeyLayout
-					handleConfigs={handleConfigs}
-					chromaConfig={chromaConfig}
+					handleConfigs={{ handleBackgroundColor, handleBackgroundImage }}
+					chromaConfig={{ chromaColor: color, backgroundImage: undefined }}
 				/>
 			</div>
 		</div>
