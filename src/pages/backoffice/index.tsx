@@ -1,17 +1,35 @@
 // Types
-import { FC } from "react";
+import { FC, useState } from "react";
 // Components
-import BackofficeLayout from "layouts/backoffice/backoffice.layout";
+import AdminLayout from "layouts/backoffice/admin";
+import SignInLayout from "layouts/backoffice/sign-in";
+// Styles
+import "./styles.less";
 
 const Backoffice: FC = () => {
+	/** Definitions */
+	const [state, setState] = useState({
+		isLogged: false
+	});
+	const { isLogged } = state;
+
+	/** Handlers */
 	const handleCreateOffer = (formData) => {
-		console.log(formData)
+		console.log(formData);
+	};
+
+	const handleSignIn = () => {
+		setState((prevState) => ({ isLogged: !prevState.isLogged }));
 	};
 
 	return (
-		<>
-				<BackofficeLayout handleCreateOffer={handleCreateOffer} />
-		</>
+		<div className="backoffice">
+			{isLogged ? (
+				<AdminLayout handleCreateOffer={handleCreateOffer} />
+			) : (
+				<SignInLayout handleSignIn={handleSignIn} />
+			)}
+		</div>
 	);
 };
 
