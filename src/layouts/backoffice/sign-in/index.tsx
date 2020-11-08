@@ -56,7 +56,7 @@ const SignInLayout: FC<ISignInLayout> = ({ handleSignIn }) => {
 				</Form.Item>
 
 				<Form.Item>
-					<Button type="primary" htmlType="submit">
+					<Button type="primary" htmlType="submit" onClick={handleClick}>
 						Submit
 					</Button>
 				</Form.Item>
