@@ -14,11 +14,19 @@ export function getBase64(file) {
 }
 
 /** Modify Pixels */
-type IModifyPixels = (color: ChromaColor, imageData: any) => any;
-export const modifyPixels: IModifyPixels = (color, imageData) => {
+type IModifyPixels = (
+	color: ChromaColor,
+	chromaIntensity: number,
+	imageData: any
+) => any;
+export const modifyPixels: IModifyPixels = (
+	color,
+	chromaIntensity,
+	imageData
+) => {
 	/** Definitions */
 	const dataLength = imageData.data.length / 4;
-
+	// console.log("intensity", chromaIntensity);
 	// TODO: Traducir -> Iteramos los pixeles
 	for (let i = 0; i < dataLength; i++) {
 		// solo itera los pixeles que tengo, pero cada 4
@@ -30,17 +38,17 @@ export const modifyPixels: IModifyPixels = (color, imageData) => {
 
 		switch (color) {
 			case "red":
-				if (red > 90 && red > blue && red > green) {
+				if (red > chromaIntensity && red > blue && red > green) {
 					imageData.data[offset + 3] = 0;
 				}
 				break;
 			case "green":
-				if (green > 90 && green > red && green > blue) {
+				if (green > chromaIntensity && green > red && green > blue) {
 					imageData.data[offset + 3] = 0;
 				}
 				break;
 			case "blue":
-				if (blue > 90 && blue > red && blue > green) {
+				if (blue > chromaIntensity && blue > red && blue > green) {
 					imageData.data[offset + 3] = 0;
 				}
 				break;
@@ -54,10 +62,16 @@ export const modifyPixels: IModifyPixels = (color, imageData) => {
 type HandleChroma = (
 	canvas: MutableRefObject<HTMLCanvasElement>,
 	video: MutableRefObject<HTMLVideoElement>,
-	chromaColor: ChromaColor
+	chromaColor: ChromaColor,
+	chromaIntensity: number
 ) => void;
 
-export const handleChroma: HandleChroma = (canvas, video, chromaColor) => {
+export const handleChroma: HandleChroma = (
+	canvas,
+	video,
+	chromaColor,
+	chromaIntensity
+) => {
 	/** Definitions */
 	const newContext = canvas.current.getContext("2d");
 
@@ -79,7 +93,7 @@ export const handleChroma: HandleChroma = (canvas, video, chromaColor) => {
 	);
 
 	/** Making chroma key */
-	const newImage = modifyPixels(chromaColor, imageData);
+	const newImage = modifyPixels(chromaColor, chromaIntensity, imageData);
 	// Insert new image in canvas context (with typescript problems omited)
 	newContext.putImageData(newImage, 0, 0);
 	// @ts-ignore

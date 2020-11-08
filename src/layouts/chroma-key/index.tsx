@@ -18,7 +18,7 @@ const ChromaLayout: FC<IChromaLayout> = ({ chromaConfig, handleConfigs }) => {
 		<div className="chroma-key">
 			<ChromaConfigs
 				handleConfigs={handleConfigs}
-				chromaColor={chromaConfig.chromaColor}
+				chromaConfig={chromaConfig}
 			/>
 			<Canvas chromaConfig={chromaConfig} />
 		</div>

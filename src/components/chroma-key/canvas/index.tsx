@@ -13,14 +13,14 @@ interface ICanvas {
 
 const Canvas: FC<ICanvas> = ({ chromaConfig }) => {
 	/** Definitions */
-	const { chromaColor } = chromaConfig;
+	const { chromaColor, chromaIntensity } = chromaConfig;
 
 	/** Refs DOM elements */
 	const canvas = useRef(null);
 	const video = useRef(null);
 
 	/** Handlers */
-	const handleVideo = useChroma(canvas, video, chromaColor);
+	const handleVideo = useChroma(canvas, video, chromaColor, chromaIntensity);
 
 	return (
 		<div className="canvas">

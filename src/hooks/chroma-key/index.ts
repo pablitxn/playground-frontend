@@ -9,10 +9,16 @@ type HandleVideo = () => void;
 type IUseChroma = (
 	canvas: MutableRefObject<HTMLCanvasElement>,
 	video: MutableRefObject<HTMLVideoElement>,
-	chromaColor: ChromaColor
+	chromaColor: ChromaColor,
+	chromaIntensity: number
 ) => HandleVideo;
 
-export const useChroma: IUseChroma = (canvas, video, chromaColor) => {
+export const useChroma: IUseChroma = (
+	canvas,
+	video,
+	chromaColor,
+	chromaIntensity
+) => {
 	/** Definitions */
 	const [state, setState] = useState({
 		intervalA: undefined,
@@ -21,10 +27,11 @@ export const useChroma: IUseChroma = (canvas, video, chromaColor) => {
 	const { intervalA, intervalB } = state;
 
 	const handleVideo = () => {
+		// TODO: revistar esto. es normal que haya 3 handleChroma ?
 		setState((prevState) => ({
 			...prevState,
 			intervalA: setInterval(() => {
-				handleChroma(canvas, video, chromaColor);
+				handleChroma(canvas, video, chromaColor, chromaIntensity);
 			}, 25)
 		}));
 	};
@@ -38,13 +45,13 @@ export const useChroma: IUseChroma = (canvas, video, chromaColor) => {
 
 	/** Change color in chroma */
 	useEffect(() => {
-		console.log("color picked", chromaColor);
+		// console.log("color picked", chromaColor);
 		if (intervalA) {
 			clearInterval(intervalA);
 			setState({
 				intervalA: undefined,
 				intervalB: setInterval(() => {
-					handleChroma(canvas, video, chromaColor);
+					handleChroma(canvas, video, chromaColor, chromaIntensity);
 				}, 30)
 			});
 		}
@@ -53,12 +60,12 @@ export const useChroma: IUseChroma = (canvas, video, chromaColor) => {
 			clearInterval(intervalB);
 			setState({
 				intervalA: setInterval(() => {
-					handleChroma(canvas, video, chromaColor);
+					handleChroma(canvas, video, chromaColor, chromaIntensity);
 				}, 30),
 				intervalB: undefined
 			});
 		}
-	}, [chromaColor]);
+	}, [chromaColor, chromaIntensity]);
 
 	return handleVideo;
 };
