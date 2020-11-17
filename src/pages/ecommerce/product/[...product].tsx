@@ -28,7 +28,7 @@ const Product: FC = () => {
 	}, []);
 
 	return (
-		<MainLayout title={`React eCommerce - ${"sd"}`}>
+		<MainLayout title={`Playground eCommerce - ${product.name}`}>
 			<SingleProductRenderer
 				product={product}
 				loading={isLoading}

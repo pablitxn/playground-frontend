@@ -61,7 +61,7 @@ const Cart = () => {
 			<SkeletonListContext.Provider
 				value={{ xl: 14, lg: 24, md: 24, sm: 24, xs: 24 }}
 			>
-				<MainLayout title={`React eCommerce - Cart`}>
+				<MainLayout title={`Playground eCommerce - Cart`}>
 					<Row className="cart-wrapper boxed-width">
 						<Col xl={14} lg={24} md={24} sm={24} xs={24}>
 							<CartListRenderer

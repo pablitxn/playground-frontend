@@ -31,7 +31,9 @@ const CategoryItem: FC<ICategoryItem> = ({ category }) => {
 					className="category-item-card"
 					hoverable
 					cover={
-						featured_image ? <img alt="example" src={featured_image} /> : null
+						featured_image ? (
+							<img alt="category-image" src={featured_image} />
+						) : null
 					}
 				>
 					<Meta title={name} description={description} />

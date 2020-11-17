@@ -16,7 +16,7 @@ const EcommerceLayout: FC<IEcommerceLayout> = ({ products, categories }) => {
 	return (
 		<MainLayout title="Playground eCommerce">
 			<MainCarousel />
-			<SimpleHeading title="Categorías" />
+			<SimpleHeading title="Categories" />
 			<CategoryListRenderer
 				categories={categories}
 				breakpoints={{
@@ -27,7 +27,7 @@ const EcommerceLayout: FC<IEcommerceLayout> = ({ products, categories }) => {
 					xs: 24
 				}}
 			/>
-			<SimpleHeading title="Productos en oferta" level={2} />
+			<SimpleHeading title="¡Hot sale!" level={2} />
 			<ProductListRenderer
 				skeleton
 				skeletonCount={4}

@@ -4,13 +4,14 @@ import { FC, useEffect, useState } from "react";
 import EcommerceLayout from "layouts/ecommerce";
 // Services
 import services from "services/ecommerce";
+import Spinner from "components/ecommerce/Spinner/Spinner";
 
 const Ecommerce: FC = () => {
 	const [state, setState] = useState<any>();
 
 	useEffect(() => {
 		const getData = async () => {
-			const products = await services.getProducts();
+			const products = await services.getOffers();
 			const categories = await services.getCategories();
 			setState({
 				products,
@@ -29,7 +30,9 @@ const Ecommerce: FC = () => {
 					categories={state.categories}
 				/>
 			) : (
-				<span>loading...</span>
+				<div style={{ marginTop: "5rem" }}>
+					<Spinner />
+				</div>
 			)}
 		</div>
 	);

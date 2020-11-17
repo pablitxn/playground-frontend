@@ -3,7 +3,6 @@ import React, { FC, useEffect, useState } from "react";
 // AntD
 import { Menu } from "antd";
 // Components
-import CreateOffers from "components/hello-mern/create-offers/create-offers.component";
 import Product from "./products";
 import AddProduct from "./add-product";
 import AddOffer from "./add-offer";
@@ -69,8 +68,10 @@ const AdminLayout: FC<IAdminLayout> = ({ handleCreateOffer }) => {
 			</div>
 			<div className="bff-admin__content">
 				{section === "products" && <Product products={[]} />}
-				{section === "add-product" && <AddProduct products={[]} />}
-				{section === "add-offer" && <AddOffer products={[]} />}
+				{section === "add-product" && (
+					<AddProduct handleAddProduct={() => {}} />
+				)}
+				{section === "add-offer" && <AddOffer handleAddProduct={() => {}} />}
 				{isConfigTab && <Configs tab={section} />}
 			</div>
 		</div>
