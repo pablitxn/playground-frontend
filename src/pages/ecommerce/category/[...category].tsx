@@ -1,13 +1,15 @@
 // React
 import { useEffect, useState } from "react";
 // Types
-import { IProduct } from "interfaces/ecommerce";
+import { ICategory, IProduct } from "interfaces/ecommerce";
 // Components
 import MainLayout from "components/ecommerce/MainLayout/MainLayout";
 import ProductListRenderer from "components/ecommerce/ProductList/ProductListRenderer";
 import MainPageHeader from "components/ecommerce/MainPageHeader/MainPageHeader";
 // Router
 import { useRouter } from "next/router";
+// Utils
+import { getProductsAPI } from "./utils";
 
 const Category = () => {
 	const [isLoading, setLoading] = useState(false);
@@ -26,19 +28,37 @@ const Category = () => {
 			images: [{ src: "", _id: "", alt: "" }]
 		}
 	]);
+	const [category, setCategory] = useState<ICategory>({
+		_id: "",
+		name: "",
+		slug: "",
+		description: "",
+		parent: 20,
+		count: 200,
+		image: { src: "" },
+		products: products
+	});
 
 	const router = useRouter();
 	const { category: categoryParam } = router.query;
-	const category_id = categoryParam ? categoryParam[0] : null;
-	const currentCategoryName = categoryParam ? categoryParam[1] : "...";
+	const category_id = categoryParam
+		? categoryParam[0]
+		: "5f5f7ba86a07a33166d5c298";
 
 	const API_PROD_CATEGORIES = `http://localhost:4200/api/ecommerce/category/${category_id}`;
 
 	useEffect(() => {
 		const getProductsByCategory = async () => {
 			try {
-				const productsByCategory = await fetch(API_PROD_CATEGORIES);
-				const productsFormated = await productsByCategory.json();
+				const categoryByQuery = await fetch(API_PROD_CATEGORIES);
+				const categoryData = await categoryByQuery.json();
+				categoryData && setCategory(categoryData.data);
+				console.log(categoryData.data);
+
+				// const productsAPI = getProductsAPI(categoryData.data.slug);
+				// const productsByCategory = await fetch(productsAPI);
+				// const productsFormated = await productsByCategory.json();
+				// console.log(productsFormated.data);
 				// setProducts(productsFormated.data);
 			} catch (err) {
 				console.log(err);
@@ -48,11 +68,8 @@ const Category = () => {
 	}, []);
 
 	return (
-		<MainLayout title={`React eCommerce - ${currentCategoryName} category`}>
-			<MainPageHeader
-				title={`Category: ${currentCategoryName}`}
-				subTitle={"fix me"}
-			/>
+		<MainLayout title={`Playground eCommerce - ${category.name}`}>
+			<MainPageHeader title={category.name} />
 			<ProductListRenderer
 				spin={isLoading}
 				products={products}

@@ -20,7 +20,7 @@ const MainNav: FC = () => {
 				<Col span={2}>
 					<div className="left-nav-items">
 						<Link href="/ecommerce">
-							<a>Home</a>
+							<a>Inicio</a>
 						</Link>
 					</div>
 				</Col>
@@ -28,16 +28,10 @@ const MainNav: FC = () => {
 					<Link href="/ecommerce/cart">
 						<div>
 							<Badge
-								// count={totalItems}
-								style={{
-									backgroundColor: "#fff",
-									color: "#999",
-									boxShadow: "0 0 0 1px #d9d9d9 inset"
-								}}
+								count={<span className="count-badget">2</span>}
+								className="cart-badget"
 							>
-								<ShoppingCartOutlined
-									style={{ fontSize: 25, cursor: "pointer" }}
-								/>
+								<ShoppingCartOutlined className="cart-icon" />
 							</Badge>
 						</div>
 					</Link>

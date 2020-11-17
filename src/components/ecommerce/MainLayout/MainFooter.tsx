@@ -7,8 +7,14 @@ const { Footer } = Layout;
 
 const MainFooter: FC = () => {
 	return (
-		<Footer style={{ textAlign: "center", marginTop: 50 }}>
-			ecommerce - playground - 2020
+		<Footer
+			style={{
+				textAlign: "center",
+				marginTop: 50,
+				backgroundColor: "lightgray"
+			}}
+		>
+			playground - 2020
 		</Footer>
 	);
 };

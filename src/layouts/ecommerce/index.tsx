@@ -14,9 +14,9 @@ interface IEcommerceLayout {
 
 const EcommerceLayout: FC<IEcommerceLayout> = ({ products, categories }) => {
 	return (
-		<MainLayout title="React eCommerce">
+		<MainLayout title="Playground eCommerce">
 			<MainCarousel />
-			<SimpleHeading title="Product Categories" />
+			<SimpleHeading title="Categorías" />
 			<CategoryListRenderer
 				categories={categories}
 				breakpoints={{
@@ -27,7 +27,7 @@ const EcommerceLayout: FC<IEcommerceLayout> = ({ products, categories }) => {
 					xs: 24
 				}}
 			/>
-			<SimpleHeading title="On sale Products" level={2} />
+			<SimpleHeading title="Productos en oferta" level={2} />
 			<ProductListRenderer
 				skeleton
 				skeletonCount={4}
