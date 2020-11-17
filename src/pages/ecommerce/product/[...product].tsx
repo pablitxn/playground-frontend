@@ -11,8 +11,20 @@ import { useRouter } from "next/router";
 import services from "services/ecommerce";
 
 const Product: FC = () => {
-	const [isLoading, setLoading] = useState(false);
-	const [product, setProduct] = useState<IProduct>();
+	const [isLoading, setLoading] = useState(true);
+	const [product, setProduct] = useState<IProduct>({
+		_id: "",
+		name: "",
+		slug: "",
+		updatedAt: "",
+		description: "",
+		price: "",
+		regular_price: "",
+		sale_price: "",
+		on_sale: false,
+		related_ids: [1, 2],
+		images: [{ src: "", _id: "", alt: "" }]
+	});
 
 	const router = useRouter();
 	const { product: productParam } = router.query;
@@ -22,13 +34,14 @@ const Product: FC = () => {
 		const getProduct = async () => {
 			const productData = await services.getProductById(productId);
 			setProduct(productData);
+			setLoading((prev) => !prev);
 		};
 
 		getProduct();
 	}, []);
 
 	return (
-		<MainLayout title={`Playground eCommerce - ${product.name}`}>
+		<MainLayout title={`Playground eCommerce - ${product?.name ?? ""}`}>
 			<SingleProductRenderer
 				product={product}
 				loading={isLoading}
