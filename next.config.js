@@ -1,4 +1,9 @@
 /* eslint-disable */
+const withTM = require("next-transpile-modules")([
+	"drei",
+	"three",
+	"postprocessing"
+]);
 const withLess = require("@zeit/next-less");
 const lessToJS = require("less-vars-to-js");
 const fs = require("fs");
@@ -11,6 +16,8 @@ const themeVariables = lessToJS(
 		"utf8"
 	)
 );
+
+module.exports = withTM();
 
 module.exports = withLess({
 	lessLoaderOptions: {

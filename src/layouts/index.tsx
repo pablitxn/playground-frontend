@@ -37,16 +37,6 @@ const AppLayout: FC<IAppLayout> = ({ children }) => {
 
 	const { collapsed, defaultKey } = state;
 
-	/**
-	 * <HomeOutlined, />
-	 * <GlobalOutlined, />
-	 * <VideoCameraOutlined, />
-	 * <ShopOutlined, />
-	 * <AuditOutlined, />
-	 * <PlayCircleOutlined, />
-	 *
-	 */
-
 	return (
 		<Layout className="app-layout">
 			<Sider
@@ -75,6 +65,16 @@ const AppLayout: FC<IAppLayout> = ({ children }) => {
 					<Menu.Item icon={<CoffeeOutlined />} key="/coffe-chat">
 						<Navigation href="/coffee-chat">Coffee Chat</Navigation>
 					</Menu.Item>
+					<SubMenu
+						icon={<PlayCircleOutlined />}
+						key="three-js"
+						title="Three JS"
+					>
+						<Menu.Item key="/three-js">
+							<Navigation href="/three-js/hello-word">Hello word</Navigation>
+						</Menu.Item>
+						<Menu.Item key="/slider-360">coming soon</Menu.Item>
+					</SubMenu>
 					<SubMenu icon={<PlayCircleOutlined />} key="submenu" title="Random">
 						<Menu.Item key="/ta-te-ti">Ta-te-ti</Menu.Item>
 						<Menu.Item key="/slider-360">Slider 360</Menu.Item>

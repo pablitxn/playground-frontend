@@ -14,6 +14,7 @@
     "@zeit/next-less": "^1.0.1",
     "antd": "^4.6.4",
     "babel-plugin-import": "^1.13.0",
+    "drei": "0.0.60",
     "eslint": "^7.9.0",
     "eslint-plugin-react": "^7.20.6",
     "google-maps-react": "^2.0.6",
@@ -28,13 +29,16 @@
     "react-dom": "^16.13.1",
     "react-emoji": "^0.5.0",
     "react-scroll-to-bottom": "^4.0.0",
+    "react-three-fiber": "4.2.12",
     "socket.io-client": "^2.3.0",
-    "swr": "^0.3.2"
+    "swr": "^0.3.2",
+    "three": "0.118.3"
   },
   "license": "ISC",
   "devDependencies": {
     "@types/node": "14.10.2",
     "@types/react": "^16.9.49",
+    "next-transpile-modules": "^5.0.0",
     "typescript": "4.0.2"
   }
 }
