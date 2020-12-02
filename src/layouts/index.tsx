@@ -70,10 +70,12 @@ const AppLayout: FC<IAppLayout> = ({ children }) => {
 						key="three-js"
 						title="Three JS"
 					>
-						<Menu.Item key="/three-js">
-							<Navigation href="/three-js/hello-word">Hello word</Navigation>
+						<Menu.Item key="/three-js/boxes">
+							<Navigation href="/three-js/boxes">boxes</Navigation>
 						</Menu.Item>
-						<Menu.Item key="/slider-360">coming soon</Menu.Item>
+						<Menu.Item key="/three-js/birds">
+							<Navigation href="/three-js/birds">birds</Navigation>
+						</Menu.Item>
 					</SubMenu>
 					<SubMenu icon={<PlayCircleOutlined />} key="submenu" title="Random">
 						<Menu.Item key="/ta-te-ti">Ta-te-ti</Menu.Item>
